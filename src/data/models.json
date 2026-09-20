@@ -1,0 +1,3570 @@
+{
+  "generatedAt": "2026-09-20T11:35:50.801Z",
+  "totalFiles": 188,
+  "uniqueModels": 163,
+  "totalSizeBytes": 5793313922,
+  "totalSizeFormatted": "5.40 GB",
+  "categories": [
+    {
+      "key": "all",
+      "labelId": "Semua Model",
+      "labelEn": "All Models"
+    },
+    {
+      "key": "game_characters",
+      "labelId": "Karakter Game",
+      "labelEn": "Game Characters"
+    },
+    {
+      "key": "anime_manga",
+      "labelId": "Anime & Manga",
+      "labelEn": "Anime & Manga"
+    },
+    {
+      "key": "base_mesh",
+      "labelId": "Base Mesh & Anatomi",
+      "labelEn": "Base Mesh & Anatomy"
+    },
+    {
+      "key": "props_costumes",
+      "labelId": "Aset & Busana",
+      "labelEn": "Props & Costumes"
+    },
+    {
+      "key": "environment",
+      "labelId": "Lingkungan & Scene",
+      "labelEn": "Environment & Scene"
+    },
+    {
+      "key": "stylized_fantasy",
+      "labelId": "Fantasi & Lainnya",
+      "labelEn": "Fantasy & Stylized"
+    }
+  ],
+  "models": [
+    {
+      "id": "model_001",
+      "filename": "18_female_body_s3x_toy.glb",
+      "title": "18 Female Body S3x Toy",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8502760,
+      "sizeFormatted": "8.11 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "18_female_body_s3x_toy",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_023",
+      "filename": "a_contortionist_dancer.glb",
+      "title": "A Contortionist Dancer",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 18797760,
+      "sizeFormatted": "17.93 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "a_contortionist_dancer",
+      "tags": [
+        "Animation / Mocap",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_002",
+      "filename": "abandoned_factory_remodelled__gameready.glb",
+      "title": "Abandoned Factory Remodelled Gameready",
+      "categoryKey": "environment",
+      "categoryNameId": "Lingkungan & Scene",
+      "categoryNameEn": "Environment & Scene",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 109239172,
+      "sizeFormatted": "104.18 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "abandoned_factory_remodelled__gameready",
+      "tags": [
+        "Game Ready",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_003",
+      "filename": "ada_wong_-_1_ar_-_katherine_cat_keyhole_lingerie.glb",
+      "title": "Ada Wong 1 Ar Katherine Cat Keyhole Lingerie",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 131468616,
+      "sizeFormatted": "125.38 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ada_wong_-_1_ar_-_katherine_cat_keyhole_lingerie",
+      "tags": [
+        "Resident Evil",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_004",
+      "filename": "ada_wong_-_luxury_night_dress (1).glb",
+      "title": "Ada Wong Luxury Night Dress",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 214241396,
+      "sizeFormatted": "204.32 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "ada_wong_-_luxury_night_dress",
+      "tags": [
+        "Resident Evil",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_005",
+      "filename": "ada_wong_-_luxury_night_dress.glb",
+      "title": "Ada Wong Luxury Night Dress",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 214241396,
+      "sizeFormatted": "204.32 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ada_wong_-_luxury_night_dress",
+      "tags": [
+        "Resident Evil",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_006",
+      "filename": "ada_wong_suora_lussuosa_con_louboutins.glb",
+      "title": "Ada Wong Suora Lussuosa Con Louboutins",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 178743668,
+      "sizeFormatted": "170.46 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ada_wong_suora_lussuosa_con_louboutins",
+      "tags": [
+        "Resident Evil",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_007",
+      "filename": "ada_wong_v2.glb",
+      "title": "Ada Wong V2",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 47948780,
+      "sizeFormatted": "45.73 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ada_wong_v2",
+      "tags": [
+        "Resident Evil",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_008",
+      "filename": "adult_nude_sexy_girl_in_anime_style_fbx.glb",
+      "title": "Adult Nude Sexy Girl In Anime Style Fbx",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3307448,
+      "sizeFormatted": "3.15 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "adult_nude_sexy_girl_in_anime_style_fbx",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_009",
+      "filename": "aerith_sexy_dress.glb",
+      "title": "Aerith Sexy Dress",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 20724320,
+      "sizeFormatted": "19.76 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "aerith_sexy_dress",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_010",
+      "filename": "airi_dimension_breaker_arena_of_valor.glb",
+      "title": "Airi Dimension Breaker Arena Of Valor",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 13571036,
+      "sizeFormatted": "12.94 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "airi_dimension_breaker_arena_of_valor",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_011",
+      "filename": "anby_demara_zzz (1).glb",
+      "title": "Anby Demara Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 10076672,
+      "sizeFormatted": "9.61 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "anby_demara_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_012",
+      "filename": "anby_demara_zzz.glb",
+      "title": "Anby Demara Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 10076672,
+      "sizeFormatted": "9.61 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anby_demara_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_015",
+      "filename": "anime_-_female_nude_base_mesh.glb",
+      "title": "Anime Female Nude Base Mesh",
+      "categoryKey": "base_mesh",
+      "categoryNameId": "Base Mesh & Anatomi",
+      "categoryNameEn": "Base Mesh & Anatomy",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2019300,
+      "sizeFormatted": "1.93 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime_-_female_nude_base_mesh",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_014",
+      "filename": "anime-girl.zip",
+      "title": "Anime Girl",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 34560526,
+      "sizeFormatted": "32.96 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime-girl",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_016",
+      "filename": "anime_girl.glb",
+      "title": "Anime Girl",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4706484,
+      "sizeFormatted": "4.49 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_017",
+      "filename": "anime_girl_2.glb",
+      "title": "Anime Girl 2",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 10159876,
+      "sizeFormatted": "9.69 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime_girl_2",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_013",
+      "filename": "anime-girl-in-bikini.zip",
+      "title": "Anime Girl In Bikini",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx",
+        ".png"
+      ],
+      "sizeBytes": 56976268,
+      "sizeFormatted": "54.34 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime-girl-in-bikini",
+      "tags": [
+        "ZIP",
+        "FBX",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_018",
+      "filename": "anime_girl_in_bikini.glb",
+      "title": "Anime Girl In Bikini",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 32412940,
+      "sizeFormatted": "30.91 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime_girl_in_bikini",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_019",
+      "filename": "anime_school_girl_in_bikini.glb",
+      "title": "Anime School Girl In Bikini",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 27128356,
+      "sizeFormatted": "25.87 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "anime_school_girl_in_bikini",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_020",
+      "filename": "aoi_arena_of_valor.glb",
+      "title": "Aoi Arena Of Valor",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 1341236,
+      "sizeFormatted": "1.28 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "aoi_arena_of_valor",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_021",
+      "filename": "aoi_sora.glb",
+      "title": "Aoi Sora",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 64640680,
+      "sizeFormatted": "61.65 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "aoi_sora",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_022",
+      "filename": "ayanami_rei_figure.glb",
+      "title": "Ayanami Rei Figure",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 30775036,
+      "sizeFormatted": "29.35 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ayanami_rei_figure",
+      "tags": [
+        "Evangelion",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_024",
+      "filename": "bai_moqing_nude.glb",
+      "title": "Bai Moqing Nude",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 18040812,
+      "sizeFormatted": "17.21 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "bai_moqing_nude",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_025",
+      "filename": "base-body-female-v2.zip",
+      "title": "Base Body Female V2",
+      "categoryKey": "base_mesh",
+      "categoryNameId": "Base Mesh & Anatomi",
+      "categoryNameEn": "Base Mesh & Anatomy",
+      "format": "ZIP",
+      "innerFormats": [
+        ".blend",
+        ".jpeg"
+      ],
+      "sizeBytes": 1508213,
+      "sizeFormatted": "1.44 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "base-body-female-v2",
+      "tags": [
+        "ZIP",
+        "BLEND",
+        "JPEG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_026",
+      "filename": "beidou.glb",
+      "title": "Beidou",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8348556,
+      "sizeFormatted": "7.96 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "beidou",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_027",
+      "filename": "big_tits_brunete.glb",
+      "title": "Big Tits Brunete",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 16666872,
+      "sizeFormatted": "15.89 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "big_tits_brunete",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_028",
+      "filename": "burnice__nsfw__zzz.glb",
+      "title": "Burnice Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 16202308,
+      "sizeFormatted": "15.45 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "burnice__nsfw__zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_029",
+      "filename": "ca_nurse_with_bones.glb",
+      "title": "Ca Nurse With Bones",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8219668,
+      "sizeFormatted": "7.84 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ca_nurse_with_bones",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_030",
+      "filename": "cc0_-_condom.glb",
+      "title": "Cc0 Condom",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2865020,
+      "sizeFormatted": "2.73 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "cc0_-_condom",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_031",
+      "filename": "charlotte_nude__-_fortnite_-_nsfw_-_unrigged.glb",
+      "title": "Charlotte Nude Fortnite Unrigged",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8623484,
+      "sizeFormatted": "8.22 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "charlotte_nude__-_fortnite_-_nsfw_-_unrigged",
+      "tags": [
+        "Rigged",
+        "Fortnite",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_032",
+      "filename": "chloe_toy_1.glb",
+      "title": "Chloe Toy 1",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 41212200,
+      "sizeFormatted": "39.30 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "chloe_toy_1",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_033",
+      "filename": "chloe_toy_2.glb",
+      "title": "Chloe Toy 2",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 42265128,
+      "sizeFormatted": "40.31 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "chloe_toy_2",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_034",
+      "filename": "chloe_toy_3.glb",
+      "title": "Chloe Toy 3",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 42192904,
+      "sizeFormatted": "40.24 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "chloe_toy_3",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_035",
+      "filename": "chun_li_battle-suit.glb",
+      "title": "Chun Li Battle Suit",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 79856476,
+      "sizeFormatted": "76.16 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "chun_li_battle-suit",
+      "tags": [
+        "Street Fighter",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_036",
+      "filename": "columbina_1_genshin_impact.glb",
+      "title": "Columbina 1 Genshin Impact",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3780744,
+      "sizeFormatted": "3.61 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "columbina_1_genshin_impact",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_037",
+      "filename": "columbina_rigged_free.glb",
+      "title": "Columbina Rigged Free",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5208484,
+      "sizeFormatted": "4.97 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "columbina_rigged_free",
+      "tags": [
+        "Rigged",
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_038",
+      "filename": "dance_1 (1).glb",
+      "title": "Dance 1",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 21566860,
+      "sizeFormatted": "20.57 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "dance_1",
+      "tags": [
+        "Animation / Mocap",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_039",
+      "filename": "dance_1.glb",
+      "title": "Dance 1",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 21566860,
+      "sizeFormatted": "20.57 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "dance_1",
+      "tags": [
+        "Animation / Mocap",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_040",
+      "filename": "delara-the-princess-knight-of-sex-nsfw.zip",
+      "title": "Delara The Princess Knight Of Sex",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 56799998,
+      "sizeFormatted": "54.17 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "delara-the-princess-knight-of-sex-nsfw",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_041",
+      "filename": "delara_the_princess_knight_of_sex_nsfw.glb",
+      "title": "Delara The Princess Knight Of Sex",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 19686256,
+      "sizeFormatted": "18.77 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "delara_the_princess_knight_of_sex_nsfw",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_042",
+      "filename": "delke-js2.zip",
+      "title": "Delke Js2",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx",
+        ".png"
+      ],
+      "sizeBytes": 53213535,
+      "sizeFormatted": "50.75 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "delke-js2",
+      "tags": [
+        "ZIP",
+        "FBX",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_043",
+      "filename": "delke_js2.glb",
+      "title": "Delke Js2",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 14218180,
+      "sizeFormatted": "13.56 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "delke_js2",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_044",
+      "filename": "diao_chan_summer_bash_aov.glb",
+      "title": "Diao Chan Summer Bash Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2898824,
+      "sizeFormatted": "2.76 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "diao_chan_summer_bash_aov",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_045",
+      "filename": "elf-girl-2-textured.zip",
+      "title": "Elf Girl 2 Textured",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx",
+        ".png",
+        ".jpeg"
+      ],
+      "sizeBytes": 5239716,
+      "sizeFormatted": "5.00 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "elf-girl-2-textured",
+      "tags": [
+        "Textured",
+        "ZIP",
+        "FBX",
+        "PNG",
+        "JPEG"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_046",
+      "filename": "elf_girl_2_textured (1).glb",
+      "title": "Elf Girl 2 Textured",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3725536,
+      "sizeFormatted": "3.55 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "elf_girl_2_textured",
+      "tags": [
+        "Textured",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_047",
+      "filename": "elf_girl_2_textured.glb",
+      "title": "Elf Girl 2 Textured",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3725536,
+      "sizeFormatted": "3.55 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "elf_girl_2_textured",
+      "tags": [
+        "Textured",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_048",
+      "filename": "elf_texturized.glb",
+      "title": "Elf Texturized",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 9616248,
+      "sizeFormatted": "9.17 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "elf_texturized",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_049",
+      "filename": "ellen_joe_zzz.glb",
+      "title": "Ellen Joe Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 7793960,
+      "sizeFormatted": "7.43 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ellen_joe_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_050",
+      "filename": "emerald-serenity.zip",
+      "title": "Emerald Serenity",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".glb",
+        ".jpeg"
+      ],
+      "sizeBytes": 27818332,
+      "sizeFormatted": "26.53 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "emerald-serenity",
+      "tags": [
+        "ZIP",
+        "GLB",
+        "JPEG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_051",
+      "filename": "emerald_serenity.glb",
+      "title": "Emerald Serenity",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 25870948,
+      "sizeFormatted": "24.67 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "emerald_serenity",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_052",
+      "filename": "epona.glb",
+      "title": "Epona",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 24450424,
+      "sizeFormatted": "23.32 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "epona",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_053",
+      "filename": "fan_art_-_sexy_girl.glb",
+      "title": "Fan Art Sexy Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 150612560,
+      "sizeFormatted": "143.64 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "fan_art_-_sexy_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_054",
+      "filename": "female_n_male_base_mesh_study.glb",
+      "title": "Female N Male Base Mesh Study",
+      "categoryKey": "base_mesh",
+      "categoryNameId": "Base Mesh & Anatomi",
+      "categoryNameEn": "Base Mesh & Anatomy",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 74923688,
+      "sizeFormatted": "71.45 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "female_n_male_base_mesh_study",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_055",
+      "filename": "female_torso__clean_topology_base_mesh.glb",
+      "title": "Female Torso Clean Topology Base Mesh",
+      "categoryKey": "base_mesh",
+      "categoryNameId": "Base Mesh & Anatomi",
+      "categoryNameEn": "Base Mesh & Anatomy",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 429020,
+      "sizeFormatted": "0.41 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "female_torso__clean_topology_base_mesh",
+      "tags": [
+        "Clean Topology",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_056",
+      "filename": "free_-_female_mesh_with_butt_and_vagina_and_tits.glb",
+      "title": "Free Female Mesh With Butt And Vagina And Tits",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 9984156,
+      "sizeFormatted": "9.52 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "free_-_female_mesh_with_butt_and_vagina_and_tits",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_058",
+      "filename": "genshin_impact_ningguang.glb",
+      "title": "Genshin Impact Ningguang",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5123648,
+      "sizeFormatted": "4.89 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "genshin_impact_ningguang",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_057",
+      "filename": "genshin_impact_-_yae_miko.glb",
+      "title": "Genshin Impact Yae Miko",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4583560,
+      "sizeFormatted": "4.37 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "genshin_impact_-_yae_miko",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_059",
+      "filename": "gf2_exilium_-florence-_marvelous_yam_pastry.glb",
+      "title": "Gf2 Exilium Florence Marvelous Yam Pastry",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 27908552,
+      "sizeFormatted": "26.62 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "gf2_exilium_-florence-_marvelous_yam_pastry",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_060",
+      "filename": "gigi_futa_x_poppy.glb",
+      "title": "Gigi Futa X Poppy",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5610208,
+      "sizeFormatted": "5.35 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "gigi_futa_x_poppy",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_061",
+      "filename": "giraffe_head-_shaking_animation.glb",
+      "title": "Giraffe Head Shaking Animation",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 28059576,
+      "sizeFormatted": "26.76 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "giraffe_head-_shaking_animation",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_062",
+      "filename": "girl-model.zip",
+      "title": "Girl Model",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx"
+      ],
+      "sizeBytes": 4645312,
+      "sizeFormatted": "4.43 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "girl-model",
+      "tags": [
+        "ZIP",
+        "FBX"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_063",
+      "filename": "girl_model.glb",
+      "title": "Girl Model",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2672800,
+      "sizeFormatted": "2.55 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "girl_model",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_064",
+      "filename": "goth_girl.glb",
+      "title": "Goth Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 18299840,
+      "sizeFormatted": "17.45 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "goth_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_065",
+      "filename": "grace_howard_zzz.glb",
+      "title": "Grace Howard Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8326548,
+      "sizeFormatted": "7.94 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "grace_howard_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_066",
+      "filename": "granado_espada_diluca_3d_model_extract (1).glb",
+      "title": "Granado Espada Diluca 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5781576,
+      "sizeFormatted": "5.51 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "granado_espada_diluca_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_067",
+      "filename": "granado_espada_diluca_3d_model_extract.glb",
+      "title": "Granado Espada Diluca 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5781576,
+      "sizeFormatted": "5.51 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "granado_espada_diluca_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_068",
+      "filename": "granado_espada_erica_3d_model_extract (1).glb",
+      "title": "Granado Espada Erica 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5940668,
+      "sizeFormatted": "5.67 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "granado_espada_erica_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_069",
+      "filename": "granado_espada_erica_3d_model_extract.glb",
+      "title": "Granado Espada Erica 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5940668,
+      "sizeFormatted": "5.67 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "granado_espada_erica_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_070",
+      "filename": "granado_espada_rebecca_3d_model_extract (1).glb",
+      "title": "Granado Espada Rebecca 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 10175372,
+      "sizeFormatted": "9.70 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "granado_espada_rebecca_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_071",
+      "filename": "granado_espada_rebecca_3d_model_extract.glb",
+      "title": "Granado Espada Rebecca 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 10175372,
+      "sizeFormatted": "9.70 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "granado_espada_rebecca_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_072",
+      "filename": "granado_espada_stia_3d_model_extract (1).glb",
+      "title": "Granado Espada Stia 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6750644,
+      "sizeFormatted": "6.44 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "granado_espada_stia_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_073",
+      "filename": "granado_espada_stia_3d_model_extract.glb",
+      "title": "Granado Espada Stia 3d Model Extract",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6750644,
+      "sizeFormatted": "6.44 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "granado_espada_stia_3d_model_extract",
+      "tags": [
+        "Granado Espada",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_074",
+      "filename": "half_naked_anime_girl.glb",
+      "title": "Half Naked Anime Girl",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 28139872,
+      "sizeFormatted": "26.84 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "half_naked_anime_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_075",
+      "filename": "helen-parr.zip",
+      "title": "Helen Parr",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".glb",
+        ".jpeg"
+      ],
+      "sizeBytes": 13162533,
+      "sizeFormatted": "12.55 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "helen-parr",
+      "tags": [
+        "ZIP",
+        "GLB",
+        "JPEG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_076",
+      "filename": "helen_parr.glb",
+      "title": "Helen Parr",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4825476,
+      "sizeFormatted": "4.60 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "helen_parr",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_077",
+      "filename": "hentai-girl-ahoga-naked.zip",
+      "title": "Hentai Girl Ahoga Naked",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".blend",
+        ".png"
+      ],
+      "sizeBytes": 30282466,
+      "sizeFormatted": "28.88 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "hentai-girl-ahoga-naked",
+      "tags": [
+        "ZIP",
+        "BLEND",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_078",
+      "filename": "hentai_girl_ahoga_naked.glb",
+      "title": "Hentai Girl Ahoga Naked",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4237460,
+      "sizeFormatted": "4.04 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "hentai_girl_ahoga_naked",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_079",
+      "filename": "hentai_girl_naked.glb",
+      "title": "Hentai Girl Naked",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5115508,
+      "sizeFormatted": "4.88 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "hentai_girl_naked",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_080",
+      "filename": "hitem3d (1).glb",
+      "title": "Hitem3d",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 101764204,
+      "sizeFormatted": "97.05 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "hitem3d",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_081",
+      "filename": "hitem3d.glb",
+      "title": "Hitem3d",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 101764204,
+      "sizeFormatted": "97.05 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "hitem3d",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_082",
+      "filename": "horse-pussy-and-vagina-plus-anus.zip",
+      "title": "Horse Pussy And Vagina Plus Anus",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".blend"
+      ],
+      "sizeBytes": 28021598,
+      "sizeFormatted": "26.72 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "horse-pussy-and-vagina-plus-anus",
+      "tags": [
+        "ZIP",
+        "BLEND"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_083",
+      "filename": "hu-tao-swimsuit.zip",
+      "title": "Hu Tao Swimsuit",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx",
+        ".png"
+      ],
+      "sizeBytes": 9210849,
+      "sizeFormatted": "8.78 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "hu-tao-swimsuit",
+      "tags": [
+        "ZIP",
+        "FBX",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_084",
+      "filename": "hu_tao_swimsuit.glb",
+      "title": "Hu Tao Swimsuit",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 7085732,
+      "sizeFormatted": "6.76 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "hu_tao_swimsuit",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_085",
+      "filename": "keqing_demo_model (1).glb",
+      "title": "Keqing Demo Model",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8406716,
+      "sizeFormatted": "8.02 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "keqing_demo_model",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_086",
+      "filename": "keqing_demo_model.glb",
+      "title": "Keqing Demo Model",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8406716,
+      "sizeFormatted": "8.02 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "keqing_demo_model",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_087",
+      "filename": "keqing_fbx_with_textures.glb",
+      "title": "Keqing Fbx With Textures",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4979504,
+      "sizeFormatted": "4.75 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "keqing_fbx_with_textures",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_088",
+      "filename": "lady_dmc4.glb",
+      "title": "Lady Dmc4",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 20751976,
+      "sizeFormatted": "19.79 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "lady_dmc4",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_089",
+      "filename": "lady_in_red_dress.glb",
+      "title": "Lady In Red Dress",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 80681700,
+      "sizeFormatted": "76.94 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "lady_in_red_dress",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_090",
+      "filename": "latch_suit.glb",
+      "title": "Latch Suit",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 55843544,
+      "sizeFormatted": "53.26 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "latch_suit",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_091",
+      "filename": "lauma-naked.zip",
+      "title": "Lauma Naked",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".glb",
+        ".png"
+      ],
+      "sizeBytes": 7515530,
+      "sizeFormatted": "7.17 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "lauma-naked",
+      "tags": [
+        "ZIP",
+        "GLB",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_092",
+      "filename": "lauma_naked.glb",
+      "title": "Lauma Naked",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4890312,
+      "sizeFormatted": "4.66 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "lauma_naked",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_093",
+      "filename": "lauma_rigged_free.glb",
+      "title": "Lauma Rigged Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4233176,
+      "sizeFormatted": "4.04 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "lauma_rigged_free",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_094",
+      "filename": "low_poly_head_-_panda_-_fortnite.glb",
+      "title": "Low Poly Head Panda Fortnite",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2479928,
+      "sizeFormatted": "2.37 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "low_poly_head_-_panda_-_fortnite",
+      "tags": [
+        "Low Poly",
+        "Fortnite",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_095",
+      "filename": "melina_naked_tpose_ridged.glb",
+      "title": "Melina Naked Tpose Ridged",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5399076,
+      "sizeFormatted": "5.15 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "melina_naked_tpose_ridged",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_096",
+      "filename": "mina_dance_of_death_aov.glb",
+      "title": "Mina Dance Of Death Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2605164,
+      "sizeFormatted": "2.48 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "mina_dance_of_death_aov",
+      "tags": [
+        "Arena of Valor",
+        "Animation / Mocap",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_097",
+      "filename": "molly.glb",
+      "title": "Molly",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 118948744,
+      "sizeFormatted": "113.44 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "molly",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_098",
+      "filename": "mountain_goat_demo_free_download.glb",
+      "title": "Mountain Goat Demo Free Download",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 18674968,
+      "sizeFormatted": "17.81 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "mountain_goat_demo_free_download",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_099",
+      "filename": "my_1st_character.glb",
+      "title": "My 1st Character",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 36300604,
+      "sizeFormatted": "34.62 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "my_1st_character",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_100",
+      "filename": "naked_queen.glb",
+      "title": "Naked Queen",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 46231064,
+      "sizeFormatted": "44.09 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "naked_queen",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_101",
+      "filename": "nefer_rigged_free (1).glb",
+      "title": "Nefer Rigged Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4473784,
+      "sizeFormatted": "4.27 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "nefer_rigged_free",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_102",
+      "filename": "nefer_rigged_free.glb",
+      "title": "Nefer Rigged Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4473784,
+      "sizeFormatted": "4.27 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nefer_rigged_free",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_103",
+      "filename": "nekomiya_mana_zzz.glb",
+      "title": "Nekomiya Mana Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6645040,
+      "sizeFormatted": "6.34 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nekomiya_mana_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_104",
+      "filename": "nicole_demara_nude.glb",
+      "title": "Nicole Demara Nude",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 7580724,
+      "sizeFormatted": "7.23 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nicole_demara_nude",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_105",
+      "filename": "nicole_demara_zzz (1).glb",
+      "title": "Nicole Demara Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8386960,
+      "sizeFormatted": "8.00 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "nicole_demara_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_106",
+      "filename": "nicole_demara_zzz.glb",
+      "title": "Nicole Demara Zzz",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8386960,
+      "sizeFormatted": "8.00 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nicole_demara_zzz",
+      "tags": [
+        "Zenless Zone Zero",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_107",
+      "filename": "ningguang.glb",
+      "title": "Ningguang",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 9654560,
+      "sizeFormatted": "9.21 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ningguang",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_108",
+      "filename": "ningguang_1_genshin_impact.glb",
+      "title": "Ningguang 1 Genshin Impact",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5904340,
+      "sizeFormatted": "5.63 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ningguang_1_genshin_impact",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_109",
+      "filename": "ningguang_and_forbidden_water_problem..glb",
+      "title": "Ningguang And Forbidden Water Problem.",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 89391796,
+      "sizeFormatted": "85.25 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "ningguang_and_forbidden_water_problem.",
+      "tags": [
+        "Genshin Impact",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_110",
+      "filename": "nude_3.glb",
+      "title": "Nude 3",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 13351524,
+      "sizeFormatted": "12.73 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nude_3",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_111",
+      "filename": "nude_female_goddess.glb",
+      "title": "Nude Female Goddess",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6739340,
+      "sizeFormatted": "6.43 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nude_female_goddess",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_112",
+      "filename": "nude_girl.glb",
+      "title": "Nude Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 7121128,
+      "sizeFormatted": "6.79 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "nude_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_113",
+      "filename": "panda_head.glb",
+      "title": "Panda Head",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 671496,
+      "sizeFormatted": "0.64 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "panda_head",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_114",
+      "filename": "persephone._goddess_of_spring.glb",
+      "title": "Persephone. Goddess Of Spring",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 160614716,
+      "sizeFormatted": "153.17 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "persephone._goddess_of_spring",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_115",
+      "filename": "punk-style_lady_with_pigtails.glb",
+      "title": "Punk Style Lady With Pigtails",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3151504,
+      "sizeFormatted": "3.01 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "punk-style_lady_with_pigtails",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_116",
+      "filename": "rabbit_demo_free_download.zip",
+      "title": "Rabbit Demo Free Download",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".gltf",
+        ".bin",
+        ".png"
+      ],
+      "sizeBytes": 1973603,
+      "sizeFormatted": "1.88 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "rabbit_demo_free_download",
+      "tags": [
+        "ZIP",
+        "GLTF",
+        "BIN",
+        "PNG"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_117",
+      "filename": "raiden-shogun.zip",
+      "title": "Raiden Shogun",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 12740272,
+      "sizeFormatted": "12.15 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "raiden-shogun",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_118",
+      "filename": "raiden__shogun_cyka_blyat__dance.glb",
+      "title": "Raiden Shogun Cyka Blyat Dance",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5575668,
+      "sizeFormatted": "5.32 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "raiden__shogun_cyka_blyat__dance",
+      "tags": [
+        "Animation / Mocap",
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_119",
+      "filename": "roblox_nsfw_rr34_base.glb",
+      "title": "Roblox Rr34 Base",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8997236,
+      "sizeFormatted": "8.58 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "roblox_nsfw_rr34_base",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_120",
+      "filename": "rouie_arena_of_valor (1).glb",
+      "title": "Rouie Arena Of Valor",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3681688,
+      "sizeFormatted": "3.51 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "rouie_arena_of_valor",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_121",
+      "filename": "rouie_arena_of_valor (2).glb",
+      "title": "Rouie Arena Of Valor",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 19867796,
+      "sizeFormatted": "18.95 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "rouie_arena_of_valor",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_122",
+      "filename": "rouie_arena_of_valor.glb",
+      "title": "Rouie Arena Of Valor",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 19867796,
+      "sizeFormatted": "18.95 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "rouie_arena_of_valor",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_123",
+      "filename": "sanuri.glb",
+      "title": "Sanuri",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 162502800,
+      "sizeFormatted": "154.97 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sanuri",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_124",
+      "filename": "scifi_sexy_girl.glb",
+      "title": "Scifi Sexy Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6385440,
+      "sizeFormatted": "6.09 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "scifi_sexy_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_125",
+      "filename": "scrap-baby-from-sister-location-fnaf-6-nsfw.zip",
+      "title": "Scrap Baby From Sister Location Fnaf 6",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 93434400,
+      "sizeFormatted": "89.11 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "scrap-baby-from-sister-location-fnaf-6-nsfw",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_126",
+      "filename": "scrap_baby_from_sister_location_fnaf_6_nsfw.glb",
+      "title": "Scrap Baby From Sister Location Fnaf 6",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 22720168,
+      "sizeFormatted": "21.67 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "scrap_baby_from_sister_location_fnaf_6_nsfw",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_127",
+      "filename": "sexy-anime-girl-3d-model-free-to-use.zip",
+      "title": "Sexy Anime Girl 3d Model Free To Use",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx",
+        ".png"
+      ],
+      "sizeBytes": 12318003,
+      "sizeFormatted": "11.75 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy-anime-girl-3d-model-free-to-use",
+      "tags": [
+        "ZIP",
+        "FBX",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_132",
+      "filename": "sexy_anime_girl_3d_model__free_to_use (1).glb",
+      "title": "Sexy Anime Girl 3d Model Free To Use",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5627876,
+      "sizeFormatted": "5.37 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "sexy_anime_girl_3d_model__free_to_use",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_133",
+      "filename": "sexy_anime_girl_3d_model__free_to_use (2).glb",
+      "title": "Sexy Anime Girl 3d Model Free To Use",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5627876,
+      "sizeFormatted": "5.37 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "sexy_anime_girl_3d_model__free_to_use",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_134",
+      "filename": "sexy_anime_girl_3d_model__free_to_use (3).glb",
+      "title": "Sexy Anime Girl 3d Model Free To Use",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5627876,
+      "sizeFormatted": "5.37 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "sexy_anime_girl_3d_model__free_to_use",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_135",
+      "filename": "sexy_anime_girl_3d_model__free_to_use.glb",
+      "title": "Sexy Anime Girl 3d Model Free To Use",
+      "categoryKey": "anime_manga",
+      "categoryNameId": "Anime & Manga",
+      "categoryNameEn": "Anime & Manga",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5627876,
+      "sizeFormatted": "5.37 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_anime_girl_3d_model__free_to_use",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_136",
+      "filename": "sexy_cartoonish_woman (1).glb",
+      "title": "Sexy Cartoonish Woman",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 126210852,
+      "sizeFormatted": "120.36 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "sexy_cartoonish_woman",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_137",
+      "filename": "sexy_cartoonish_woman.glb",
+      "title": "Sexy Cartoonish Woman",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 126210852,
+      "sizeFormatted": "120.36 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_cartoonish_woman",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_138",
+      "filename": "sexy_elf_ninja.glb",
+      "title": "Sexy Elf Ninja",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 45742060,
+      "sizeFormatted": "43.62 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_elf_ninja",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_139",
+      "filename": "sexy_frozen_queen.glb",
+      "title": "Sexy Frozen Queen",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 31378212,
+      "sizeFormatted": "29.92 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_frozen_queen",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_129",
+      "filename": "sexy-girl.zip",
+      "title": "Sexy Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [
+        ".fbx",
+        ".png"
+      ],
+      "sizeBytes": 7569768,
+      "sizeFormatted": "7.22 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy-girl",
+      "tags": [
+        "ZIP",
+        "FBX",
+        "PNG"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_140",
+      "filename": "sexy_girl (1).glb",
+      "title": "Sexy Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2203588,
+      "sizeFormatted": "2.10 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "sexy_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_141",
+      "filename": "sexy_girl.glb",
+      "title": "Sexy Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6022644,
+      "sizeFormatted": "5.74 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_128",
+      "filename": "sexy-girl-03.zip",
+      "title": "Sexy Girl 03",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 12320613,
+      "sizeFormatted": "11.75 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy-girl-03",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_143",
+      "filename": "sexy_girl_03.glb",
+      "title": "Sexy Girl 03",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 12261504,
+      "sizeFormatted": "11.69 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_girl_03",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_144",
+      "filename": "sexy_girl_04.glb",
+      "title": "Sexy Girl 04",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 12650776,
+      "sizeFormatted": "12.06 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_girl_04",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_145",
+      "filename": "sexy_girl_05.glb",
+      "title": "Sexy Girl 05",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3044508,
+      "sizeFormatted": "2.90 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_girl_05",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_142",
+      "filename": "sexy_girls.glb",
+      "title": "Sexy Girls",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 17749960,
+      "sizeFormatted": "16.93 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_girls",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_146",
+      "filename": "sexy_nude_elf_big_boobs_topless_girl_full_rigged.glb",
+      "title": "Sexy Nude Elf Big Boobs Topless Girl Full Rigged",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2475924,
+      "sizeFormatted": "2.36 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_nude_elf_big_boobs_topless_girl_full_rigged",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_147",
+      "filename": "sexy_nude_girls_filming_cosplay_horror.glb",
+      "title": "Sexy Nude Girls Filming Cosplay Horror",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 68589796,
+      "sizeFormatted": "65.41 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_nude_girls_filming_cosplay_horror",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_148",
+      "filename": "sexy_patient_escape.glb",
+      "title": "Sexy Patient Escape",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 102063340,
+      "sizeFormatted": "97.34 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_patient_escape",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_149",
+      "filename": "sexy_salazzle_nsfw_parts_body.glb",
+      "title": "Sexy Salazzle Parts Body",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 33136808,
+      "sizeFormatted": "31.60 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_salazzle_nsfw_parts_body",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_150",
+      "filename": "sexy_woman.glb",
+      "title": "Sexy Woman",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 90527792,
+      "sizeFormatted": "86.33 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy_woman",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_130",
+      "filename": "sexy-women.glb",
+      "title": "Sexy Women",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 74094052,
+      "sizeFormatted": "70.66 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexy-women",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_131",
+      "filename": "sexycyborg_heels_no_base.glb",
+      "title": "Sexycyborg Heels No Base",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 14421860,
+      "sizeFormatted": "13.75 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sexycyborg_heels_no_base",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_151",
+      "filename": "sinestrea_aov.glb",
+      "title": "Sinestrea Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4926564,
+      "sizeFormatted": "4.70 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sinestrea_aov",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_152",
+      "filename": "sinestrea_cerulean_princess_aov (1).glb",
+      "title": "Sinestrea Cerulean Princess Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6375660,
+      "sizeFormatted": "6.08 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "sinestrea_cerulean_princess_aov",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_153",
+      "filename": "sinestrea_cerulean_princess_aov.glb",
+      "title": "Sinestrea Cerulean Princess Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6375660,
+      "sizeFormatted": "6.08 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "sinestrea_cerulean_princess_aov",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_154",
+      "filename": "stardom_wwe_wrestling.glb",
+      "title": "Stardom Wwe Wrestling",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 79142700,
+      "sizeFormatted": "75.48 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "stardom_wwe_wrestling",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_155",
+      "filename": "still_in_love_port.glb",
+      "title": "Still In Love Port",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 9650020,
+      "sizeFormatted": "9.20 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "still_in_love_port",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_156",
+      "filename": "succubus_vii.glb",
+      "title": "Succubus Vii",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 18804592,
+      "sizeFormatted": "17.93 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "succubus_vii",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_157",
+      "filename": "swimsuit__girl_101.glb",
+      "title": "Swimsuit Girl 101",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 5599604,
+      "sizeFormatted": "5.34 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "swimsuit__girl_101",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_158",
+      "filename": "tbk11 (1).glb",
+      "title": "Tbk11",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 14962844,
+      "sizeFormatted": "14.27 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "tbk11",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_159",
+      "filename": "tbk11.glb",
+      "title": "Tbk11",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 16498488,
+      "sizeFormatted": "15.73 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "tbk11",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_160",
+      "filename": "the_fallen._fanmade_story.glb",
+      "title": "The Fallen. Fanmade Story",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 43847716,
+      "sizeFormatted": "41.82 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "the_fallen._fanmade_story",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_161",
+      "filename": "tifa_remake_white_outfit.glb",
+      "title": "Tifa Remake White Outfit",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 60114884,
+      "sizeFormatted": "57.33 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "tifa_remake_white_outfit",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_162",
+      "filename": "topless-sexy-girl-with-heels (1).zip",
+      "title": "Topless Sexy Girl With Heels",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 98606572,
+      "sizeFormatted": "94.04 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "topless-sexy-girl-with-heels",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_163",
+      "filename": "topless-sexy-girl-with-heels.zip",
+      "title": "Topless Sexy Girl With Heels",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 98606572,
+      "sizeFormatted": "94.04 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "topless-sexy-girl-with-heels",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_164",
+      "filename": "topless_sexy_girl_with_heels (1).glb",
+      "title": "Topless Sexy Girl With Heels",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 118687348,
+      "sizeFormatted": "113.19 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "topless_sexy_girl_with_heels",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_165",
+      "filename": "topless_sexy_girl_with_heels.glb",
+      "title": "Topless Sexy Girl With Heels",
+      "categoryKey": "props_costumes",
+      "categoryNameId": "Aset & Busana",
+      "categoryNameEn": "Props & Costumes",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 118687348,
+      "sizeFormatted": "113.19 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "topless_sexy_girl_with_heels",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_166",
+      "filename": "type0_pose_2_sexy.glb",
+      "title": "Type0 Pose 2 Sexy",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6099072,
+      "sizeFormatted": "5.82 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "type0_pose_2_sexy",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_167",
+      "filename": "uterus.glb",
+      "title": "Uterus",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 2791396,
+      "sizeFormatted": "2.66 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "uterus",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_168",
+      "filename": "uterus__vagina.glb",
+      "title": "Uterus Vagina",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 12971516,
+      "sizeFormatted": "12.37 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "uterus__vagina",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_169",
+      "filename": "vagina-temp-2.zip",
+      "title": "Vagina Temp 2",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 12725658,
+      "sizeFormatted": "12.14 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "vagina-temp-2",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_170",
+      "filename": "vagina_temp_2.glb",
+      "title": "Vagina Temp 2",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4409212,
+      "sizeFormatted": "4.20 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "vagina_temp_2",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_171",
+      "filename": "valeria_girl_3d_model_free.glb",
+      "title": "Valeria Girl 3d Model Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 131036120,
+      "sizeFormatted": "124.97 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "valeria_girl_3d_model_free",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_172",
+      "filename": "valkyrie-tyan-nsfw.zip",
+      "title": "Valkyrie Tyan",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 16278159,
+      "sizeFormatted": "15.52 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "valkyrie-tyan-nsfw",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_173",
+      "filename": "valkyrie_tyan_nsfw.glb",
+      "title": "Valkyrie Tyan",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 13521800,
+      "sizeFormatted": "12.90 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "valkyrie_tyan_nsfw",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_174",
+      "filename": "vamp_vixen.glb",
+      "title": "Vamp Vixen",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 61767440,
+      "sizeFormatted": "58.91 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "vamp_vixen",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_175",
+      "filename": "varesa_rigged_free.glb",
+      "title": "Varesa Rigged Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 3596448,
+      "sizeFormatted": "3.43 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "varesa_rigged_free",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_176",
+      "filename": "veera_aov.glb",
+      "title": "Veera Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 8261968,
+      "sizeFormatted": "7.88 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "veera_aov",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_177",
+      "filename": "violet_demonic_morphed_aov.glb",
+      "title": "Violet Demonic Morphed Aov",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 6023040,
+      "sizeFormatted": "5.74 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "violet_demonic_morphed_aov",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_178",
+      "filename": "violet_dimension_breaker_arena_of_valor.glb",
+      "title": "Violet Dimension Breaker Arena Of Valor",
+      "categoryKey": "game_characters",
+      "categoryNameId": "Karakter Game",
+      "categoryNameEn": "Game Characters",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 7243228,
+      "sizeFormatted": "6.91 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "violet_dimension_breaker_arena_of_valor",
+      "tags": [
+        "Arena of Valor",
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_179",
+      "filename": "vrc_kipfel_youth.glb",
+      "title": "Vrc Kipfel Youth",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 9614496,
+      "sizeFormatted": "9.17 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "vrc_kipfel_youth",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_180",
+      "filename": "vrc_rurune_on_bunny_outfit_items_on_booth (1).glb",
+      "title": "Vrc Rurune On Bunny Outfit Items On Booth",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 48478920,
+      "sizeFormatted": "46.23 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "vrc_rurune_on_bunny_outfit_items_on_booth",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_181",
+      "filename": "vrc_rurune_on_bunny_outfit_items_on_booth.glb",
+      "title": "Vrc Rurune On Bunny Outfit Items On Booth",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 48478920,
+      "sizeFormatted": "46.23 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "vrc_rurune_on_bunny_outfit_items_on_booth",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_182",
+      "filename": "walrider_nudemisaki.glb",
+      "title": "Walrider Nudemisaki",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 44424368,
+      "sizeFormatted": "42.37 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "walrider_nudemisaki",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_183",
+      "filename": "witch-naked.zip",
+      "title": "Witch Naked",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "ZIP",
+      "innerFormats": [],
+      "sizeBytes": 50804650,
+      "sizeFormatted": "48.45 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "witch-naked",
+      "tags": [
+        "ZIP"
+      ],
+      "lastModified": "2025-11-07"
+    },
+    {
+      "id": "model_184",
+      "filename": "wooden_girl.glb",
+      "title": "Wooden Girl",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 15333564,
+      "sizeFormatted": "14.62 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "wooden_girl",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_185",
+      "filename": "yae_miko.glb",
+      "title": "Yae Miko",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 10911272,
+      "sizeFormatted": "10.41 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "yae_miko",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-18"
+    },
+    {
+      "id": "model_186",
+      "filename": "yidhari_rigged_free (1).glb",
+      "title": "Yidhari Rigged Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 46395856,
+      "sizeFormatted": "44.25 MB",
+      "isDuplicate": true,
+      "cleanBaseName": "yidhari_rigged_free",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-27"
+    },
+    {
+      "id": "model_187",
+      "filename": "yidhari_rigged_free.glb",
+      "title": "Yidhari Rigged Free",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 11271808,
+      "sizeFormatted": "10.75 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "yidhari_rigged_free",
+      "tags": [
+        "Rigged",
+        "GLB"
+      ],
+      "lastModified": "2025-11-17"
+    },
+    {
+      "id": "model_188",
+      "filename": "zelina_naked_riged_tpose.glb",
+      "title": "Zelina Naked Riged Tpose",
+      "categoryKey": "stylized_fantasy",
+      "categoryNameId": "Fantasi & Lainnya",
+      "categoryNameEn": "Fantasy & Stylized",
+      "format": "GLB",
+      "innerFormats": [],
+      "sizeBytes": 4912408,
+      "sizeFormatted": "4.68 MB",
+      "isDuplicate": false,
+      "cleanBaseName": "zelina_naked_riged_tpose",
+      "tags": [
+        "GLB"
+      ],
+      "lastModified": "2025-11-07"
+    }
+  ]
+}

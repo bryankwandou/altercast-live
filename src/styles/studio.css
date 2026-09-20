@@ -1,0 +1,433 @@
+@import './tokens.css';
+
+/* ==========================================================================
+   BLENDER STUDIO VIEWPORT & WORKSPACE STYLES
+   Native Blender-inspired Dark UI & Viewport Controls
+   ========================================================================== */
+
+body.studio-body {
+  background-color: #1e1e1e;
+  color: #dcdcdc;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Studio Header / Menu Bar */
+.studio-topbar {
+  height: 42px;
+  background-color: #282828;
+  border-bottom: 1px solid #141414;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+  font-size: 13px;
+  user-select: none;
+  z-index: 50;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.blender-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #f57920;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.blender-badge svg {
+  width: 20px;
+  height: 20px;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.menu-item-btn {
+  background: transparent;
+  color: #b0b0b0;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.menu-item-btn:hover {
+  background-color: #383838;
+  color: #ffffff;
+}
+
+.workspace-tabs {
+  display: flex;
+  align-items: center;
+  background-color: #1e1e1e;
+  border-radius: 4px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.ws-tab {
+  background: transparent;
+  color: #888888;
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.ws-tab:hover {
+  color: #cccccc;
+}
+
+.ws-tab.active {
+  background-color: #3e3e3e;
+  color: #ffffff;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.studio-btn {
+  background-color: #383838;
+  color: #e0e0e0;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.studio-btn:hover {
+  background-color: #4a4a4a;
+  color: #ffffff;
+}
+
+.studio-btn.primary {
+  background-color: #f57920;
+  border-color: #e06810;
+  color: #ffffff;
+}
+
+.studio-btn.primary:hover {
+  background-color: #fa8b38;
+}
+
+/* Main Studio Layout: Viewport + Side Panel */
+.studio-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 3D Viewport Area */
+.viewport-container {
+  flex: 1;
+  position: relative;
+  background: radial-gradient(circle at center, #2e2e2e 0%, #1c1c1c 100%);
+  overflow: hidden;
+}
+
+#threejs-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Viewport HUD Overlays */
+.viewport-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.overlay-top-left {
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #888888;
+}
+
+.hud-model-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.overlay-top-right {
+  top: 12px;
+  right: 12px;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.shading-modes {
+  display: flex;
+  background-color: rgba(30, 30, 30, 0.85);
+  border: 1px solid #444444;
+  border-radius: 6px;
+  padding: 3px;
+  gap: 3px;
+  backdrop-filter: blur(8px);
+}
+
+.shading-btn {
+  background: transparent;
+  color: #999999;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.shading-btn:hover {
+  color: #ffffff;
+  background-color: #444444;
+}
+
+.shading-btn.active {
+  background-color: #f57920;
+  color: #ffffff;
+}
+
+/* Orientation Gizmo Widget */
+.orientation-widget {
+  background: rgba(30, 30, 30, 0.85);
+  border: 1px solid #444444;
+  border-radius: 6px;
+  padding: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  backdrop-filter: blur(8px);
+}
+
+.gizmo-btn {
+  background: #333333;
+  color: #cccccc;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 3px;
+  transition: all var(--transition-fast);
+}
+
+.gizmo-btn:hover {
+  background-color: #f57920;
+  color: #ffffff;
+}
+
+.gizmo-btn.x-axis { border-bottom: 2px solid #e04545; }
+.gizmo-btn.y-axis { border-bottom: 2px solid #45e045; }
+.gizmo-btn.z-axis { border-bottom: 2px solid #4588e0; }
+
+/* Overlay Bottom Navigation Helper */
+.overlay-bottom-left {
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(20, 20, 20, 0.85);
+  border: 1px solid #333333;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #999999;
+  display: flex;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+/* Touch Ripple Indicator */
+.touch-ripple {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ff7b7b;
+  box-shadow: 0 0 16px rgba(255, 123, 123, 0.8);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 1;
+  transition: transform 400ms cubic-bezier(0.1, 0.9, 0.2, 1), opacity 400ms ease;
+}
+
+.touch-ripple.active {
+  transform: translate(-50%, -50%) scale(2.5);
+  opacity: 0;
+}
+
+/* Sidebar Editor Panel */
+.studio-sidebar {
+  width: 340px;
+  background-color: #242424;
+  border-left: 1px solid #181818;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  user-select: none;
+}
+
+.sidebar-section {
+  border-bottom: 1px solid #303030;
+  padding: var(--space-4);
+}
+
+.sidebar-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #f57920;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.property-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 12px;
+}
+
+.property-label {
+  color: #aaaaaa;
+  flex: 1;
+}
+
+.property-input-range {
+  flex: 1.5;
+  accent-color: #f57920;
+  cursor: pointer;
+}
+
+.property-value-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #dddddd;
+  min-width: 36px;
+  text-align: right;
+}
+
+.color-picker-input {
+  width: 32px;
+  height: 24px;
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Skin Tone Presets */
+.skin-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.skin-preset-btn {
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.skin-preset-btn:hover {
+  transform: scale(1.05);
+  border-color: #ffffff;
+}
+
+/* Timeline & Animation Bar */
+.studio-timeline {
+  height: 48px;
+  background-color: #242424;
+  border-top: 1px solid #141414;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  gap: var(--space-4);
+}
+
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.timeline-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: #333333;
+  color: #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.timeline-btn:hover {
+  background-color: #f57920;
+  color: #ffffff;
+}
+
+.timeline-scrubber {
+  flex: 1;
+  accent-color: #f57920;
+  cursor: pointer;
+}
+
+/* Model Selector Dropdown */
+.model-select-dropdown {
+  width: 100%;
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-bottom: var(--space-2);
+}
