@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blender 3D Studio | Editor & Skin Inspector</title>
+  <meta name="description" content="Blender-like 3D Web Studio dengan simulasi shader kulit realistis, haptic touch, dan kontrol viewport interaktif.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/src/styles/studio.css">
+</head>
+<body class="studio-body">
+
+  <!-- Studio Header -->
+  <header class="studio-topbar">
+    <div class="topbar-left">
+      <a href="/" class="blender-badge" title="Kembali ke Katalog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="10 8 16 12 10 16 10 8"></polygon>
+        </svg>
+        <span>Blender Studio</span>
+      </a>
+
+      <ul class="menu-list">
+        <li><a href="/" class="menu-item-btn" style="text-decoration:none;">Katalog</a></li>
+        <li><label class="menu-item-btn" style="cursor:pointer;"><input type="file" id="studio-file-input" accept=".glb,.gltf" style="display:none;">Buka File</label></li>
+        <li><button id="btn-recenter" class="menu-item-btn">Pusatkan Avatar</button></li>
+      </ul>
+
+      <nav class="workspace-tabs">
+        <button class="ws-tab active">Layout</button>
+        <button class="ws-tab">Modeling</button>
+        <button class="ws-tab">Sculpt & Skin</button>
+        <button class="ws-tab">Shading</button>
+      </nav>
+    </div>
+
+    <div class="topbar-right">
+      <button id="btn-export-glb" class="studio-btn primary" title="Unduh hasil modifikasi model 3D">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Export .GLB</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Viewport + Sidebar -->
+  <main class="studio-main">
+
+    <!-- 3D Viewport -->
+    <div id="viewport-container" class="viewport-container">
+      <canvas id="threejs-canvas"></canvas>
+
+      <!-- HUD Top Left -->
+      <div class="viewport-overlay overlay-top-left">
+        <div id="hud-model-title" class="hud-model-title">Female Torso Base Mesh</div>
+        <div id="hud-vertices">Verts: 0</div>
+        <div id="hud-triangles">Tris: 0</div>
+        <div>Grid: 0.5m Blender Scale</div>
+      </div>
+
+      <!-- HUD Top Right (Orientation Gizmo) -->
+      <div class="viewport-overlay overlay-top-right">
+        <div class="orientation-widget">
+          <button id="gizmo-front" class="gizmo-btn y-axis" title="Tampak Depan (Numpad 1)">Depan</button>
+          <button id="gizmo-side" class="gizmo-btn x-axis" title="Tampak Samping (Numpad 3)">Samping</button>
+          <button id="gizmo-top" class="gizmo-btn z-axis" title="Tampak Atas (Numpad 7)">Atas</button>
+        </div>
+      </div>
+
+      <!-- HUD Bottom Left (Navigation Guide) -->
+      <div class="viewport-overlay overlay-bottom-left">
+        <span><strong>Putar:</strong> Klik Kiri & Geser</span>
+        <span><strong>Geser Kamera:</strong> Shift + Geser</span>
+        <span><strong>Zoom:</strong> Scroll Mouse</span>
+        <span style="color: #ff9999;"><strong>Sentuh Kulit:</strong> Klik langsung pada model</span>
+      </div>
+
+      <!-- Touch Ripple Indicator -->
+      <div id="touch-ripple" class="touch-ripple"></div>
+    </div>
+
+    <!-- Sidebar Editor Panel -->
+    <aside class="studio-sidebar">
+
+      <!-- Model Selection -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">
+          <span>Pilih Model 3D</span>
+        </div>
+        <select id="studio-model-select" class="model-select-dropdown" aria-label="Pilih Model"></select>
+        <p style="font-size: 11px; color: #888888; line-height: 1.4;">
+          Untuk mencoba file lain dari 188 model di <code>E:\0download blender</code>, gunakan tombol <strong>Buka File</strong> di atas.
+        </p>
+      </div>
+
+      <!-- Realistic Skin Shader -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">
+          <span>Shader & Kulit Realistis</span>
+        </div>
+        <div class="control-group">
+          <div class="property-row">
+            <span class="property-label">Warna Kulit:</span>
+            <input type="color" id="skin-color-picker" class="color-picker-input" value="#f4c7b8" aria-label="Warna Kulit">
+          </div>
+
+          <div>
+            <span style="font-size: 11px; color: #888888; display: block; margin-bottom: 4px;">Preset Warna Kulit:</span>
+            <div class="skin-presets-grid">
+              <button class="skin-preset-btn" style="background-color: #f7d5c9;" data-color="#f7d5c9" title="Fair"></button>
+              <button class="skin-preset-btn" style="background-color: #eec1a9;" data-color="#eec1a9" title="Peach"></button>
+              <button class="skin-preset-btn" style="background-color: #cf9b7a;" data-color="#cf9b7a" title="Tan"></button>
+              <button class="skin-preset-btn" style="background-color: #8c5b3e;" data-color="#8c5b3e" title="Deep"></button>
+            </div>
+          </div>
+
+          <div class="property-row">
+            <span class="property-label">Kehalusan (Roughness):</span>
+            <input type="range" id="skin-roughness" class="property-input-range" min="0.1" max="0.9" step="0.05" value="0.45">
+            <span id="val-roughness" class="property-value-badge">0.45</span>
+          </div>
+
+          <div class="property-row">
+            <span class="property-label">Kelembapan (Clearcoat):</span>
+            <input type="range" id="skin-clearcoat" class="property-input-range" min="0" max="1" step="0.05" value="0.25">
+            <span id="val-clearcoat" class="property-value-badge">0.25</span>
+          </div>
+
+          <div class="property-row">
+            <span class="property-label">Mode Wireframe:</span>
+            <input type="checkbox" id="toggle-wireframe" style="accent-color: #f57920; cursor: pointer;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio Lighting -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">
+          <span>Pencahayaan Studio</span>
+        </div>
+        <div class="control-group">
+          <div class="property-row">
+            <span class="property-label">Intensitas Key Light:</span>
+            <input type="range" id="light-key-intensity" class="property-input-range" min="0.2" max="4.0" step="0.2" value="1.8">
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar Positioning -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">
+          <span>Posisi Avatar</span>
+        </div>
+        <p style="font-size: 11px; color: #888888; margin-bottom: 8px;">
+          Avatar secara otomatis diposisikan tepat di tengah sumbu (0,0,0) di atas lantai grid Blender.
+        </p>
+        <button id="btn-recenter" class="studio-btn" style="width: 100%; justify-content: center;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span>Pusatkan Kamera ke Avatar</span>
+        </button>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- Animation Timeline (Shown if model has rigs) -->
+  <footer id="studio-timeline" class="studio-timeline" style="display: none;">
+    <div class="timeline-controls">
+      <button id="btn-play-anim" class="studio-btn primary">Play</button>
+    </div>
+    <input type="range" id="anim-scrubber" class="timeline-scrubber" min="0" max="100" value="0">
+  </footer>
+
+  <script type="module">
+    import { initBlenderStudio } from '/src/scripts/blender-studio.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initBlenderStudio();
+    });
+  </script>
+</body>
+</html>
