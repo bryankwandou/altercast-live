@@ -11,3 +11,6 @@ Thumbs.db
 *recovery-codes*
 *.txt
 !README.md
+
+.vercel
+.env*
