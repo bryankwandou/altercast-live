@@ -1,3 +1,7 @@
+﻿import { initFaceTracker, startCamera, stopCamera, isRunning as isCameraRunning } from '../altercast-app/face-tracking.js';
+import { initTTS, getVoices, setVoice, speak, cancel as cancelSpeech } from '../altercast-app/tts.js';
+import { initAIBrain, respond as aiRespond, getProvider } from '../altercast-app/ai-brain.js';
+import { store } from '../altercast-app/store.js';
 /* ==========================================================================
    BLENDER STUDIO 3D ENGINE (THREE.JS)
    Full Blender-Style Viewport, Skin Touch Physics & Modifiable Studio
@@ -302,6 +306,9 @@ function centerAndFrameAvatar(object) {
 
   camera.position.set(0, size.y * 0.55, cameraZ);
   controls.target.set(0, size.y * 0.5, 0);
+    // Real-time AI Face Tracking & Lipsync bone/mesh updates
+  updateLiveFaceAndLipsync();
+
   controls.update();
 
   // Update HUD Bounding Box
@@ -528,7 +535,10 @@ function setupUI() {
       }
       controls.object = camera;
       controls.target.copy(targetLook);
-      controls.update();
+        // Real-time AI Face Tracking & Lipsync bone/mesh updates
+  updateLiveFaceAndLipsync();
+
+  controls.update();
       onWindowResize();
     });
   }
@@ -621,19 +631,28 @@ function setupUI() {
   if (btnViewFront) {
     btnViewFront.addEventListener('click', () => {
       camera.position.set(0, controls.target.y, 2.5);
-      controls.update();
+        // Real-time AI Face Tracking & Lipsync bone/mesh updates
+  updateLiveFaceAndLipsync();
+
+  controls.update();
     });
   }
   if (btnViewSide) {
     btnViewSide.addEventListener('click', () => {
       camera.position.set(2.5, controls.target.y, 0);
-      controls.update();
+        // Real-time AI Face Tracking & Lipsync bone/mesh updates
+  updateLiveFaceAndLipsync();
+
+  controls.update();
     });
   }
   if (btnViewTop) {
     btnViewTop.addEventListener('click', () => {
       camera.position.set(0, 3.5, 0.001);
-      controls.update();
+        // Real-time AI Face Tracking & Lipsync bone/mesh updates
+  updateLiveFaceAndLipsync();
+
+  controls.update();
     });
   }
 
@@ -998,6 +1017,237 @@ function animate() {
     }
   }
 
+    // Real-time AI Face Tracking & Lipsync bone/mesh updates
+  updateLiveFaceAndLipsync();
+
   controls.update();
   renderer.render(scene, camera);
+}
+
+
+/* ==========================================================================
+   AI LIVE STREAMER, FACE TRACKING & REALTIME SPEECH MODULE
+   ========================================================================== */
+let isLiveStreaming = false;
+let headBone = null;
+let morphMeshes = [];
+let speechBubbleTimer = null;
+
+function setupStreamAI() {
+  // 1. Initialize AI Brain
+  initAIBrain().then((info) => {
+    const aiStatusEl = document.getElementById('ai-engine-status');
+    if (aiStatusEl) {
+      aiStatusEl.textContent = info.provider === 'ollama' ? Ollama () : 'Indonesian Smart Mock';
+    }
+  });
+
+  // 2. Initialize TTS
+  initTTS().then(() => {
+    const voiceSelect = document.getElementById('tts-voice-select');
+    if (voiceSelect) {
+      const voices = getVoices();
+      voiceSelect.innerHTML = voices.map((v) => '<option value="' + v.name + '">' + v.name + ' (' + v.lang + ')</option>').join('');
+      voiceSelect.addEventListener('change', (e) => {
+        setVoice(e.target.value);
+      });
+    }
+  });
+
+  // 3. Rate & Pitch sliders
+  const rateSlider = document.getElementById('tts-rate-slider');
+  const rateVal = document.getElementById('tts-rate-val');
+  if (rateSlider && rateVal) {
+    rateSlider.addEventListener('input', (e) => {
+      store.set('ttsRate', parseFloat(e.target.value));
+      rateVal.textContent = parseFloat(e.target.value).toFixed(1) + 'x';
+    });
+  }
+
+  const pitchSlider = document.getElementById('tts-pitch-slider');
+  const pitchVal = document.getElementById('tts-pitch-val');
+  if (pitchSlider && pitchVal) {
+    pitchSlider.addEventListener('input', (e) => {
+      store.set('ttsPitch', parseFloat(e.target.value));
+      pitchVal.textContent = parseFloat(e.target.value).toFixed(1);
+    });
+  }
+
+  // 4. Toggle Face Tracking Camera
+  const btnCamera = document.getElementById('btn-toggle-camera');
+  const labelCamera = document.getElementById('label-camera');
+  const statusBadge = document.getElementById('stream-live-badge');
+  const trackingStatus = document.getElementById('face-tracking-status');
+
+  if (btnCamera) {
+    btnCamera.addEventListener('click', async () => {
+      if (isCameraRunning()) {
+        stopCamera();
+        isLiveStreaming = false;
+        btnCamera.classList.remove('primary');
+        if (labelCamera) labelCamera.textContent = 'Nyalakan Kamera Face';
+        if (statusBadge) {
+          statusBadge.textContent = 'OFFLINE';
+          statusBadge.classList.remove('active');
+        }
+        if (trackingStatus) trackingStatus.textContent = 'Berhenti';
+      } else {
+        if (trackingStatus) trackingStatus.textContent = 'Memuat MediaPipe...';
+        await initFaceTracker();
+        const ok = await startCamera();
+        if (ok) {
+          isLiveStreaming = true;
+          btnCamera.classList.add('primary');
+          if (labelCamera) labelCamera.textContent = 'Matikan Kamera';
+          if (statusBadge) {
+            statusBadge.textContent = 'LIVE ON AIR';
+            statusBadge.classList.add('active');
+          }
+          if (trackingStatus) trackingStatus.textContent = 'Tracking Aktif';
+          showSpeechBubble('ALTERCAST AI', 'Kamera Face Tracking aktif. Gerakkan kepala dan ekspresi wajah Anda!');
+        } else {
+          if (trackingStatus) trackingStatus.textContent = 'Akses Kamera Ditolak';
+        }
+      }
+    });
+  }
+
+  // 5. Toggle Mic for speech recognition or status
+  const btnMic = document.getElementById('btn-toggle-mic');
+  const labelMic = document.getElementById('label-mic');
+  let isMicActive = false;
+  if (btnMic) {
+    btnMic.addEventListener('click', () => {
+      isMicActive = !isMicActive;
+      btnMic.classList.toggle('primary', isMicActive);
+      if (labelMic) labelMic.textContent = isMicActive ? 'Matikan Mic' : 'Nyalakan Mic';
+      if (isMicActive) {
+        showSpeechBubble('STREAMER', 'Mikrofon aktif. Suara Anda kini terhubung ke studio live.');
+      }
+    });
+  }
+
+  // 6. Chat input & Quick response buttons
+  const chatInput = document.getElementById('stream-chat-input');
+  const btnSend = document.getElementById('btn-send-chat');
+
+  const sendUserMessage = async () => {
+    if (!chatInput) return;
+    const text = chatInput.value.trim();
+    if (!text) return;
+    chatInput.value = '';
+
+    appendStreamChatMessage('Streamer', text, false);
+    
+    // AI respond
+    showSpeechBubble('ALTERCAST AI', 'Sedang berpikir...');
+    try {
+      const reply = await aiRespond(text);
+      appendStreamChatMessage('AlterCast AI', reply, true);
+      showSpeechBubble('ALTERCAST AI', reply);
+      await speak(reply);
+    } catch (err) {
+      console.error('AI chat error:', err);
+    }
+  };
+
+  if (btnSend) btnSend.addEventListener('click', sendUserMessage);
+  if (chatInput) {
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendUserMessage();
+    });
+  }
+
+  const btnGreet = document.getElementById('btn-quick-greet');
+  if (btnGreet) {
+    btnGreet.addEventListener('click', () => {
+      const greetText = 'Halo semuanya! Selamat datang di live streaming kita hari ini!';
+      appendStreamChatMessage('AlterCast AI', greetText, true);
+      showSpeechBubble('ALTERCAST AI', greetText);
+      speak(greetText);
+    });
+  }
+
+  const btnJoke = document.getElementById('btn-quick-joke');
+  if (btnJoke) {
+    btnJoke.addEventListener('click', () => {
+      const jokeText = 'Tahu nggak kenapa avatar 3D nggak pernah lapar? Karena selalu kenyang makan poligon!';
+      appendStreamChatMessage('AlterCast AI', jokeText, true);
+      showSpeechBubble('ALTERCAST AI', jokeText);
+      speak(jokeText);
+    });
+  }
+
+  const btnThanks = document.getElementById('btn-quick-thanks');
+  if (btnThanks) {
+    btnThanks.addEventListener('click', () => {
+      const thanksText = 'Terima kasih banyak atas dukungannya teman-teman, jangan lupa tap-tap layarnya ya!';
+      appendStreamChatMessage('AlterCast AI', thanksText, true);
+      showSpeechBubble('ALTERCAST AI', thanksText);
+      speak(thanksText);
+    });
+  }
+}
+
+function appendStreamChatMessage(user, text, isAI) {
+  const box = document.getElementById('stream-chat-box');
+  if (!box) return;
+
+  const row = document.createElement('div');
+  row.className = 'chat-bubble-row ' + (isAI ? 'ai' : 'user');
+  row.innerHTML = '<span class="chat-user" style="font-weight:700; font-size:11px;">' + user + ':</span> <span class="chat-text">' + text + '</span>';
+  box.appendChild(row);
+  box.scrollTop = box.scrollHeight;
+}
+
+function showSpeechBubble(tag, text) {
+  const bubble = document.getElementById('avatar-speech-bubble');
+  const tagEl = document.getElementById('bubble-avatar-name');
+  const textEl = document.getElementById('bubble-speech-text');
+
+  if (!bubble || !tagEl || !textEl) return;
+
+  tagEl.textContent = tag;
+  textEl.textContent = text;
+  bubble.style.display = 'block';
+
+  if (speechBubbleTimer) clearTimeout(speechBubbleTimer);
+  speechBubbleTimer = setTimeout(() => {
+    bubble.style.display = 'none';
+  }, Math.max(4000, text.length * 80));
+}
+
+function updateLiveFaceAndLipsync() {
+  const mouthOpen = store.get('mouthOpen') || 0;
+  const headLook = store.get('headLook') || { x: 0, y: 0 };
+
+  // Update Status HUD
+  const poseEl = document.getElementById('face-tracking-pose');
+  if (poseEl) {
+    poseEl.textContent = 'X: ' + (headLook.x * 180 / Math.PI).toFixed(0) + '° | Y: ' + (headLook.y * 180 / Math.PI).toFixed(0) + '°';
+  }
+  const mouthEl = document.getElementById('face-tracking-mouth');
+  if (mouthEl) {
+    mouthEl.textContent = Math.round(mouthOpen * 100) + '%';
+  }
+
+  if (!currentModelGroup) return;
+
+  // 1. Head Rotation on Model if bone exists or rotate entire avatar upper body slightly
+  if (isLiveStreaming) {
+    currentModelGroup.rotation.y = THREE.MathUtils.lerp(currentModelGroup.rotation.y, headLook.y * 0.45, 0.1);
+    currentModelGroup.rotation.x = THREE.MathUtils.lerp(currentModelGroup.rotation.x, headLook.x * 0.35, 0.1);
+  }
+
+  // 2. Real-time Mouth Morph Lipsync
+  currentMeshes.forEach(mesh => {
+    if (mesh.morphTargetDictionary && mesh.morphTargetInfluences) {
+      ['mouthOpen', 'jawOpen', 'v_aa', 'mouth_open', 'A01_Mouth_Open'].forEach(targetName => {
+        const idx = mesh.morphTargetDictionary[targetName];
+        if (idx !== undefined) {
+          mesh.morphTargetInfluences[idx] = THREE.MathUtils.lerp(mesh.morphTargetInfluences[idx], mouthOpen, 0.25);
+        }
+      });
+    }
+  });
 }

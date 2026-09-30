@@ -520,3 +520,99 @@ body.studio-body {
   cursor: pointer;
   margin-bottom: var(--space-2);
 }
+
+/* ==========================================================================
+   LIVE STREAM AI & SPEECH BUBBLE OVERLAYS
+   ========================================================================== */
+.stream-control-grid {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.status-indicator-badge.live {
+  background: #333333;
+  color: #aaaaaa;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #444444;
+}
+
+.status-indicator-badge.live.active {
+  background: #e02424;
+  color: #ffffff;
+  border-color: #ff4d4d;
+  box-shadow: 0 0 8px rgba(224, 36, 36, 0.6);
+  animation: pulse-live 1.5s infinite;
+}
+
+@keyframes pulse-live {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.avatar-speech-bubble {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(18, 18, 18, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 121, 32, 0.45);
+  border-radius: 8px;
+  padding: 10px 16px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  z-index: 25;
+  pointer-events: none;
+  animation: bubble-appear 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bubble-appear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.speech-bubble-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: #f57920;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.speech-bubble-text {
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 1.45;
+}
+
+.chat-bubble-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chat-bubble-row.ai .chat-user {
+  color: #f57920;
+}
+
+.chat-bubble-row.user .chat-user {
+  color: #00d4ff;
+}
+
+.chat-text {
+  color: #e0e0e0;
+}

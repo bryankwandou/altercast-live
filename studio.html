@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -36,7 +36,7 @@
         <button class="ws-tab active" data-tab="layout">Layout</button>
         <button class="ws-tab" data-tab="modeling">Modeling</button>
         <button class="ws-tab" data-tab="sculpt">Sculpt & Skin</button>
-        <button class="ws-tab" data-tab="shading">Shading</button>
+        <button class="ws-tab" data-tab="shading">Shading</button>`r`n        <button class="ws-tab" data-tab="stream">Live Stream AI</button>
       </nav>
     </div>
 
@@ -68,7 +68,13 @@
     <div id="viewport-container" class="viewport-container">
       <canvas id="threejs-canvas"></canvas>
 
-      <!-- Drag & Drop Zone Overlay -->
+              <!-- Real-time Avatar Speech Bubble -->
+        <div id="avatar-speech-bubble" class="avatar-speech-bubble" style="display: none;">
+          <div class="speech-bubble-tag" id="bubble-avatar-name">ALTERCAST AI</div>
+          <div class="speech-bubble-text" id="bubble-speech-text">Halo! Saya siap menemani live stream kamu.</div>
+        </div>
+
+        <!-- Drag & Drop Zone Overlay -->
       <div id="viewport-dropzone" class="viewport-dropzone">
         <div class="dropzone-box">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -281,6 +287,94 @@
             <span class="property-label">Warna Latar Studio:</span>
             <input type="color" id="bg-color-picker" class="color-picker-input" value="#222222" aria-label="Warna Latar Belakang">
           </div>
+        </div>
+      </div>
+
+      
+      <!-- SECTION: AI LIVE STREAMER & FACE TRACKING (Tab: Stream) -->
+      <div class="sidebar-section tab-section" data-tab-section="stream">
+        <div class="sidebar-section-title">
+          <span>AI LIVE STREAMER</span>
+          <span class="status-indicator-badge live" id="stream-live-badge">OFFLINE</span>
+        </div>
+        
+        <div class="stream-control-grid">
+          <button id="btn-toggle-camera" class="studio-btn" style="flex:1;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <span id="label-camera">Nyalakan Kamera Face</span>
+          </button>
+          
+          <button id="btn-toggle-mic" class="studio-btn" style="flex:1;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+            <span id="label-mic">Nyalakan Mic</span>
+          </button>
+        </div>
+
+        <div class="property-row" style="margin-top: 10px;">
+          <span class="property-label">MediaPipe Face Tracking:</span>
+          <span id="face-tracking-status" class="property-value-badge">Siap</span>
+        </div>
+        <div class="property-row">
+          <span class="property-label">Pose Kepala & Tatapan:</span>
+          <span id="face-tracking-pose" class="property-value-badge">X: 0° | Y: 0°</span>
+        </div>
+        <div class="property-row">
+          <span class="property-label">Bukaan Mulut (Lipsync):</span>
+          <span id="face-tracking-mouth" class="property-value-badge">0%</span>
+        </div>
+      </div>
+
+      <!-- SECTION: AI BRAIN & SUARA TTS (Tab: Stream) -->
+      <div class="sidebar-section tab-section" data-tab-section="stream">
+        <div class="sidebar-section-title">
+          <span>AI BRAIN & KARAKTER</span>
+        </div>
+
+        <div class="property-row">
+          <span class="property-label">Karakter / Suara:</span>
+          <select id="tts-voice-select" class="model-select-dropdown" style="margin-bottom:0; width: 60%;"></select>
+        </div>
+
+        <div class="property-row">
+          <span class="property-label">Kecepatan Bicara:</span>
+          <input type="range" id="tts-rate-slider" class="property-input-range" min="0.5" max="1.5" step="0.1" value="1.0">
+          <span id="tts-rate-val" class="property-value-badge">1.0x</span>
+        </div>
+
+        <div class="property-row">
+          <span class="property-label">Pitch Suara:</span>
+          <input type="range" id="tts-pitch-slider" class="property-input-range" min="0.5" max="1.8" step="0.1" value="1.1">
+          <span id="tts-pitch-val" class="property-value-badge">1.1</span>
+        </div>
+
+        <div class="property-row">
+          <span class="property-label">AI Engine:</span>
+          <span id="ai-engine-status" class="property-value-badge">Ollama / Native Mock</span>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <div style="display: flex; gap: 6px;">
+            <input type="text" id="stream-chat-input" placeholder="Ketik obrolan ke AI avatar..." style="flex:1; background:#2a2a2a; border:1px solid #444; border-radius:4px; padding:6px 10px; color:#fff; font-size:12px;">
+            <button id="btn-send-chat" class="studio-btn primary" style="padding:6px 12px;">Kirim</button>
+          </div>
+          <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <button id="btn-quick-greet" class="studio-btn" style="flex:1; font-size:11px;">Sapa Viewer</button>
+            <button id="btn-quick-joke" class="studio-btn" style="flex:1; font-size:11px;">Candaan</button>
+            <button id="btn-quick-thanks" class="studio-btn" style="flex:1; font-size:11px;">Terima Kasih</button>
+          </div>
+        </div>
+
+        <!-- Chat log realtime -->
+        <div id="stream-chat-box" style="margin-top:10px; max-height:140px; overflow-y:auto; background:#1e1e1e; border:1px solid #333; border-radius:4px; padding:8px; font-size:11px; display:flex; flex-direction:column; gap:6px;">
+          <div style="color:#888;">Live chat siap. Ketik pesan atau gunakan mikrofon/tombol interaksi.</div>
         </div>
       </div>
 
