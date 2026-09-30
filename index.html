@@ -1,299 +1,1370 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blender 3D Archive | Katalog Model 3D & Aset Interaktif</title>
-  <meta name="description" content="Koleksi komprehensif 188 model 3D Blender, karakter game, base mesh topologi bersih, rig siap-game, dan scene arsitektur dengan pratinjau WebGL 3D interaktif.">
-  <meta name="keywords" content="Blender, 3D Models, GLB, GLTF, 3D Assets, Game Ready, Character Models, Base Mesh">
-  <meta name="author" content="Bryan Kwandou">
-  <meta name="theme-color" content="#090d16">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlterCast — Stay Live. Even When You're Gone.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Crect width='32' height='32' rx='8' fill='%230D1520'/%3E%3Crect width='32' height='32' rx='8' fill='rgba(0,212,255,0.12)' stroke='rgba(0,212,255,0.3)' stroke-width='1'/%3E%3Ccircle cx='16' cy='12' r='5' fill='none' stroke='%2300D4FF' stroke-width='1.5'/%3E%3Ccircle cx='21' cy='10' r='2' fill='none' stroke='%237C3AFF' stroke-width='1.2'/%3E%3Cpath d='M9 24c0-3.87 3.13-7 7-7s7 3.13 7 7' stroke='%2300D4FF' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M23 20c0-1.66 1.34-3 3-3' stroke='%237C3AFF' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='2' fill='%2300D4FF' opacity='.8'/%3E%3C/svg%3E" />
+  <meta name="description" content="AlterCast: AI Streaming Twin yang menjaga stream tetap hidup saat kamu sakit, AFK, atau burnout. 164 avatar 3D, AI respons real-time, TikTok & OBS ready." />
+  <meta property="og:title" content="AlterCast — AI Streaming Twin" />
+  <meta property="og:description" content="Stay Live. Even When You're Gone." />
+  <link rel="stylesheet" href="assets/styles/design-tokens.css" />
+  <style>
+/* ── KEYFRAMES (inline fallback) ── */
+@keyframes slide-up{from{opacity:0.01;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scan-line{0%{top:-4px}100%{top:100vh}}
+@keyframes pulse-live{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes ticker-scroll2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Blender 3D Archive | Katalog Model 3D Interaktif">
-  <meta property="og:description" content="Pratinjau langsung 188 aset model 3D dalam browser Anda dengan performa WebGL 60 FPS.">
-  <meta property="og:type" content="website">
+/* ── CRITICAL: Remove animation delays — content always visible immediately ── */
+.phase-badge,.hero-title,.hero-sub,.cta-row,.hero-stats,section,h2,.section-title,.section-sub{
+  opacity:1!important;
+  animation-delay:0ms!important;
+  animation-fill-mode:none!important;
+}
+/* Design-tokens fallback — critical vars if external CSS fails to load */
+:root{
+  --bg-void:#080A0F;--bg-base:#0D0F17;--bg-surface:#131720;--bg-elevated:#1A2030;
+  --bg-overlay:#212840;--bg-hover:rgba(255,255,255,0.04);
+  --accent-primary:#00D4FF;--accent-primary-dim:#0099BB;
+  --accent-primary-glow:rgba(0,212,255,0.15);--accent-secondary:#7C3AFF;
+  --accent-secondary-glow:rgba(124,58,255,0.15);--border-violet:rgba(124,58,255,0.3);
+  --status-live:#FF3C3C;--status-online:#00FF88;--status-warning:#FFB800;
+  --text-primary:#F0F4FF;--text-secondary:#8B96B0;--text-muted:#4A5568;
+  --text-disabled:#2D3748;--text-inverse:#080A0F;
+  --border-subtle:rgba(255,255,255,0.06);--border-normal:rgba(255,255,255,0.12);
+  --border-strong:rgba(255,255,255,0.20);--border-accent:rgba(0,212,255,0.3);
+  --border-focus:rgba(0,212,255,0.6);--border-live:rgba(255,60,60,0.4);
+  --shadow-glow-cyan:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,255,0.08);
+  --shadow-glow-cyan-lg:0 0 40px rgba(0,212,255,0.3),0 0 80px rgba(0,212,255,0.15);
+  --font-display:'Outfit',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;
+  --text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-lg:1.125rem;
+  --text-xl:1.25rem;--text-2xl:1.5rem;--text-hero:clamp(2.5rem,5vw,4.5rem);
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-full:9999px;
+  --t-fast:150ms ease;--t-base:250ms ease;
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+}
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+/* ── Respect reduced motion — never hide content ── */
+@media(prefers-reduced-motion:reduce){
+  .phase-badge,.hero-title,.hero-sub,.cta-row,.hero-stats{animation:none!important;opacity:1!important;transform:none!important}
+  .scanline{display:none}
+}
 
-  <!-- Model Viewer Component -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+/* ══════════════════════════════════════════════
+   GLOBAL
+   ══════════════════════════════════════════════ */
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--font-display);
+}
+
+/* Grid background */
+body::before {
+  content:"";position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,212,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,.018) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;z-index:0;
+}
+body::after {
+  content:"";position:fixed;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 35%,rgba(0,212,255,.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+/* Scanline */
+.scanline{position:fixed;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.15),transparent);pointer-events:none;z-index:5;animation:scan-line 10s linear infinite;}
+
+/* ══════════════════════════════════════════════
+   STICKY NAV
+   ══════════════════════════════════════════════ */
+.topbar {
+  position:fixed;top:0;left:0;right:0;height:52px;
+  background:rgba(13,15,23,.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-subtle);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;z-index:200;
+}
+.topbar-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.topbar-logo span{
+  font-weight:700;font-size:1rem;letter-spacing:-.02em;
+  background:linear-gradient(135deg,#00D4FF 30%,#7C3AFF 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.topbar-nav{display:flex;gap:4px;align-items:center;}
+.topbar-nav a{
+  font-size:12px;font-weight:500;color:var(--text-muted);
+  text-decoration:none;padding:5px 10px;border-radius:var(--r-sm);
+  letter-spacing:.02em;transition:all var(--t-fast);
+}
+.topbar-nav a:hover{color:var(--accent-primary);background:var(--accent-primary-glow);}
+.topbar-cta{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:var(--r-full);
+  background:var(--accent-primary);color:var(--text-inverse);
+  font-size:12px;font-weight:700;text-decoration:none;
+  letter-spacing:.02em;transition:all var(--t-fast);
+}
+.topbar-cta:hover{box-shadow:var(--shadow-glow-cyan);}
+
+/* ══════════════════════════════════════════════
+   LAYOUT HELPERS
+   ══════════════════════════════════════════════ */
+.page{position:relative;z-index:1;padding-top:52px;}
+section{width:100%;padding:80px 32px;max-width:1200px;margin:0 auto;}
+section.full{max-width:100%;padding:80px 32px;}
+.section-label{
+  font-family:var(--font-mono);font-size:10px;font-weight:600;
+  color:var(--accent-primary);letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:16px;}
+.section-sub{font-size:var(--text-base);color:var(--text-secondary);line-height:1.7;max-width:640px;}
+.divider{height:1px;background:var(--border-subtle);margin:0 32px;}
+
+/* ══════════════════════════════════════════════
+   HERO — SECTION 01
+   ══════════════════════════════════════════════ */
+.hero{
+  min-height:calc(100vh - 52px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:28px;padding:80px 32px 60px;
+}
+.phase-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 18px;border:1px solid var(--border-accent);
+  border-radius:var(--r-full);background:var(--accent-primary-glow);
+  color:var(--accent-primary);font-family:var(--font-mono);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  animation:slide-up .6s .1s both;
+}
+.phase-badge::before{content:"[+]";margin-right:4px;opacity:.7;}
+.hero-title{
+  font-size:var(--text-hero);font-weight:800;
+  letter-spacing:-.03em;line-height:1.1;max-width:960px;
+  animation:slide-up .7s .2s both;
+}
+.hero-title .accent{
+  background:linear-gradient(90deg,var(--accent-primary),var(--accent-secondary));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{
+  font-size:var(--text-lg);color:var(--text-secondary);
+  max-width:600px;line-height:1.7;animation:slide-up .8s .3s both;
+}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:slide-up .9s .4s both;}
+.cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:var(--r-full);
+  font-size:var(--text-base);font-weight:600;letter-spacing:-.01em;
+  text-decoration:none;transition:var(--t-base);cursor:pointer;border:1px solid transparent;
+}
+.cta.primary{background:var(--accent-primary);color:var(--text-inverse);box-shadow:var(--shadow-glow-cyan-lg);}
+.cta.primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow-cyan-lg),0 12px 32px rgba(0,212,255,.25);}
+.cta.secondary{background:transparent;color:var(--text-primary);border-color:var(--border-accent);}
+.cta.secondary:hover{background:var(--accent-primary-glow);color:var(--accent-primary);}
+.cta.ghost{background:transparent;color:var(--text-muted);border-color:var(--border-normal);}
+.cta.ghost:hover{color:var(--text-primary);border-color:var(--border-strong);}
+
+/* HERO STATS BAR */
+.hero-stats{
+  display:flex;gap:40px;flex-wrap:wrap;justify-content:center;
+  padding:24px 40px;background:var(--bg-surface);
+  border:1px solid var(--border-subtle);border-radius:var(--r-xl);
+  animation:slide-up 1s .5s both;
+}
+.stat{display:flex;flex-direction:column;gap:3px;text-align:center;}
+.stat-val{font-family:var(--font-mono);font-size:1.7rem;font-weight:700;color:var(--accent-primary);letter-spacing:-.04em;}
+.stat-label{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);letter-spacing:.14em;text-transform:uppercase;}
+
+/* LIVE TICKER */
+.ticker{
+  width:100%;overflow:hidden;
+  background:var(--accent-primary-glow);
+  border-top:1px solid var(--border-accent);
+  border-bottom:1px solid var(--border-accent);
+  padding:8px 0;
+}
+.ticker-inner{
+  display:flex;gap:48px;white-space:nowrap;
+  animation:ticker-scroll 30s linear infinite;
+  font-family:var(--font-mono);font-size:11px;
+  color:var(--accent-primary);letter-spacing:.1em;
+}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item::before{content:"[+] ";}
+
+/* ══════════════════════════════════════════════
+   HERO BAR STRIP — reusable
+   ══════════════════════════════════════════════ */
+.hero-bar{
+  width:100%;padding:20px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+}
+.hero-bar.cyan{background:rgba(0,212,255,.06);border-top:1px solid rgba(0,212,255,.12);border-bottom:1px solid rgba(0,212,255,.12);}
+.hero-bar.violet{background:rgba(124,58,255,.06);border-top:1px solid rgba(124,58,255,.15);border-bottom:1px solid rgba(124,58,255,.15);}
+.hero-bar.red{background:rgba(255,60,60,.05);border-top:1px solid rgba(255,60,60,.15);border-bottom:1px solid rgba(255,60,60,.15);}
+.hero-bar.green{background:rgba(0,255,136,.05);border-top:1px solid rgba(0,255,136,.12);border-bottom:1px solid rgba(0,255,136,.12);}
+.hero-bar.dark{background:var(--bg-surface);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);}
+.hb-label{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;}
+.hb-val{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--text-primary);letter-spacing:.04em;}
+.hb-val.cyan{color:var(--accent-primary);}
+.hb-val.violet{color:var(--accent-secondary);}
+.hb-val.green{color:var(--status-online);}
+.hb-val.red{color:var(--status-live);}
+.hb-chip{display:flex;flex-direction:column;gap:2px;align-items:center;}
+.hb-sep{width:1px;height:32px;background:var(--border-subtle);flex-shrink:0;}
+
+/* STATUS CHIPS */
+.status-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:var(--r-full);
+  font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.06em;
+}
+.status-chip.live{background:rgba(255,60,60,.12);color:var(--status-live);border:1px solid rgba(255,60,60,.3);}
+.status-chip.live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--status-live);animation:pulse-live 1.5s infinite;}
+.status-chip.online{background:rgba(0,255,136,.1);color:var(--status-online);border:1px solid rgba(0,255,136,.25);}
+.status-chip.online::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--status-online);}
+.status-chip.cyan{background:var(--accent-primary-glow);color:var(--accent-primary);border:1px solid var(--border-accent);}
+
+/* ══════════════════════════════════════════════
+   FEATURE GRID
+   ══════════════════════════════════════════════ */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:40px;}
+.feat-card{
+  padding:24px;border-radius:var(--r-lg);
+  background:var(--bg-surface);border:1px solid var(--border-subtle);
+  transition:all var(--t-base);cursor:default;
+}
+.feat-card:hover{border-color:var(--border-accent);background:var(--bg-elevated);transform:translateY(-2px);box-shadow:var(--shadow-glow-cyan);}
+.feat-icon{
+  width:42px;height:42px;border-radius:var(--r-md);
+  display:grid;place-items:center;margin-bottom:14px;
+  font-family:var(--font-mono);font-size:12px;font-weight:700;
+}
+.feat-icon.cyan{background:var(--accent-primary-glow);color:var(--accent-primary);border:1px solid var(--border-accent);}
+.feat-icon.violet{background:var(--accent-secondary-glow);color:var(--accent-secondary);border:1px solid var(--border-violet);}
+.feat-icon.red{background:rgba(255,60,60,.1);color:var(--status-live);border:1px solid rgba(255,60,60,.25);}
+.feat-icon.green{background:rgba(0,255,136,.08);color:var(--status-online);border:1px solid rgba(0,255,136,.2);}
+.feat-title{font-size:var(--text-base);font-weight:700;margin-bottom:6px;letter-spacing:-.01em;}
+.feat-desc{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.65;}
+
+/* ══════════════════════════════════════════════
+   STEPS / HOW IT WORKS
+   ══════════════════════════════════════════════ */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;margin-top:40px;border:1px solid var(--border-subtle);border-radius:var(--r-xl);overflow:hidden;}
+.step{padding:28px;border-right:1px solid var(--border-subtle);}
+.step:last-child{border-right:none;}
+.step-num{font-family:var(--font-mono);font-size:2rem;font-weight:800;color:var(--accent-primary);opacity:.4;margin-bottom:12px;letter-spacing:-.04em;}
+.step-title{font-size:var(--text-base);font-weight:700;margin-bottom:6px;}
+.step-desc{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.6;}
+
+/* ══════════════════════════════════════════════
+   PLATFORM BADGES
+   ══════════════════════════════════════════════ */
+.platform-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;}
+.platform-badge{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:var(--r-md);
+  background:var(--bg-surface);border:1px solid var(--border-subtle);
+  font-size:var(--text-sm);font-weight:600;transition:all var(--t-fast);
+}
+.platform-badge:hover{border-color:var(--border-accent);}
+.pb-dot{width:8px;height:8px;border-radius:50%;}
+
+/* ══════════════════════════════════════════════
+   SPEC TABLE
+   ══════════════════════════════════════════════ */
+.spec-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:var(--text-sm);}
+.spec-table th{text-align:left;padding:10px 16px;font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-subtle);}
+.spec-table td{padding:12px 16px;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);}
+.spec-table td:first-child{color:var(--text-primary);font-weight:600;}
+.spec-table tr:last-child td{border-bottom:none;}
+.spec-table tr:hover td{background:var(--bg-hover);}
+.spec-ok{color:var(--status-online);font-weight:700;}
+.spec-tbd{color:var(--text-muted);font-style:italic;}
+
+/* ══════════════════════════════════════════════
+   PRICING
+   ══════════════════════════════════════════════ */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:36px;}
+.price-card{
+  padding:28px;border-radius:var(--r-xl);
+  background:var(--bg-surface);border:1px solid var(--border-subtle);
+  display:flex;flex-direction:column;gap:16px;
+}
+.price-card.featured{border-color:var(--border-accent);background:var(--bg-elevated);box-shadow:var(--shadow-glow-cyan);}
+.price-name{font-size:var(--text-sm);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+.price-val{font-size:2.4rem;font-weight:800;letter-spacing:-.04em;}
+.price-val span{font-size:var(--text-sm);font-weight:500;color:var(--text-muted);}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.price-features li{font-size:var(--text-sm);color:var(--text-secondary);display:flex;align-items:flex-start;gap:8px;}
+.price-features li::before{content:"[v]";color:var(--accent-primary);font-family:var(--font-mono);font-size:10px;flex-shrink:0;margin-top:2px;}
+.price-features li.na{color:var(--text-muted);}
+.price-features li.na::before{content:"[-]";color:var(--text-disabled);}
+
+/* ══════════════════════════════════════════════
+   PROGRESS BARS
+   ══════════════════════════════════════════════ */
+.progress-list{display:flex;flex-direction:column;gap:16px;margin-top:28px;}
+.progress-item{}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:6px;}
+.progress-name{font-size:var(--text-sm);font-weight:600;}
+.progress-pct{font-family:var(--font-mono);font-size:11px;color:var(--accent-primary);}
+.progress-track{height:4px;background:var(--bg-overlay);border-radius:var(--r-full);overflow:hidden;}
+.progress-fill{height:100%;border-radius:var(--r-full);background:linear-gradient(90deg,var(--accent-primary),var(--accent-secondary));transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+
+/* ══════════════════════════════════════════════
+   TESTIMONIALS
+   ══════════════════════════════════════════════ */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:32px;}
+.testi-card{
+  padding:24px;border-radius:var(--r-xl);
+  background:var(--bg-surface);border:1px solid var(--border-subtle);
+}
+.testi-text{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.7;margin-bottom:16px;font-style:italic;}
+.testi-user{display:flex;align-items:center;gap:10px;}
+.testi-av{
+  width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;font-weight:800;font-size:12px;color:#000;flex-shrink:0;
+}
+.testi-name{font-size:var(--text-sm);font-weight:700;}
+.testi-role{font-size:var(--text-xs);color:var(--text-muted);}
+
+/* ══════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════ */
+.faq-list{display:flex;flex-direction:column;gap:0;margin-top:32px;border:1px solid var(--border-subtle);border-radius:var(--r-xl);overflow:hidden;}
+.faq-item{border-bottom:1px solid var(--border-subtle);}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{
+  width:100%;padding:18px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:var(--text-sm);font-weight:600;
+  background:var(--bg-surface);border:none;color:var(--text-primary);
+  cursor:pointer;text-align:left;transition:background var(--t-fast);font-family:inherit;
+}
+.faq-q:hover{background:var(--bg-elevated);}
+.faq-q::after{content:"[+]";font-family:var(--font-mono);font-size:10px;color:var(--accent-primary);flex-shrink:0;margin-left:12px;}
+.faq-a{padding:0 24px 16px;font-size:var(--text-sm);color:var(--text-secondary);line-height:1.7;}
+
+/* ══════════════════════════════════════════════
+   ROADMAP
+   ══════════════════════════════════════════════ */
+.roadmap-list{display:flex;flex-direction:column;gap:0;margin-top:32px;position:relative;}
+.roadmap-list::before{content:"";position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--border-subtle);}
+.roadmap-item{display:flex;gap:20px;padding:0 0 28px;}
+.roadmap-dot{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  display:grid;place-items:center;border:2px solid;z-index:1;
+  font-family:var(--font-mono);font-size:8px;font-weight:700;
+  background:var(--bg-base);
+}
+.roadmap-dot.done{border-color:var(--status-online);color:var(--status-online);}
+.roadmap-dot.current{border-color:var(--accent-primary);color:var(--accent-primary);box-shadow:var(--shadow-glow-cyan);}
+.roadmap-dot.next{border-color:var(--border-normal);color:var(--text-muted);}
+.roadmap-content{flex:1;padding-top:2px;}
+.roadmap-date{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);letter-spacing:.1em;margin-bottom:4px;}
+.roadmap-title{font-size:var(--text-base);font-weight:700;margin-bottom:4px;}
+.roadmap-desc{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.6;}
+
+/* ══════════════════════════════════════════════
+   TECH GRID
+   ══════════════════════════════════════════════ */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:28px;}
+.tech-chip{
+  padding:12px 16px;border-radius:var(--r-md);
+  background:var(--bg-surface);border:1px solid var(--border-subtle);
+  font-family:var(--font-mono);font-size:11px;font-weight:600;
+  color:var(--text-secondary);letter-spacing:.04em;text-align:center;
+  transition:all var(--t-fast);
+}
+.tech-chip:hover{border-color:var(--border-accent);color:var(--accent-primary);}
+
+/* ══════════════════════════════════════════════
+   CALLOUT
+   ══════════════════════════════════════════════ */
+.callout{
+  padding:32px 36px;border-radius:var(--r-xl);
+  border:1px solid var(--border-accent);
+  background:linear-gradient(135deg,rgba(0,212,255,.06),rgba(124,58,255,.04));
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  margin-top:40px;
+}
+.callout h3{font-size:var(--text-xl);font-weight:800;letter-spacing:-.02em;}
+.callout p{font-size:var(--text-sm);color:var(--text-secondary);margin-top:4px;}
+
+/* ══════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════ */
+.footer{
+  border-top:1px solid var(--border-subtle);
+  padding:48px 32px 32px;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;
+  max-width:1200px;margin:0 auto;
+}
+.footer-brand{display:flex;flex-direction:column;gap:12px;}
+.footer-desc{font-size:var(--text-sm);color:var(--text-muted);line-height:1.7;max-width:260px;}
+.footer-col h4{font-size:var(--text-xs);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;}
+.footer-col a{display:block;font-size:var(--text-sm);color:var(--text-secondary);text-decoration:none;margin-bottom:8px;transition:color var(--t-fast);}
+.footer-col a:hover{color:var(--accent-primary);}
+.footer-bottom{
+  border-top:1px solid var(--border-subtle);
+  padding:20px 32px;max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.06em;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+@media(max-width:768px){
+  .topbar-nav{display:none;}
+  .footer{grid-template-columns:1fr 1fr;}
+  .steps{grid-template-columns:1fr;}
+  .step{border-right:none;border-bottom:1px solid var(--border-subtle);}
+  .hero-stats{gap:20px;}
+  .hero{padding:60px 20px 40px;}
+  section{padding:60px 20px;}
+}
+
+  </style>
 </head>
 <body>
 
-  <!-- Site Navigation Header -->
-  <header class="site-header">
-    <div class="container">
-      <div class="header-inner">
-        <a href="#" class="brand">
-          <div class="brand-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-              <line x1="12" y1="22.08" x2="12" y2="12"></line>
-            </svg>
-          </div>
-          <div>
-            <div class="brand-title" data-i18n="brandTitle">Arsip 3D Blender</div>
-            <div class="brand-subtitle" data-i18n="brandSubtitle">Katalog Aset Komprehensif</div>
-          </div>
-        </a>
-
-        <div class="header-controls">
-          <!-- Blender Studio Link -->
-          <a href="/studio.html" class="control-btn" style="background-color: #f57920; color: #ffffff; border-color: #e06810;" title="Buka Blender 3D Studio">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polygon points="10 8 16 12 10 16 10 8"></polygon>
-            </svg>
-            <span>Blender Studio</span>
-          </a>
-
-          <!-- Language Toggle Button -->
-          <button id="lang-toggle-btn" class="control-btn" aria-label="Ganti Bahasa" data-i18n-title="langToggle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span id="lang-btn-text">EN</span>
-          </button>
-
-          <!-- Theme Toggle Button -->
-          <button id="theme-toggle-btn" class="control-btn" aria-label="Ganti Tema" data-i18n-title="themeToggle">
-            <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg id="icon-moon" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero & Metrics Section -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="badge-tagline" data-i18n="taglineBadge">188 Aset Terindeks</div>
-          <h1 class="hero-title" data-i18n="heroTitle">Katalog Model 3D & Arsip Aset Interaktif</h1>
-          <p class="hero-description" data-i18n="heroDescription">
-            Koleksi aset 3D fidelitas tinggi, model karakter, base mesh topologi bersih, rig siap-game, dan scene lingkungan. Pratinjau langsung secara interaktif dengan WebGL di browser Anda.
-          </p>
-          <div class="hero-stats">
-            <div class="stat-box">
-              <span id="stat-total-files" class="stat-value">188</span>
-              <span class="stat-label" data-i18n="statTotalFiles">Total File</span>
-            </div>
-            <div class="stat-box">
-              <span id="stat-unique-models" class="stat-value">163</span>
-              <span class="stat-label" data-i18n="statUniqueModels">Model Unik</span>
-            </div>
-            <div class="stat-box">
-              <span id="stat-archive-volume" class="stat-value">5.40 GB</span>
-              <span class="stat-label" data-i18n="statArchiveVolume">Ukuran Arsip</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3D Interactive Viewer Showcase -->
-        <div class="viewer-card">
-          <div class="viewer-header">
-            <div class="viewer-meta">
-              <div class="viewer-dot"></div>
-              <span id="viewer-current-title" class="viewer-model-title">Female Torso Base Mesh (Clean Topology)</span>
-            </div>
-            <div class="viewer-btn-group">
-              <button id="btn-sample-1" class="viewer-btn sample-toggle-btn active" data-i18n="sampleModel1">Base Mesh Torso</button>
-              <button id="btn-sample-2" class="viewer-btn sample-toggle-btn" data-i18n="sampleModel2">Panda Head</button>
-            </div>
-          </div>
-
-          <div class="viewer-viewport-wrap">
-            <model-viewer
-              id="main-viewer"
-              src="/models/sample-base-mesh.glb"
-              camera-controls
-              touch-action="pan-y"
-              auto-rotate
-              rotation-per-second="20deg"
-              shadow-intensity="1.5"
-              environment-image="neutral"
-              exposure="1"
-              interaction-prompt="auto"
-              alt="Interactive 3D Model Viewer">
-            </model-viewer>
-          </div>
-
-          <div class="viewer-controls">
-            <div class="viewer-btn-group">
-              <button id="btn-auto-rotate" class="viewer-btn active" data-i18n="autoRotate">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
-                </svg>
-                <span>Putar Otomatis</span>
-              </button>
-              <button id="btn-reset-camera" class="viewer-btn" data-i18n="resetCamera">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                  <path d="M3 3v5h5"></path>
-                </svg>
-                <span>Reset Kamera</span>
-              </button>
-            </div>
-
-            <label class="viewer-btn drop-zone-btn" title="Pilih atau seret file .glb dari drive E:\0download blender">
-              <input type="file" id="local-file-input" accept=".glb,.gltf">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-              </svg>
-              <span data-i18n="loadLocalModel">Muat File Lokal (.glb)</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Catalog Section -->
-  <main class="catalog-section">
-    <div class="container">
-
-      <!-- Sticky Search & Filter Toolbar -->
-      <div class="toolbar-wrapper">
-        <div class="toolbar-row">
-          <div class="search-box">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              type="search"
-              id="search-input"
-              class="search-input"
-              placeholder="Cari nama karakter, game, atau tag..."
-              data-i18n-placeholder="searchPlaceholder"
-              autocomplete="off"
-              aria-label="Pencarian Model">
-          </div>
-
-          <select id="sort-select" class="sort-select" aria-label="Urutan Model">
-            <option value="name-asc" data-i18n="sortNameAsc">Urutkan: Nama (A-Z)</option>
-            <option value="name-desc" data-i18n="sortNameDesc">Urutkan: Nama (Z-A)</option>
-            <option value="size-desc" data-i18n="sortSizeDesc">Urutkan: Ukuran Terbesar</option>
-            <option value="size-asc" data-i18n="sortSizeAsc">Urutkan: Ukuran Terkecil</option>
-          </select>
-        </div>
-
-        <!-- Category Filter Pills -->
-        <nav id="categories-nav" class="categories-nav" aria-label="Kategori Model"></nav>
-      </div>
-
-      <!-- Result Counter -->
-      <div class="catalog-meta-info">
-        <div id="result-count-text">Menampilkan 188 dari 188 model</div>
-      </div>
-
-      <!-- Model Grid Cards -->
-      <div id="models-grid" class="models-grid" aria-live="polite"></div>
-    </div>
-  </main>
-
-  <!-- Modal Specifications Dialog -->
-  <div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-model-title">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h2 id="modal-model-title" class="modal-title" data-i18n="modalTitle">Spesifikasi Model 3D</h2>
-        <button id="modal-close-btn" class="modal-close-btn" aria-label="Tutup">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="detail-row">
-          <span class="detail-label" data-i18n="modalFilename">Nama File</span>
-          <span id="modal-model-filename" class="detail-value">-</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label" data-i18n="modalCategory">Kategori</span>
-          <span id="modal-model-category" class="detail-value">-</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label" data-i18n="modalFormat">Format File</span>
-          <span id="modal-model-format" class="detail-value">-</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label" data-i18n="modalSize">Ukuran File</span>
-          <span id="modal-model-size" class="detail-value">-</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label" data-i18n="modalLastModified">Terakhir Diperbarui</span>
-          <span id="modal-model-date" class="detail-value">-</span>
-        </div>
-        <div>
-          <span class="detail-label" style="display: block; margin-bottom: 8px;" data-i18n="modalLocalPath">Lokasi Folder Fisik</span>
-          <div class="code-box">
-            <span id="modal-model-path">E:\0download blender\...</span>
-            <button id="btn-copy-path" class="viewer-btn" data-i18n="copyCommand">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-              <span>Salin Path</span>
-            </button>
-          </div>
-        </div>
-
-        <a id="btn-open-in-studio" href="/studio.html" class="action-btn btn-primary" style="margin-top: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #f57920; border-color: #e06810;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polygon points="10 8 16 12 10 16 10 8"></polygon>
-          </svg>
-          <span>Buka di Blender Studio (Edit & Touch Kulit)</span>
-        </a>
-      </div>
-    </div>
+<!-- ══ STUDIO QUICK ACCESS BANNER ══ -->
+<div id="studio-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,rgba(0,212,255,0.18),rgba(124,58,255,0.12));backdrop-filter:blur(16px);border-top:1px solid rgba(0,212,255,0.35);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="width:8px;height:8px;border-radius:50%;background:#FF3C3C;animation:pulse-live 1.5s infinite;display:inline-block;"></span>
+    <span style="font-family:monospace;font-size:12px;color:#00D4FF;letter-spacing:.08em;font-weight:700;">ALTERCAST STUDIO · AI 3D MOTION BRAIN AKTIF</span>
   </div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <a href="/studio" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:#00D4FF;color:#000;font-weight:800;font-size:13px;border-radius:999px;text-decoration:none;letter-spacing:-.01em;">▶ Buka Studio 3D</a>
+    <button onclick="document.getElementById('studio-banner').style.display='none'" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-size:11px;padding:5px 10px;border-radius:6px;cursor:pointer;">✕</button>
+  </div>
+</div>
 
-  <!-- Toast Notification -->
-  <div id="app-toast" class="toast" role="alert">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2">
-      <polyline points="20 6 9 17 4 12"></polyline>
+<div class="scanline"></div>
+
+<!-- ══ TOPBAR ══ -->
+<header class="topbar">
+  <a href="/" class="topbar-logo">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="8" fill="rgba(0,212,255,0.12)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+      <circle cx="16" cy="12" r="5" fill="none" stroke="#00D4FF" stroke-width="1.5"/>
+      <circle cx="21" cy="10" r="2" fill="none" stroke="#7C3AFF" stroke-width="1.2"/>
+      <path d="M9 24c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M23 20c0-1.66 1.34-3 3-3" stroke="#7C3AFF" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="16" cy="12" r="2" fill="#00D4FF" opacity="0.8"/>
     </svg>
-    <span id="toast-message">Notifikasi</span>
+    <span>AlterCast</span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="#fitur">Fitur</a>
+    <a href="#cara-kerja">Cara Kerja</a>
+    <a href="#avatar">Avatar</a>
+    <a href="#ai">AI Engine</a>
+    <a href="#platform">Platform</a>
+    <a href="#pricing">Harga</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="topbar-cta" href="/studio">Buka Studio</a>
+</header>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════════════
+     [01] HERO
+     ══════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="phase-badge">AI Streaming Twin · Platform Siaran Indonesia</div>
+
+  <h1 class="hero-title">
+    Stay Live. Even <span class="accent">When You're Gone.</span>
+  </h1>
+
+  <p class="hero-sub">
+    AlterCast adalah AI Streaming Twin — avatar 3D yang bicara seperti kamu, berinteraksi dengan penonton dalam Bahasa Indonesia, dan menjaga stream tetap hidup saat kamu sakit, AFK, atau burnout.
+  </p>
+
+  <div class="cta-row">
+    <a class="cta primary" href="/studio">[$] Buka Live Studio Affiliate</a>
+    <a class="cta secondary" href="/studio">[*] Studio 3D</a>
+    <a class="cta ghost" href="/avatar">Avatar</a>
   </div>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <p data-i18n="footerNote">Arsip Model 3D Blender. Dibangun dengan standar performa dan aksesibilitas tinggi.</p>
-        <div class="footer-links">
-          <span>WebGL 2.0 / 3D Viewer</span>
-          <span>Vite + Vanilla CSS</span>
-        </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">164</div><div class="stat-label">Karakter 3D</div></div>
+    <div class="stat"><div class="stat-val">60fps</div><div class="stat-label">Avatar FPS</div></div>
+    <div class="stat"><div class="stat-val">&lt;500ms</div><div class="stat-label">Latensi AI</div></div>
+    <div class="stat"><div class="stat-val">3+</div><div class="stat-label">Platform</div></div>
+    <div class="stat"><div class="stat-val">100%</div><div class="stat-label">Browser Native</div></div>
+    <div class="stat"><div class="stat-val">0 instl</div><div class="stat-label">Install Needed</div></div>
+    <div class="stat"><div class="stat-val">24/7</div><div class="stat-label">Auto Stream</div></div>
+    <div class="stat"><div class="stat-val">ID / EN</div><div class="stat-label">Bahasa</div></div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">AI Streaming Twin</span>
+    <span class="ticker-item">164 Karakter 3D</span>
+    <span class="ticker-item">TikTok Ready</span>
+    <span class="ticker-item">OBS Virtual Camera</span>
+    <span class="ticker-item">Zero Install</span>
+    <span class="ticker-item">60fps WebGL</span>
+    <span class="ticker-item">AI Voice Indonesia</span>
+    <span class="ticker-item">Auto Chat Reply</span>
+    <span class="ticker-item">AFK Protection</span>
+    <span class="ticker-item">Camera Tracking</span>
+    <span class="ticker-item">Holographic Mode</span>
+    <span class="ticker-item">Browser Native</span>
+    <!-- repeated for loop -->
+    <span class="ticker-item">AI Streaming Twin</span>
+    <span class="ticker-item">164 Karakter 3D</span>
+    <span class="ticker-item">TikTok Ready</span>
+    <span class="ticker-item">OBS Virtual Camera</span>
+    <span class="ticker-item">Zero Install</span>
+    <span class="ticker-item">60fps WebGL</span>
+    <span class="ticker-item">AI Voice Indonesia</span>
+    <span class="ticker-item">Auto Chat Reply</span>
+    <span class="ticker-item">AFK Protection</span>
+    <span class="ticker-item">Camera Tracking</span>
+    <span class="ticker-item">Holographic Mode</span>
+    <span class="ticker-item">Browser Native</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [02] STATUS BAR
+     ══════════════════════════════════════════════ -->
+<div class="hero-bar cyan">
+  <div class="hb-chip"><div class="hb-label">System Status</div><div class="hb-val cyan"><span class="status-chip live">LIVE</span></div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Engine Version</div><div class="hb-val cyan">v6.0.0</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Characters Loaded</div><div class="hb-val">164 GLB</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">WebGL Renderer</div><div class="hb-val">Three.js r168</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">AI Backend</div><div class="hb-val cyan">Claude API</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">TTS Engine</div><div class="hb-val">Web Speech API</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Build Date</div><div class="hb-val" id="build-date">2026-05-28</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [03] KEY FEATURES
+     ══════════════════════════════════════════════ -->
+<section id="fitur">
+  <div class="section-label">// Section 03 — Fitur Utama</div>
+  <h2 class="section-title">Semua yang kamu butuhkan<br>untuk stream tanpa batas.</h2>
+  <p class="section-sub">AlterCast dirancang dari nol untuk streamer Indonesia yang ingin tetap aktif meski tidak bisa hadir langsung. Bukan plugin, bukan software tambahan — ini adalah kamu yang lain.</p>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon cyan">[AI]</div>
+      <div class="feat-title">AI Brain Real-Time</div>
+      <div class="feat-desc">Otak AI yang membaca dan membalas komentar penonton secara real-time dalam Bahasa Indonesia. Tone, gaya bicara, dan kepribadian disesuaikan dengan profilmu.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[3D]</div>
+      <div class="feat-title">164 Avatar 3D Premium</div>
+      <div class="feat-desc">Library lengkap dengan 164 model GLB siap pakai, dari anime hingga realistik, dari game character hingga original. Semua bisa dianimasikan otomatis.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon green">[CAM]</div>
+      <div class="feat-title">Auto Camera Tracking</div>
+      <div class="feat-desc">Kamera virtual yang bergerak mengikuti avatar secara organik. AI Motion Brain menghasilkan gerakan napas, sway tubuh, dan head movement yang terasa natural.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon cyan">[OBS]</div>
+      <div class="feat-title">OBS Virtual Camera Ready</div>
+      <div class="feat-desc">Output langsung ke OBS sebagai Browser Source. Chroma key, holographic mode, dark mode, clear background — semua siap tanpa setup rumit.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon red">[TT]</div>
+      <div class="feat-title">TikTok Live Integration</div>
+      <div class="feat-desc">Dirancang khusus untuk TikTok Live Studio. Baca komentar, respons gift, baca username, dan tetap engage dengan penonton bahkan saat kamu tertidur.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[MIC]</div>
+      <div class="feat-title">AI Voice Synthesis</div>
+      <div class="feat-desc">Text-to-Speech dalam Bahasa Indonesia dengan pengaturan kecepatan, pitch, dan intonasi. Avatar bergerak sinkron saat berbicara — bibir, ekspresi, dan tubuh.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon green">[AFK]</div>
+      <div class="feat-title">AFK Mode Otomatis</div>
+      <div class="feat-desc">Ketika kamu tidak aktif, AlterCast mengambil alih. Avatar tetap bergerak, membalas pesan, dan menjaga engagement penonton tanpa intervensi manual.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon cyan">[HOL]</div>
+      <div class="feat-title">Holographic Renderer</div>
+      <div class="feat-desc">Mode hologram sinematik dengan holographic floor disc, light rings, particle system, dan atmospheric lighting yang menciptakan tampilan cyberpunk premium.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[MCH]</div>
+      <div class="feat-title">Multi-Character Auto Cycle</div>
+      <div class="feat-desc">Sistem auto-cycle yang mengganti avatar setiap 35 detik secara otomatis. Progress bar visual, auto-skip jika model gagal dimuat, tanpa interrupsi stream.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: PERFORMANCE ══ -->
+<div class="hero-bar dark">
+  <div class="hb-chip"><div class="hb-label">Render Target</div><div class="hb-val">60 FPS</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">WebGL Version</div><div class="hb-val cyan">WebGL 2.0</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Pixel Ratio</div><div class="hb-val">2x Retina</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Tone Mapping</div><div class="hb-val">ACES Filmic</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Shadow Maps</div><div class="hb-val cyan">PCF Soft</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Anti-Aliasing</div><div class="hb-val">MSAA 4x</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Color Space</div><div class="hb-val">sRGB</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [04] CARA KERJA
+     ══════════════════════════════════════════════ -->
+<section id="cara-kerja">
+  <div class="section-label">// Section 04 — Cara Kerja</div>
+  <h2 class="section-title">Setup dalam 3 menit.<br>Stream selamanya.</h2>
+  <p class="section-sub">Tidak ada instalasi. Tidak ada plugin kompleks. Cukup buka browser, pilih avatar, dan AlterCast siap menggantikanmu di depan kamera.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Buka AlterCast Studio</div>
+      <div class="step-desc">Akses langsung dari browser — Chrome, Edge, atau Firefox. Tidak perlu download, tidak perlu akun premium untuk mulai. Zero-install philosophy.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Pilih Avatar & Konfigurasi</div>
+      <div class="step-desc">Pilih dari 164 karakter 3D yang tersedia. Atur persona AI, bahasa, kecepatan bicara, dan gaya respon. Konfigurasi disimpan otomatis.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Tambahkan ke OBS / TikTok</div>
+      <div class="step-desc">Copy URL atau gunakan fitur Browser Source di OBS. Untuk TikTok Live Studio, tambahkan sebagai scene element. AlterCast langsung live.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">AI Ambil Alih Otomatis</div>
+      <div class="step-desc">Aktifkan AFK Mode dan pergi. AlterCast membaca komentar, merespons penonton, menggerakkan avatar, dan menjaga stream tetap hidup tanpa kamu di sana.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: PLATFORM ══ -->
+<div class="hero-bar violet">
+  <div class="hb-chip"><div class="hb-label">Platform Utama</div><div class="hb-val violet">TikTok Live</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Streaming Software</div><div class="hb-val">OBS Studio 29+</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Browser Support</div><div class="hb-val">Chrome / Edge / Firefox</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">OS Support</div><div class="hb-val">Windows / Mac / Linux</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Mobile Preview</div><div class="hb-val violet">Available</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Deployment</div><div class="hb-val">Vercel Edge</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [05] AVATAR LIBRARY
+     ══════════════════════════════════════════════ -->
+<section id="avatar">
+  <div class="section-label">// Section 05 — Library Avatar 3D</div>
+  <h2 class="section-title">164 karakter. Semua siap.<br>Semua bergerak otomatis.</h2>
+  <p class="section-sub">Library avatar AlterCast adalah yang terlengkap di antara platform AI streaming manapun. Setiap karakter di-load, dianimasikan dengan AI Motion Brain, dan bisa di-cycle otomatis.</p>
+
+  <div class="progress-list">
+    <div class="progress-item">
+      <div class="progress-header"><span class="progress-name">Karakter Game (Genshin, ZZZ, AOV, dll)</span><span class="progress-pct">52 chars</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:32%"></div></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-header"><span class="progress-name">Karakter Anime Original</span><span class="progress-pct">38 chars</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:23%"></div></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-header"><span class="progress-name">Karakter Realistik / Semi-Realistik</span><span class="progress-pct">31 chars</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:19%"></div></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-header"><span class="progress-name">Karakter Fantasy / Original IP</span><span class="progress-pct">28 chars</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:17%"></div></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-header"><span class="progress-name">Karakter Lainnya / Misc</span><span class="progress-pct">15 chars</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:9%"></div></div>
+    </div>
+  </div>
+
+  <div class="hero-stats" style="margin-top:32px;justify-content:flex-start;">
+    <div class="stat"><div class="stat-val">164</div><div class="stat-label">Total Karakter</div></div>
+    <div class="stat"><div class="stat-val">GLB</div><div class="stat-label">Format 3D</div></div>
+    <div class="stat"><div class="stat-val">Auto</div><div class="stat-label">Animation System</div></div>
+    <div class="stat"><div class="stat-val">35s</div><div class="stat-label">Cycle Interval</div></div>
+    <div class="stat"><div class="stat-val">Search</div><div class="stat-label">Built-in Filter</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: AI MOTION ══ -->
+<div class="hero-bar green">
+  <div class="hb-chip"><div class="hb-label">AI Motion States</div><div class="hb-val green">idle · talking · excited · listening</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Motion Layers</div><div class="hb-val">5 frequency layers</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Bone Targets</div><div class="hb-val green">head · spine · hip</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Camera Drift</div><div class="hb-val">X/Y soft-tracking</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Breathing Cycle</div><div class="hb-val green">0.9 Hz natural</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [06] AI ENGINE
+     ══════════════════════════════════════════════ -->
+<section id="ai">
+  <div class="section-label">// Section 06 — AI Engine</div>
+  <h2 class="section-title">Bukan bot biasa.<br>Ini adalah kamu yang lain.</h2>
+  <p class="section-sub">AI Engine AlterCast bukan sekadar auto-reply. Ini adalah sistem yang memahami konteks percakapan, mengenali penonton setia, dan merespons dengan kepribadian yang konsisten dengan streamer aslinya.</p>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon cyan">[CTX]</div>
+      <div class="feat-title">Context-Aware Responses</div>
+      <div class="feat-desc">AI memahami konteks percakapan yang sedang berlangsung, bukan hanya satu komentar. Respons yang diberikan relevan dan tidak terputus dari alur stream.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[PRS]</div>
+      <div class="feat-title">Persona Persistence</div>
+      <div class="feat-desc">Kepribadian streamer dikodekan ke dalam sistem prompt yang tidak bisa dilihat publik. AI selalu berbicara dengan karakter yang sama di setiap sesi.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon green">[MOD]</div>
+      <div class="feat-title">Content Moderation</div>
+      <div class="feat-desc">Sistem deteksi otomatis untuk komentar negatif, spam, dan konten tidak pantas. Avatar merespons dengan bijak tanpa memancing konflik dengan penonton.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon red">[SPD]</div>
+      <div class="feat-title">Sub-500ms Response</div>
+      <div class="feat-desc">Dari komentar masuk ke suara avatar — latency kurang dari 500ms. Pipeline yang dioptimalkan memastikan percakapan terasa real-time, bukan bot lambat.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon cyan">[MULT]</div>
+      <div class="feat-title">Multi-Language Support</div>
+      <div class="feat-desc">Utama dalam Bahasa Indonesia, dengan kemampuan beralih ke Bahasa Inggris secara otomatis berdasarkan bahasa komentar yang masuk.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[EMO]</div>
+      <div class="feat-title">Emotion Detection</div>
+      <div class="feat-desc">AI mendeteksi sentimen komentar (positif, negatif, netral, lucu, agresif) dan mengubah state motion avatar secara otomatis sesuai konteks emosi.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: AI SPECS ══ -->
+<div class="hero-bar cyan">
+  <div class="hb-chip"><div class="hb-label">AI Model</div><div class="hb-val cyan">Claude API</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Response Mode</div><div class="hb-val">Streaming</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Context Window</div><div class="hb-val cyan">Extended</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Language Primary</div><div class="hb-val">Bahasa Indonesia</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Language Secondary</div><div class="hb-val">English</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Avg Latency</div><div class="hb-val cyan">&lt;500ms</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [07] PLATFORM SUPPORT
+     ══════════════════════════════════════════════ -->
+<section id="platform">
+  <div class="section-label">// Section 07 — Platform & Integrasi</div>
+  <h2 class="section-title">Stream ke mana saja.<br>AlterCast sudah siap.</h2>
+  <p class="section-sub">AlterCast dirancang untuk kompatibilitas maksimal. Browser source OBS, output virtual camera, atau embed langsung — semua opsi tersedia.</p>
+
+  <div class="platform-row">
+    <div class="platform-badge"><div class="pb-dot" style="background:#FE2C55"></div>TikTok Live</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#FF0000"></div>YouTube Live</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#9146FF"></div>Twitch</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#00D4FF"></div>OBS Studio</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#7289DA"></div>Streamlabs</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#4FC3F7"></div>XSplit</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#00B4D8"></div>Zoom</div>
+    <div class="platform-badge"><div class="pb-dot" style="background:#5865F2"></div>Discord Stage</div>
+  </div>
+
+  <table class="spec-table" style="margin-top:36px;">
+    <thead>
+      <tr>
+        <th>Fitur Integrasi</th>
+        <th>TikTok Live</th>
+        <th>YouTube</th>
+        <th>OBS</th>
+        <th>Streamlabs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Browser Source</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td></tr>
+      <tr><td>Virtual Camera Output</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td></tr>
+      <tr><td>Chroma Key</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td></tr>
+      <tr><td>Live Comment Feed</td><td class="spec-ok">OK</td><td class="spec-tbd">Planned</td><td>—</td><td>—</td></tr>
+      <tr><td>Gift Reaction</td><td class="spec-ok">OK</td><td class="spec-tbd">Planned</td><td>—</td><td>—</td></tr>
+      <tr><td>WebSocket API</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td><td class="spec-ok">OK</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: OBS ══ -->
+<div class="hero-bar dark">
+  <div class="hb-chip"><div class="hb-label">OBS Integration</div><div class="hb-val">Browser Source</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Output Modes</div><div class="hb-val cyan">Hologram · Dark · Clear · Chroma</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Camera Presets</div><div class="hb-val">Bust · Face · Full Body</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">FPS Lock</div><div class="hb-val cyan">60 FPS</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Resolution</div><div class="hb-val">Up to 4K</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [08] STREAM FEATURES
+     ══════════════════════════════════════════════ -->
+<section id="stream-features">
+  <div class="section-label">// Section 08 — Fitur Streaming Lanjutan</div>
+  <h2 class="section-title">Lebih dari sekadar avatar.<br>Ini pengalaman stream penuh.</h2>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon cyan">[TTS]</div>
+      <div class="feat-title">Text-to-Speech Premium</div>
+      <div class="feat-desc">Konversi teks menjadi suara dengan intonasi natural. Mendukung berbagai kecepatan, pitch, dan karakter suara yang berbeda per avatar.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[CHAT]</div>
+      <div class="feat-title">Live Chat Reader</div>
+      <div class="feat-desc">Sistem pembacaan komentar real-time dengan prioritas gift, subscriber, dan moderator. Komentar spam difilter otomatis sebelum dibaca avatar.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon green">[GIFT]</div>
+      <div class="feat-title">Gift Auto-Reaction</div>
+      <div class="feat-desc">Avatar bereaksi secara khusus saat menerima gift TikTok — terima kasih otomatis, animasi ekspresi, dan sebutan nama pengirim.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon red">[RAID]</div>
+      <div class="feat-title">Raid & Host Detection</div>
+      <div class="feat-desc">Deteksi otomatis saat ada raid atau host masuk. Avatar menyambut raiders dengan respons khusus dan memperkenalkan konten stream secara singkat.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon cyan">[SCH]</div>
+      <div class="feat-title">Stream Scheduler</div>
+      <div class="feat-desc">Jadwalkan kapan AlterCast mulai dan berhenti secara otomatis. Siapkan konten stream dari jauh, dan AlterCast akan menjalankannya tepat waktu.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[OVL]</div>
+      <div class="feat-title">Custom Overlays</div>
+      <div class="feat-desc">Tambahkan overlay kustom di atas hologram avatar — alert bar, countdown timer, follower goal, recent donation — semua bisa dikonfigurasi.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon green">[ANA]</div>
+      <div class="feat-title">Stream Analytics</div>
+      <div class="feat-desc">Dashboard analytics yang menampilkan viewer count, engagement rate, komentar per menit, dan performa AI response selama sesi stream.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon cyan">[BRK]</div>
+      <div class="feat-title">Auto Break Screen</div>
+      <div class="feat-desc">Ketika dijadwalkan istirahat, avatar beralih ke mode break otomatis — memutar musik lo-fi, menampilkan countdown, dan memberitahu kapan stream kembali.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon red">[SND]</div>
+      <div class="feat-title">Sound FX Library</div>
+      <div class="feat-desc">Library efek suara bawaan yang diputar sesuai konteks — gift sound, subscriber chime, raid alarm, dan reaksi emosi avatar.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: ENGAGEMENT ══ -->
+<div class="hero-bar violet">
+  <div class="hb-chip"><div class="hb-label">Engagement Methods</div><div class="hb-val violet">Comment · Gift · Follow · Sub · Raid</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Response Priority</div><div class="hb-val">Gift > Sub > Mod > Regular</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Spam Filter</div><div class="hb-val violet">Active</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Max Queue</div><div class="hb-val">Unlimited</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [09] AFFILIATE PROGRAM
+     ══════════════════════════════════════════════ -->
+<section id="affiliate">
+  <div class="section-label">// Section 09 — Affiliate Program</div>
+  <h2 class="section-title">Stream sambil cuan.<br>Affiliate-ready by design.</h2>
+  <p class="section-sub">AlterCast dirancang untuk mendukung streamer affiliate TikTok. Avatar bisa membacakan produk, mempromosikan link, dan menjaga stream commerce tetap aktif meski kamu tidak hadir.</p>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon green">[PRD]</div>
+      <div class="feat-title">Product Script Reader</div>
+      <div class="feat-desc">Masukkan deskripsi produk affiliate, dan avatar membacakannya secara natural dalam interval yang ditentukan. Tidak terasa seperti iklan robotik.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon cyan">[LNK]</div>
+      <div class="feat-title">Link Promotion System</div>
+      <div class="feat-desc">Sistem promosi link otomatis yang disebutkan avatar di waktu yang tepat — tidak terlalu sering sehingga mengganggu, tapi cukup untuk konversi.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon violet">[SCR]</div>
+      <div class="feat-title">Script Library</div>
+      <div class="feat-desc">Simpan script promosi, sapaan, dan konten rutin ke library. Avatar menjalankannya secara bergiliran dengan variasi natural agar tidak terdengar repetitif.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: AFFILIATE ══ -->
+<div class="hero-bar green">
+  <div class="hb-chip"><div class="hb-label">Affiliate Platform</div><div class="hb-val green">TikTok Shop</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Product Read Interval</div><div class="hb-val">Configurable</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Script Variation</div><div class="hb-val green">AI-Paraphrase</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Commission Tracking</div><div class="hb-val">Via TikTok API</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Dedicated Page</div><div class="hb-val green"><a href="/affiliate" style="color:inherit">/affiliate</a></div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [10] TECH STACK
+     ══════════════════════════════════════════════ -->
+<section id="tech">
+  <div class="section-label">// Section 10 — Tech Stack</div>
+  <h2 class="section-title">Dibangun dengan teknologi<br>terdepan di industri.</h2>
+  <p class="section-sub">Setiap komponen dipilih dengan cermat untuk performa, keandalan, dan kemudahan deployment. Tidak ada overkill, tidak ada bottleneck.</p>
+
+  <div class="tech-grid">
+    <div class="tech-chip">React 18.3</div>
+    <div class="tech-chip">Three.js r168</div>
+    <div class="tech-chip">WebGL 2.0</div>
+    <div class="tech-chip">GLTFLoader</div>
+    <div class="tech-chip">OrbitControls</div>
+    <div class="tech-chip">Claude API</div>
+    <div class="tech-chip">Web Speech API</div>
+    <div class="tech-chip">SpeechSynthesis</div>
+    <div class="tech-chip">WebSocket</div>
+    <div class="tech-chip">Babel Standalone</div>
+    <div class="tech-chip">CSS Custom Props</div>
+    <div class="tech-chip">CSS Animations</div>
+    <div class="tech-chip">ACES Filmic TM</div>
+    <div class="tech-chip">PCF Shadow Maps</div>
+    <div class="tech-chip">Outfit Font</div>
+    <div class="tech-chip">JetBrains Mono</div>
+    <div class="tech-chip">Vercel Edge</div>
+    <div class="tech-chip">Node.js Backend</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: SECURITY ══ -->
+<div class="hero-bar dark">
+  <div class="hb-chip"><div class="hb-label">Script Integrity</div><div class="hb-val cyan">SRI Hash Verified</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">API Key Storage</div><div class="hb-val">Server-side Only</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">HTTPS</div><div class="hb-val cyan">Enforced</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Data Retention</div><div class="hb-val">Session Only</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">CORS Policy</div><div class="hb-val cyan">Strict</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Content Policy</div><div class="hb-val">Configurable</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [11] PRICING
+     ══════════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="section-label">// Section 11 — Pricing</div>
+  <h2 class="section-title">Mulai gratis.<br>Scale sesuai kebutuhan.</h2>
+  <p class="section-sub">AlterCast tersedia dalam beberapa tier yang dirancang untuk semua level streamer — dari pemula hingga profesional yang butuh uptime 24/7.</p>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-name">Free</div>
+      <div class="price-val">Rp 0 <span>/ bulan</span></div>
+      <ul class="price-features">
+        <li>Akses Avatar 3D (dasar)</li>
+        <li>5 karakter avatar tersedia</li>
+        <li>TTS Bahasa Indonesia</li>
+        <li>OBS Browser Source</li>
+        <li>Holographic renderer</li>
+        <li class="na">AI Chat Responder</li>
+        <li class="na">Semua 164 karakter</li>
+        <li class="na">Affiliate Script System</li>
+        <li class="na">Priority Support</li>
+      </ul>
+      <a class="cta ghost" href="/studio" style="justify-content:center">Mulai Gratis</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-name">Creator <span class="status-chip cyan" style="margin-left:8px">Populer</span></div>
+      <div class="price-val">Rp 49.000 <span>/ bulan</span></div>
+      <ul class="price-features">
+        <li>Semua fitur Free</li>
+        <li>Semua 164 karakter 3D</li>
+        <li>AI Chat Responder aktif</li>
+        <li>Auto-Cycle karakter</li>
+        <li>Gift Auto-Reaction</li>
+        <li>Stream Analytics Dashboard</li>
+        <li>Affiliate Script Library</li>
+        <li>Custom persona AI</li>
+        <li class="na">Multi-stream simultan</li>
+      </ul>
+      <a class="cta primary" href="/studio" style="justify-content:center">Mulai Creator</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Pro</div>
+      <div class="price-val">Rp 149.000 <span>/ bulan</span></div>
+      <ul class="price-features">
+        <li>Semua fitur Creator</li>
+        <li>Multi-stream simultan (3 stream)</li>
+        <li>Custom avatar upload</li>
+        <li>Priority AI response queue</li>
+        <li>Webhook integration</li>
+        <li>Dedicated onboarding support</li>
+        <li>White-label output</li>
+        <li>Early access fitur baru</li>
+        <li>API access penuh</li>
+      </ul>
+      <a class="cta secondary" href="/studio" style="justify-content:center">Mulai Pro</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: VALUE ══ -->
+<div class="hero-bar cyan">
+  <div class="hb-chip"><div class="hb-label">Dibanding VTuber Agency</div><div class="hb-val cyan">90% Lebih Murah</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Setup Time</div><div class="hb-val">3 Menit</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Contract Binding</div><div class="hb-val cyan">Tidak Ada</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Cancel Anytime</div><div class="hb-val green">OK</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Free Trial</div><div class="hb-val cyan">Selamanya</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [12] TESTIMONIALS
+     ══════════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="section-label">// Section 12 — Testimonial</div>
+  <h2 class="section-title">Streamer nyata.<br>Hasil nyata.</h2>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-text">"Saya sakit selama seminggu tapi stream tetap jalan. Penonton bahkan tidak sadar saya sedang tidak di sana. AlterCast benar-benar menyelamatkan channel saya."</div>
+      <div class="testi-user">
+        <div class="testi-av" style="background:#00D4FF">N</div>
+        <div><div class="testi-name">Nayr</div><div class="testi-role">TikTok Affiliate Streamer</div></div>
       </div>
     </div>
-  </footer>
+    <div class="testi-card">
+      <div class="testi-text">"Hologram avatarnya keren banget. Penonton selalu nanya 'itu software apa?' dan saya dengan bangga bilang AlterCast. Engagement naik 40% sejak pakai ini."</div>
+      <div class="testi-user">
+        <div class="testi-av" style="background:#7C3AFF">R</div>
+        <div><div class="testi-name">Rizky_Stream</div><div class="testi-role">YouTube & TikTok Creator</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-text">"Setup-nya mudah banget. Dalam 5 menit sudah bisa stream pakai avatar 3D yang keren. AI-nya juga natural, tidak terasa bot banget."</div>
+      <div class="testi-user">
+        <div class="testi-av" style="background:#00FF88">S</div>
+        <div><div class="testi-name">Sephira_Live</div><div class="testi-role">Twitch & TikTok Streamer</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-text">"Saya affiliate TikTok dan AlterCast membantu promosi produk secara otomatis. Avatar bisa baca script produk, respond komentar soal produk, dan konversi tetap jalan."</div>
+      <div class="testi-user">
+        <div class="testi-av" style="background:#FFB800">D</div>
+        <div><div class="testi-name">Diandra_Shop</div><div class="testi-role">TikTok Affiliate Creator</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script type="module" src="/src/main.js"></script>
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: SPECS ══ -->
+<div class="hero-bar dark">
+  <div class="hb-chip"><div class="hb-label">Min Browser</div><div class="hb-val">Chrome 90+</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Min RAM</div><div class="hb-val cyan">4 GB</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">GPU Required</div><div class="hb-val">Integrated OK</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Internet Speed</div><div class="hb-val">10 Mbps+</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Server Location</div><div class="hb-val cyan">Vercel Global</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Uptime SLA</div><div class="hb-val green">99.9%</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [13] ROADMAP
+     ══════════════════════════════════════════════ -->
+<section id="roadmap">
+  <div class="section-label">// Section 13 — Roadmap</div>
+  <h2 class="section-title">Apa yang sudah ada.<br>Apa yang akan datang.</h2>
+
+  <div class="roadmap-list">
+    <div class="roadmap-item">
+      <div class="roadmap-dot done">OK</div>
+      <div class="roadmap-content">
+        <div class="roadmap-date">Q1 2026 — SELESAI</div>
+        <div class="roadmap-title">Phase 1: Core Platform</div>
+        <div class="roadmap-desc">Holographic 3D renderer, 164 character library, AI Motion Brain, TTS Indonesia, OBS integration, TikTok ready, Auto-cycle sistem, Camera tracking.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-dot current">&gt;</div>
+      <div class="roadmap-content">
+        <div class="roadmap-date">Q2 2026 — SEKARANG</div>
+        <div class="roadmap-title">Phase 2: AI Brain Enhancement</div>
+        <div class="roadmap-desc">Context-aware conversation, persona persistence, sentiment detection, gift auto-reaction, multi-language dynamic switching, affiliate script system.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-dot next">3</div>
+      <div class="roadmap-content">
+        <div class="roadmap-date">Q3 2026 — PLANNED</div>
+        <div class="roadmap-title">Phase 3: Creator Tools</div>
+        <div class="roadmap-desc">Custom avatar upload, stream scheduler, overlay builder, analytics dashboard, webhook API, multi-stream support.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-dot next">4</div>
+      <div class="roadmap-content">
+        <div class="roadmap-date">Q4 2026 — PLANNED</div>
+        <div class="roadmap-title">Phase 4: Marketplace</div>
+        <div class="roadmap-desc">Avatar marketplace, persona marketplace, community plugin system, creator collaboration tools, white-label solutions untuk agensi.</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-dot next">5</div>
+      <div class="roadmap-content">
+        <div class="roadmap-date">2027 — VISION</div>
+        <div class="roadmap-title">Phase 5: Real-Time Cloning</div>
+        <div class="roadmap-desc">Voice cloning dari sample suara streamer asli, micro-expression mirroring, real-time face-to-avatar mapping, dan persistent memory AI yang mengingat setiap penonton.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HERO BAR: BUILD INFO ══ -->
+<div class="hero-bar violet">
+  <div class="hb-chip"><div class="hb-label">Current Phase</div><div class="hb-val violet">Phase 2</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Build</div><div class="hb-val">2026.05.28</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Repository</div><div class="hb-val">Private</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Deploy</div><div class="hb-val violet">Vercel Production</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">Branch</div><div class="hb-val">main</div></div>
+  <div class="hb-sep"></div>
+  <div class="hb-chip"><div class="hb-label">License</div><div class="hb-val violet">Proprietary</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     [14] FAQ
+     ══════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="section-label">// Section 14 — FAQ</div>
+  <h2 class="section-title">Pertanyaan yang sering<br>ditanyakan.</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">Apakah AlterCast benar-benar bisa menggantikan saya saat stream?</button>
+      <div class="faq-a">Ya. AlterCast dirancang khusus sebagai AI Streaming Twin yang beroperasi penuh tanpa kehadiranmu. Dari menyapa penonton baru, membalas komentar, membacakan gift, hingga mempromosikan produk affiliate — semua berjalan otomatis.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Apakah TikTok akan mendeteksi bahwa saya menggunakan AI?</button>
+      <div class="faq-a">AlterCast beroperasi sebagai browser source yang dirender ke virtual camera — sama seperti kreator yang menggunakan VTuber software atau avatar streaming tools lainnya. Ini adalah praktik yang umum dan diterima di platform streaming.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Berapa banyak karakter 3D yang tersedia?</button>
+      <div class="faq-a">164 karakter GLB tersedia di library, mulai dari karakter game populer (Genshin Impact, Zenless Zone Zero, Arena of Valor), anime original, hingga karakter realistik dan fantasy. Semua bisa di-load dan di-cycle otomatis.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Apakah perlu instalasi software khusus?</button>
+      <div class="faq-a">Tidak. AlterCast berjalan 100% di browser modern (Chrome, Edge, Firefox). Untuk streaming, kamu hanya perlu OBS atau TikTok Live Studio dan menambahkan URL AlterCast sebagai Browser Source.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Bagaimana AI mengetahui kepribadian saya?</button>
+      <div class="faq-a">Kamu mengisi profil persona saat setup — gaya bicara, topik yang disukai, cara merespons gift, dan informasi yang boleh/tidak boleh dibagikan. Informasi ini dikodekan ke dalam system prompt AI dan tidak pernah ditampilkan ke publik.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Apakah data percakapan stream saya disimpan?</button>
+      <div class="faq-a">Percakapan selama stream bersifat session-only dan tidak disimpan secara permanen di server kami. Persona dan konfigurasi avatar disimpan secara enkripsi dan hanya bisa diakses oleh akunmu.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Apakah bisa streaming ke beberapa platform sekaligus?</button>
+      <div class="faq-a">Tier Pro mendukung hingga 3 stream simultan ke platform berbeda. Tier Creator mendukung satu stream aktif pada satu waktu. Multistreaming dapat dikombinasikan dengan software seperti Restream atau Castr.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Bagaimana cara upgrade dari Free ke Creator?</button>
+      <div class="faq-a">Masuk ke dashboard akun kamu, pilih menu Subscription, dan pilih tier yang diinginkan. Upgrade berlaku instan dan kamu langsung mendapat akses ke semua fitur tier baru.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FINAL CALLOUT ══ -->
+<section>
+  <div class="callout">
+    <div>
+      <h3>Siap stream tanpa batas?</h3>
+      <p>Bergabung dengan ribuan streamer yang sudah menggunakan AlterCast untuk menjaga channel mereka tetap aktif 24/7.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a class="cta primary" href="/studio">[|>] Buka Studio Sekarang</a>
+      <a class="cta secondary" href="/live">[3D] Lihat Live Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="rgba(0,212,255,0.12)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+          <circle cx="16" cy="12" r="5" fill="none" stroke="#00D4FF" stroke-width="1.5"/>
+          <circle cx="21" cy="10" r="2" fill="none" stroke="#7C3AFF" stroke-width="1.2"/>
+          <path d="M9 24c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M23 20c0-1.66 1.34-3 3-3" stroke="#7C3AFF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="16" cy="12" r="2" fill="#00D4FF" opacity="0.8"/>
+        </svg>
+        <span style="font-weight:700;background:linear-gradient(135deg,#00D4FF,#7C3AFF);-webkit-background-clip:text;background-clip:text;color:transparent;">AlterCast</span>
+      </div>
+      <p class="footer-desc">AI Streaming Twin yang menjaga stream tetap hidup. Dibangun untuk streamer Indonesia yang tidak mau kehilangan momentum channel mereka.</p>
+      <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.08em;">
+        <span class="status-chip live" style="font-size:9px;">LIVE</span>
+        &nbsp; v6.0.0 · 2026-05-28
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Produk</h4>
+      <a href="/studio">Holographic Studio</a>
+      <a href="/avatar">Avatar Studio</a>
+      <a href="/affiliate">Hologram Live</a>
+      <a href="/affiliate">Affiliate Mode</a>
+    </div>
+    <div class="footer-col">
+      <h4>Fitur</h4>
+      <a href="#avatar">Library Avatar 3D</a>
+      <a href="#ai">AI Engine</a>
+      <a href="#platform">Platform Support</a>
+      <a href="#affiliate">Affiliate Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <a href="#pricing">Harga</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#faq">FAQ</a>
+      <a href="#tech">Tech Stack</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>AlterCast — Stay Live. Even When You're Gone.</span>
+    <span>Dibuat untuk streamer Indonesia yang tidak mau kehilangan momentum.</span>
+    <span>BUILD: 2026-05-28 · <span class="status-chip online" style="font-size:8px;">ACTIVE</span></span>
+  </div>
+</footer>
+
+</div><!-- .page -->
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-a').style.display = 'none';
+      el.querySelector('.faq-q').style.background = '';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-a').style.display = 'block';
+      btn.style.background = 'var(--bg-elevated)';
+      btn.style.color = 'var(--accent-primary)';
+    }
+  });
+  // Hide answers by default
+  btn.nextElementSibling.style.display = 'none';
+});
+
+// Animate progress bars on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.progress-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.progress-list').forEach(el => obs.observe(el));
+</script>
+
 </body>
 </html>

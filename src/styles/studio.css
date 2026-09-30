@@ -37,7 +37,7 @@ body.studio-body {
   gap: var(--space-4);
 }
 
-.blender-badge {
+.studio-brand-badge {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -47,7 +47,7 @@ body.studio-body {
   font-size: 13px;
 }
 
-.blender-badge svg {
+.studio-brand-badge svg {
   width: 20px;
   height: 20px;
 }

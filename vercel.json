@@ -4,6 +4,10 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/affiliate-studio", "destination": "/studio.html" },
+    { "source": "/AlterCast", "destination": "/studio.html" }
+  ],
   "headers": [
     {
       "source": "/models/(.*)",
