@@ -1,5 +1,5 @@
 {
-  "name": "blender-3d-catalog",
+  "name": "altercastv2",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -16,3 +16,4 @@
     "three": "^0.186.0"
   }
 }
+
