@@ -42,7 +42,7 @@ body.studio-body {
   align-items: center;
   gap: 6px;
   font-weight: 700;
-  color: #f57920;
+  color: #00D4FF;
   text-decoration: none;
   font-size: 13px;
 }
@@ -135,13 +135,13 @@ body.studio-body {
 }
 
 .studio-btn.primary {
-  background-color: #f57920;
-  border-color: #e06810;
+  background-color: #00D4FF;
+  border-color: #0099BB;
   color: #ffffff;
 }
 
 .studio-btn.primary:hover {
-  background-color: #fa8b38;
+  background-color: #33DDFF;
 }
 
 /* Main Studio Layout: Viewport + Side Panel */
@@ -173,8 +173,8 @@ body.studio-body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(245, 121, 32, 0.15);
-  border: 2px dashed #f57920;
+  background: rgba(0, 212, 255, 0.15);
+  border: 2px dashed #00D4FF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,7 +198,7 @@ body.studio-body {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: #f57920;
+  color: #00D4FF;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
@@ -266,7 +266,7 @@ body.studio-body {
 }
 
 .shading-btn.active {
-  background-color: #f57920;
+  background-color: #00D4FF;
   color: #ffffff;
 }
 
@@ -296,7 +296,7 @@ body.studio-body {
 }
 
 .gizmo-btn:hover {
-  background-color: #f57920;
+  background-color: #00D4FF;
   color: #ffffff;
 }
 
@@ -359,7 +359,7 @@ body.studio-body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #f57920;
+  color: #00D4FF;
   margin-bottom: var(--space-3);
   display: flex;
   align-items: center;
@@ -369,7 +369,7 @@ body.studio-body {
 .tab-badge {
   font-size: 10px;
   background: #333333;
-  color: #f57920;
+  color: #00D4FF;
   padding: 2px 6px;
   border-radius: 3px;
   border: 1px solid #444444;
@@ -396,7 +396,7 @@ body.studio-body {
 
 .property-input-range {
   flex: 1.5;
-  accent-color: #f57920;
+  accent-color: #00D4FF;
   cursor: pointer;
 }
 
@@ -476,7 +476,7 @@ body.studio-body {
 
 .timeline-scrubber {
   flex: 1;
-  accent-color: #f57920;
+  accent-color: #00D4FF;
   cursor: pointer;
 }
 
@@ -503,9 +503,9 @@ body.studio-body {
 }
 
 .speed-btn.active {
-  background: #f57920;
+  background: #00D4FF;
   color: #ffffff;
-  border-color: #e06810;
+  border-color: #0099BB;
 }
 
 /* Model Selector Dropdown */
@@ -562,7 +562,7 @@ body.studio-body {
   background: rgba(18, 18, 18, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 121, 32, 0.45);
+  border: 1px solid rgba(0, 212, 255, 0.45);
   border-radius: 8px;
   padding: 10px 16px;
   max-width: 480px;
@@ -588,7 +588,7 @@ body.studio-body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   font-weight: 700;
-  color: #f57920;
+  color: #00D4FF;
   letter-spacing: 0.08em;
   margin-bottom: 4px;
 }
@@ -606,7 +606,7 @@ body.studio-body {
 }
 
 .chat-bubble-row.ai .chat-user {
-  color: #f57920;
+  color: #00D4FF;
 }
 
 .chat-bubble-row.user .chat-user {
