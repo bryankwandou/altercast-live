@@ -282,7 +282,7 @@ renderer.toneMappingExposure = 1.1;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#0A1633');
+scene.background = new THREE.Color(0x1a1820);
 
 const camera = new THREE.PerspectiveCamera(32, window.innerWidth/window.innerHeight, 0.05, 200);
 camera.position.set(0, 1.0, 3.5);
@@ -324,20 +324,20 @@ const ringGroup = new THREE.Group();
   m.userData.r = r;
   ringGroup.add(m);
 });
-scene.add(ringGroup);
+// scene.add(ringGroup);
 
 const pillar = new THREE.Mesh(
   new THREE.CylinderGeometry(0.55,0.55,5,32,1,true),
   new THREE.MeshBasicMaterial({color:0x0099CC,transparent:true,opacity:0.05,side:THREE.DoubleSide,depthWrite:false})
 );
 pillar.position.y = 1.2;
-scene.add(pillar);
+// scene.add(pillar);
 
 const N=280, pGeo=new THREE.BufferGeometry(), pPos=new Float32Array(N*3);
 for(let i=0;i<N;i++){pPos[i*3]=(Math.random()-.5)*5;pPos[i*3+1]=Math.random()*4;pPos[i*3+2]=(Math.random()-.5)*5;}
 pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
 const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({color:0x00DDFF,size:.022,transparent:true,opacity:.55,sizeAttenuation:true}));
-scene.add(particles);
+// scene.add(particles);
 
 /* LIGHTS */
 scene.add(new THREE.AmbientLight(0x4477AA, 1.6));
@@ -384,8 +384,8 @@ const Motion = {
   hipSway(t){ return Math.sin(t*0.19)*0.045 + Math.sin(t*0.41)*0.018; },
 
   /* Arm swing â€” brings arms down from T-pose, natural idle sway */
-  armSwingL(t){ return -0.55 + Math.sin(t*0.31)*0.08 + Math.sin(t*0.7)*0.03; },
-  armSwingR(t){ return  0.55 - Math.sin(t*0.31)*0.08 - Math.sin(t*0.7)*0.03; },
+  armSwingL(t){ return -1.25 + Math.sin(t*0.3)*0.05; },
+  armSwingR(t){ return 1.25 - Math.sin(t*0.3)*0.05; },
   armFwdL(t){  return  0.12 + Math.sin(t*0.27)*0.04; },
   armFwdR(t){  return  0.12 + Math.sin(t*0.27+1)*0.04; },
 
@@ -861,15 +861,15 @@ $('char-search').addEventListener('input',e=>{
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    BACKGROUND
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-let currentBg='holo';
+let currentBg='dark';
 function setBg(bg){
   currentBg=bg;
   if(bg==='holo'){
-    scene.background=new THREE.Color('#0A1633');
-    [ringGroup,floor,innerDisc,pillar,particles].forEach(x=>x.visible=true);
+    scene.background = new THREE.Color(0x1a1820);
+    [ringGroup,innerDisc,pillar,particles].forEach(x=>x.visible=false); if(floor) floor.visible=true;
     renderer.setClearAlpha(1);
   } else if(bg==='dark'){
-    scene.background=new THREE.Color('#000');
+    scene.background = new THREE.Color(0x1a1820);
     [ringGroup,floor,innerDisc,pillar].forEach(x=>x.visible=false);
     particles.visible=true; renderer.setClearAlpha(1);
   } else if(bg==='clear'){
@@ -877,7 +877,7 @@ function setBg(bg){
     [ringGroup,floor,innerDisc,pillar,particles].forEach(x=>x.visible=false);
     renderer.setClearAlpha(0);
   } else if(bg==='chroma'){
-    scene.background=new THREE.Color('#00B140');
+    scene.background = new THREE.Color(0x1a1820);
     [ringGroup,floor,innerDisc,pillar,particles].forEach(x=>x.visible=false);
     renderer.setClearAlpha(1);
   }
