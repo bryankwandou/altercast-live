@@ -1,10 +1,10 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blender 3D Studio | Interactive WebGL Engine</title>
-  <meta name="description" content="Blender 3D Studio di browser dengan kontrol kamera native, realistic skin shader, tactile elasticity touch physics, inspeksi topologi mesh, dan animation timeline scrubber.">
+  <title>AlterCast Studio | Interactive WebGL Engine</title>
+  <meta name="description" content="AlterCast Studio di browser dengan kontrol kamera native, realistic skin shader, tactile elasticity touch physics, inspeksi topologi mesh, dan animation timeline scrubber.">
   <link rel="icon" type="image/svg+xml" href="/vite.svg">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +18,16 @@
   <!-- Studio Header -->
   <header class="studio-topbar">
     <div class="topbar-left">
-      <a href="/" class="blender-badge" title="Kembali ke Katalog">
+      <a href="/" class="studio-brand-badge" title="Kembali ke AlterCast">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <polygon points="10 8 16 12 10 16 10 8"></polygon>
         </svg>
-        <span>Blender Studio</span>
+        <span>AlterCast Studio</span>
       </a>
 
       <ul class="menu-list">
-        <li><a href="/" class="menu-item-btn" style="text-decoration:none;">Katalog</a></li>
+        <li><a href="/" class="menu-item-btn" style="text-decoration:none;">Beranda</a></li>
         <li><label class="menu-item-btn" style="cursor:pointer;"><input type="file" id="studio-file-input" accept=".glb,.gltf" style="display:none;">Buka File</label></li>
         <li><button id="btn-recenter" class="menu-item-btn">Pusatkan Avatar</button></li>
       </ul>
@@ -93,7 +93,7 @@
         <div id="hud-vertices">Verts: 0</div>
         <div id="hud-triangles">Tris: 0</div>
         <div id="hud-bounds">Ukuran: 0.0m x 0.0m x 0.0m</div>
-        <div>Grid: 0.5m Blender Scale</div>
+        <div>Grid: 0.5m Studio Scale</div>
       </div>
 
       <!-- HUD Top Right (Orientation Gizmo & Shading Modes) -->
@@ -144,7 +144,7 @@
         </div>
         <select id="studio-model-select" class="model-select-dropdown" aria-label="Pilih Model"></select>
         <p style="font-size: 11px; color: #888888; line-height: 1.4; margin-top: 4px;">
-          Untuk mencoba file lain dari 188 model di <code>E:\0download blender</code>, gunakan tombol <strong>Buka File</strong> di atas atau drag & drop file ke viewport.
+          Untuk mencoba karakter atau model 3D lain, gunakan tombol <strong>Buka File</strong> di atas atau drag & drop file ke viewport.
         </p>
       </div>
 
@@ -159,7 +159,7 @@
             <button id="btn-toggle-camera-type" class="studio-btn" style="padding: 2px 8px; font-size: 11px;">Perspektif</button>
           </div>
           <div class="property-row">
-            <span class="property-label">Lantai Grid Blender:</span>
+            <span class="property-label">Lantai Grid 3D:</span>
             <input type="checkbox" id="toggle-grid" checked style="accent-color: #f57920; cursor: pointer;">
           </div>
           <div class="property-row">
@@ -324,7 +324,7 @@
         </div>
         <div class="property-row">
           <span class="property-label">Pose Kepala & Tatapan:</span>
-          <span id="face-tracking-pose" class="property-value-badge">X: 0Â° | Y: 0Â°</span>
+          <span id="face-tracking-pose" class="property-value-badge">X: 0° | Y: 0°</span>
         </div>
         <div class="property-row">
           <span class="property-label">Bukaan Mulut (Lipsync):</span>
@@ -384,7 +384,7 @@
           <span>POSISI AVATAR</span>
         </div>
         <p style="font-size: 11px; color: #888888; margin-bottom: 8px;">
-          Avatar secara otomatis diposisikan tepat di tengah sumbu (0,0,0) di atas lantai grid Blender.
+          Avatar secara otomatis diposisikan tepat di tengah sumbu (0,0,0) di atas Lantai Grid 3D.
         </p>
         <button id="btn-recenter-sidebar" class="studio-btn" style="width: 100%; justify-content: center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
