@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSIDE: Olivia Lin Companion Studio - AlterCast 3D</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Crect width='32' height='32' rx='8' fill='%230D1520'/%3E%3Crect width='32' height='32' rx='8' fill='rgba(245,194,140,0.12)' stroke='rgba(245,194,140,0.3)' stroke-width='1'/%3E%3Ccircle cx='16' cy='12' r='5' fill='none' stroke='%2300D4FF' stroke-width='1.5'/%3E%3Ccircle cx='21' cy='10' r='2' fill='none' stroke='%237C3AFF' stroke-width='1.2'/%3E%3Cpath d='M9 24c0-3.87 3.13-7 7-7s7 3.13 7 7' stroke='%2300D4FF' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M23 20c0-1.66 1.34-3 3-3' stroke='%237C3AFF' stroke-width='1.2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='12' r='2' fill='%2300D4FF' opacity='.8'/%3E%3C/svg%3E" />
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Inter',-apple-system,system-ui,sans-serif}
+canvas{display:block;width:100%!important;height:100%!important}
+
+/* LOADING */
+#loading{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 60%, #1c1824 0%, #0d0c13 70%, #07060a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#F5C28C;z-index:9999;transition:opacity .6s}
+#loading.hide{opacity:0;pointer-events:none}
+.spin{width:44px;height:44px;border:3px solid rgba(245,194,140,.12);border-top-color:#F5C28C;border-radius:50%;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#load-title{font-size:22px;font-weight:700;letter-spacing:.18em}
+#load-bar{width:280px;height:2px;background:rgba(245,194,140,.15);overflow:hidden;border-radius:999px}
+#load-fill{height:100%;width:0;background:#F5C28C;box-shadow:0 0 12px #F5C28C;transition:width .25s}
+#load-txt{font:11px/1.5 monospace;opacity:.55;text-align:center}
+
+/* STATUS HUD */
+#status{position:fixed;top:14px;left:14px;font:10px/1 monospace;color:rgba(245,194,140,.45);letter-spacing:.18em;pointer-events:none;z-index:50;text-transform:uppercase}
+#wm{position:fixed;bottom:14px;left:14px;font:10px/1 monospace;color:rgba(245,194,140,.22);letter-spacing:.18em;pointer-events:none;z-index:5;transition:opacity .4s}
+#wm.hide{opacity:0}
+
+/* AI MOTION INDICATOR */
+#motion-hud{position:fixed;top:14px;left:50%;transform:translateX(-50%);font:9px/1 monospace;color:rgba(245,194,140,.35);letter-spacing:.12em;pointer-events:none;z-index:50;text-transform:uppercase;transition:opacity .4s}
+#motion-hud.hide{opacity:0}
+
+/* SPEECH BUBBLE */
+#bub{position:fixed;bottom:20%;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(24,20,30,.92);border:1px solid rgba(245,194,140,.4);backdrop-filter:blur(20px);border-radius:999px;padding:11px 26px;font-size:14px;color:#E8F4FF;max-width:60%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:40;opacity:0;transition:all .3s;box-shadow:0 0 40px rgba(245,194,140,.25)}
+#bub.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#bub::before{content:'â-‰';color:#F5C28C;margin-right:10px;font-size:8px;vertical-align:middle}
+
+/* COMMENTS */
+#cmts{position:fixed;right:24px;bottom:120px;display:flex;flex-direction:column-reverse;gap:8px;max-width:280px;z-index:30;pointer-events:none}
+.cmt{background:rgba(24,20,30,.78);backdrop-filter:blur(10px);border-radius:14px;padding:9px 14px;display:flex;gap:10px;animation:cmt-in .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes cmt-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cmt-av{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#000;flex-shrink:0}
+.cmt-u{font-size:11px;font-weight:700;margin-bottom:2px;letter-spacing:.02em}
+.cmt-t{font-size:13px;color:#E8EEFF;line-height:1.4}
+
+/* AUTO-CYCLE PROGRESS BAR */
+#auto-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#F5C28C,#E08968);width:0%;z-index:60;transition:none;box-shadow:0 0 8px #F5C28C}
+
+/* CHARACTER PANEL */
+#char-panel{position:fixed;top:50%;right:14px;transform:translateY(-50%) translateX(20px);display:flex;flex-direction:column;gap:4px;z-index:80;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);max-height:85vh;overflow-y:auto;padding:4px;scrollbar-width:thin;scrollbar-color:rgba(245,194,140,.3) transparent}
+#char-panel::-webkit-scrollbar{width:3px}
+#char-panel::-webkit-scrollbar-thumb{background:rgba(245,194,140,.3);border-radius:3px}
+#char-panel.show{opacity:1;transform:translateY(-50%) translateX(0)}
+.ch{min-width:130px;height:28px;border-radius:6px;cursor:pointer;border:1px solid rgba(245,194,140,.18);background:rgba(24,20,30,.75);backdrop-filter:blur(8px);display:flex;align-items:center;padding:0 10px;gap:6px;font-size:10px;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.04em;transition:all .15s;white-space:nowrap;overflow:hidden}
+.ch:hover{border-color:rgba(245,194,140,.5);color:#E8F4FF;background:rgba(245,194,140,.08)}
+.ch.on{border-color:#F5C28C;color:#F5C28C;background:rgba(245,194,140,.12);box-shadow:0 0 12px rgba(245,194,140,.25)}
+.ch-num{font-size:8px;color:rgba(245,194,140,.4);font-family:monospace;min-width:22px;flex-shrink:0}
+.ch-name{overflow:hidden;text-overflow:ellipsis}
+
+/* SEARCH */
+#char-search{display:block;width:130px;padding:5px 10px;border-radius:6px;background:rgba(24,20,30,.85);border:1px solid rgba(245,194,140,.25);color:#E8F4FF;font-size:10px;font-family:inherit;outline:none;caret-color:#F5C28C;margin-bottom:4px}
+#char-search::placeholder{color:rgba(255,255,255,.25)}
+#char-search:focus{border-color:#F5C28C}
+
+/* CONTROLS PANEL */
+#ctrl{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:rgba(24,20,30,.85);backdrop-filter:blur(24px);border:1px solid rgba(245,194,140,.18);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;z-index:100;width:min(760px,calc(100vw - 48px));transition:transform .4s cubic-bezier(.4,0,.2,1),opacity .3s;opacity:0}
+#ctrl.show{transform:translateX(-50%) translateY(0);opacity:1}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+#sc{flex:1;min-width:0;background:rgba(255,255,255,.05);border:1px solid rgba(245,194,140,.2);border-radius:999px;padding:9px 16px;color:#E8F4FF;font-size:13px;font-family:inherit;outline:none;caret-color:#F5C28C}
+#sc::placeholder{color:rgba(255,255,255,.3)}
+#sc:focus{border-color:#F5C28C;background:rgba(245,194,140,.05)}
+.btn{padding:8px 14px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit;border:1px solid rgba(245,194,140,.35);background:rgba(245,194,140,.1);color:#F5C28C;transition:all .15s;white-space:nowrap}
+.btn:hover{background:rgba(245,194,140,.2);transform:translateY(-1px)}
+.btn.stop{border-color:rgba(255,80,80,.5);background:rgba(255,80,80,.1);color:#FF5050}
+.btn.vio{border-color:rgba(124,58,255,.4);background:rgba(124,58,255,.1);color:#E08968}
+.btn.sm{padding:5px 11px;font-size:11px}
+.btn.sm.on{border-color:#F5C28C;background:rgba(245,194,140,.18);color:#F5C28C;box-shadow:0 0 0 1px rgba(245,194,140,.3)}
+.btn.ghost{border-color:rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.5)}
+.btn.ghost.sm.on{border-color:rgba(255,255,255,.4);color:#fff}
+.lbl{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-right:2px}
+.sep{width:1px;height:20px;background:rgba(255,255,255,.08)}
+.sp{flex:1}
+#info{font:9px/1.4 monospace;color:rgba(245,194,140,.3);letter-spacing:.08em;text-align:center}
+
+/* ERROR */
+#err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:#FF8C42;font-family:inherit;text-align:center;padding:24px;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(8px)}
+#err.show{display:flex}
+#err .icon{font-size:2rem;color:#FFB800}
+#err h3{font-size:18px;font-weight:700;color:#FFB800}
+#err p{font-size:13px;color:rgba(255,255,255,.6);max-width:480px;line-height:1.7}
+
+/* CHAR COUNTER */
+#char-count{font:9px/1 monospace;color:rgba(245,194,140,.4);padding:2px 0 4px;letter-spacing:.08em;text-align:center}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spin"></div>
+  <div id="load-title">ALTERCAST</div>
+  <div id="load-bar"><div id="load-fill"></div></div>
+  <div id="load-txt">Inisialisasi engine 3D...</div>
+</div>
+
+<canvas id="c"></canvas>
+
+<div id="auto-bar"></div>
+<div id="status">HOLOGRAM ACTIVE</div>
+<div id="motion-hud">AI MOTION Â· IDLE</div>
+<div id="wm">ALTERCAST Â· LIVE</div>
+<div id="bub"></div>
+<div id="cmts"></div>
+
+<!-- Character panel (built dynamically) -->
+<div id="char-panel">
+  <input id="char-search" type="text" placeholder="Cari karakter..." spellcheck="false">
+  <div id="char-count"></div>
+  <div id="char-list"></div>
+</div>
+
+<!-- Controls -->
+<div id="ctrl">
+  <div class="row">
+    <input id="sc" type="text" placeholder="Tulis skrip yang akan dibacakan avatar...">
+    <button class="btn" id="rd">Baca</button>
+    <button class="btn stop" id="st" style="display:none">Stop</button>
+    <button class="btn vio" id="ai-btn">AI</button>
+  </div>
+  <div class="row">
+    <span class="lbl">BG</span>
+    <button class="btn sm on" data-bg="holo">Hologram</button>
+    <button class="btn sm" data-bg="dark">Dark</button>
+    <button class="btn sm" data-bg="clear">Clear</button>
+    <button class="btn sm" data-bg="chroma">Chroma</button>
+    <div class="sep"></div>
+    <span class="lbl">Kamera</span>
+    <button class="btn ghost sm on" data-cam="bust">Bust</button>
+    <button class="btn ghost sm" data-cam="face">Wajah</button>
+    <button class="btn ghost sm" data-cam="full">Full</button>
+    <div class="sep"></div>
+    <span class="lbl">Putar</span>
+    <button class="btn ghost sm" data-spin="slow">Pelan</button>
+    <button class="btn ghost sm on" data-spin="off">Off</button>
+    <button class="btn ghost sm" data-spin="fast">Cepat</button>
+    <div class="sep"></div>
+    <span class="lbl">Auto</span>
+    <button class="btn ghost sm" id="auto-btn">Cycle: OFF</button>
+    <div class="sp"></div>
+    <button class="btn ghost sm" id="bk">Kembali</button>
+  </div>
+  <div id="info">ALTERCAST HOLOGRAPHIC v6 Â· 164 KARAKTER Â· AI MOTION BRAIN Â· CAMERA TRACKING</div>
+</div>
+
+<div id="err">
+  <div class="icon">[!]</div>
+  <h3 id="err-title">Model gagal dimuat</h3>
+  <p id="err-msg"></p>
+  <p style="font-size:11px;opacity:.5">Pastikan file ada di folder public/chars/ dan buka via localhost.</p>
+  <button class="btn" id="err-next">Coba Karakter Berikutnya</button>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.168.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.168.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader }    from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   CHARACTER MANIFEST â€” 164 GLB dari E:\0download blender
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+function glbLabel(fn){
+  return fn.replace(/\.glb$/i,'')
+    .replace(/[_\-]+/g,' ')
+    .replace(/\(\d+\)/g,'').trim()
+    .replace(/\s+/g,' ')
+    .replace(/\b\w/g,c=>c.toUpperCase())
+    .slice(0,38);
+}
+
+const ALL_CHARS = [
+  '18_female_body_s3x_toy.glb','a_contortionist_dancer.glb','abandoned_factory_remodelled__gameready.glb',
+  'ada_wong_-_1_ar_-_katherine_cat_keyhole_lingerie.glb','ada_wong_-_luxury_night_dress (1).glb',
+  'ada_wong_-_luxury_night_dress.glb','ada_wong_suora_lussuosa_con_louboutins.glb','ada_wong_v2.glb',
+  'adult_nude_sexy_girl_in_anime_style_fbx.glb','aerith_sexy_dress.glb',
+  'airi_dimension_breaker_arena_of_valor.glb','anby_demara_zzz (1).glb','anby_demara_zzz.glb',
+  'anime_-_female_nude_base_mesh.glb','anime_girl.glb','anime_girl_2.glb','anime_girl_in_bikini.glb',
+  'anime_school_girl_in_bikini.glb','aoi_arena_of_valor.glb','aoi_sora.glb','ayanami_rei_figure.glb',
+  'bai_moqing_nude.glb','beidou.glb','big_tits_brunete.glb','burnice__nsfw__zzz.glb',
+  'ca_nurse_with_bones.glb','cc0_-_condom.glb','charlotte_nude__-_fortnite_-_nsfw_-_unrigged.glb',
+  'chloe_toy_1.glb','chloe_toy_2.glb','chloe_toy_3.glb','chun_li_battle-suit.glb',
+  'columbina_1_genshin_impact.glb','columbina_rigged_free.glb','dance_1 (1).glb','dance_1.glb',
+  'delara_the_princess_knight_of_sex_nsfw.glb','delke_js2.glb','diao_chan_summer_bash_aov.glb',
+  'elf_girl_2_textured (1).glb','elf_girl_2_textured.glb','elf_texturized.glb','ellen_joe_zzz.glb',
+  'emerald_serenity.glb','epona.glb','fan_art_-_sexy_girl.glb','female_n_male_base_mesh_study.glb',
+  'female_torso__clean_topology_base_mesh.glb','free_-_female_mesh_with_butt_and_vagina_and_tits.glb',
+  'genshin_impact_-_yae_miko.glb','genshin_impact_ningguang.glb',
+  'gf2_exilium_-florence-_marvelous_yam_pastry.glb','gigi_futa_x_poppy.glb',
+  'giraffe_head-_shaking_animation.glb','girl_model.glb','goth_girl.glb','grace_howard_zzz.glb',
+  'granado_espada_diluca_3d_model_extract (1).glb','granado_espada_diluca_3d_model_extract.glb',
+  'granado_espada_erica_3d_model_extract (1).glb','granado_espada_erica_3d_model_extract.glb',
+  'granado_espada_rebecca_3d_model_extract (1).glb','granado_espada_rebecca_3d_model_extract.glb',
+  'granado_espada_stia_3d_model_extract (1).glb','granado_espada_stia_3d_model_extract.glb',
+  'half_naked_anime_girl.glb','helen_parr.glb','hentai_girl_ahoga_naked.glb','hentai_girl_naked.glb',
+  'hitem3d (1).glb','hitem3d.glb','hu_tao_swimsuit.glb','keqing_demo_model (1).glb',
+  'keqing_demo_model.glb','keqing_fbx_with_textures.glb','lady_dmc4.glb','lady_in_red_dress.glb',
+  'latch_suit.glb','lauma_naked.glb','lauma_rigged_free.glb',
+  'low_poly_head_-_panda_-_fortnite.glb','melina_naked_tpose_ridged.glb',
+  'mina_dance_of_death_aov.glb','molly.glb','mountain_goat_demo_free_download.glb',
+  'my_1st_character.glb','naked_queen.glb','nefer_rigged_free (1).glb','nefer_rigged_free.glb',
+  'nekomiya_mana_zzz.glb','nicole_demara_nude.glb','nicole_demara_zzz (1).glb',
+  'nicole_demara_zzz.glb','ningguang.glb','ningguang_1_genshin_impact.glb',
+  'ningguang_and_forbidden_water_problem..glb','nude_3.glb','nude_female_goddess.glb','nude_girl.glb',
+  'panda_head.glb','persephone._goddess_of_spring.glb','punk-style_lady_with_pigtails.glb',
+  'raiden__shogun_cyka_blyat__dance.glb','roblox_nsfw_rr34_base.glb',
+  'rouie_arena_of_valor (1).glb','rouie_arena_of_valor (2).glb','rouie_arena_of_valor.glb',
+  'sanuri.glb','scifi_sexy_girl.glb','scrap_baby_from_sister_location_fnaf_6_nsfw.glb',
+  'sexy_anime_girl_3d_model__free_to_use (1).glb','sexy_anime_girl_3d_model__free_to_use (2).glb',
+  'sexy_anime_girl_3d_model__free_to_use (3).glb','sexy_anime_girl_3d_model__free_to_use.glb',
+  'sexy_cartoonish_woman (1).glb','sexy_cartoonish_woman.glb','sexy_elf_ninja.glb',
+  'sexy_frozen_queen.glb','sexy_girl (1).glb','sexy_girl.glb','sexy_girl_03.glb','sexy_girl_04.glb',
+  'sexy_girl_05.glb','sexy_girls.glb','sexy_nude_elf_big_boobs_topless_girl_full_rigged.glb',
+  'sexy_nude_girls_filming_cosplay_horror.glb','sexy_patient_escape.glb',
+  'sexy_salazzle_nsfw_parts_body.glb','sexy_woman.glb','sexycyborg_heels_no_base.glb',
+  'sexy-women.glb','sinestrea_aov.glb','sinestrea_cerulean_princess_aov (1).glb',
+  'sinestrea_cerulean_princess_aov.glb','stardom_wwe_wrestling.glb','still_in_love_port.glb',
+  'succubus_vii.glb','swimsuit__girl_101.glb','tbk11 (1).glb','tbk11.glb',
+  'the_fallen._fanmade_story.glb','tifa_remake_white_outfit.glb',
+  'topless_sexy_girl_with_heels (1).glb','topless_sexy_girl_with_heels.glb',
+  'type0_pose_2_sexy.glb','uterus.glb','uterus__vagina.glb','vagina_temp_2.glb',
+  'valeria_girl_3d_model_free.glb','valkyrie_tyan_nsfw.glb','vamp_vixen.glb',
+  'varesa_rigged_free.glb','veera_aov.glb','violet_demonic_morphed_aov.glb',
+  'violet_dimension_breaker_arena_of_valor.glb','vrc_kipfel_youth.glb',
+  'vrc_rurune_on_bunny_outfit_items_on_booth (1).glb','vrc_rurune_on_bunny_outfit_items_on_booth.glb',
+  'walrider_nudemisaki.glb','wooden_girl.glb','yae_miko.glb',
+  'yidhari_rigged_free (1).glb','yidhari_rigged_free.glb','zelina_naked_riged_tpose.glb',
+];
+
+/* â•â• PRIMARY CHARS â€” tracked in git, always on Vercel â•â• */
+const PRIMARY_CHARS = [
+  { url:'/models/char-aerith.glb',   label:'Aerith'        },
+  { url:'/models/char-anime.glb',    label:'Anime Girl'     },
+  { url:'/models/char-anime2.glb',   label:'Anime Girl 2'   },
+  { url:'/models/char-cyborg.glb',   label:'Cyborg'         },
+  { url:'/models/char-delara.glb',   label:'Delara'         },
+  { url:'/models/char-delke.glb',    label:'Delke'          },
+  { url:'/models/char-girl04.glb',   label:'Girl 04'        },
+  { url:'/models/char-helen.glb',    label:'Helen'          },
+  { url:'/models/char-type0.glb',    label:'Type-0'         },
+  { url:'/models/char-valkyrie.glb', label:'Valkyrie'       },
+  { url:'/models/keqing.glb',        label:'Keqing'         },
+  { url:'/models/yae-miko.glb',      label:'Yae Miko'       },
+];
+
+/* Build CHARS map â€” primary first, then full 164 manifest */
+const CHARS = {};
+PRIMARY_CHARS.forEach((c, i) => {
+  CHARS['p' + i] = { url: c.url, label: c.label, file: c.url };
+});
+ALL_CHARS.forEach((fn, i) => {
+  const key = 'c' + i;
+  CHARS[key] = { url: '/models/' + fn, label: glbLabel(fn), file: fn };
+});
+const CHAR_KEYS = Object.keys(CHARS);
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   RENDERER
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const $ = id => document.getElementById(id);
+const log = s => { $('load-txt').textContent = s; };
+const prog = p => { $('load-fill').style.width = p + '%'; };
+
+const canvas = $('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#0A1633');
+
+const camera = new THREE.PerspectiveCamera(32, window.innerWidth/window.innerHeight, 0.05, 200);
+camera.position.set(0, 1.0, 3.5);
+camera.lookAt(0, 0.9, 0);
+
+const ctl = new OrbitControls(camera, renderer.domElement);
+ctl.enableDamping = true; ctl.dampingFactor = 0.07;
+ctl.minDistance = 0.3; ctl.maxDistance = 12;
+ctl.target.set(0, 0.9, 0);
+ctl.enablePan = false;
+ctl.autoRotate = false;
+ctl.autoRotateSpeed = 0;
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   SCENE ELEMENTS
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const floorGeo = new THREE.CircleGeometry(1.6, 64);
+const floorMat = new THREE.MeshBasicMaterial({ color:0x00DDFF, transparent:true, opacity:0.14, side:THREE.DoubleSide });
+const floor = new THREE.Mesh(floorGeo, floorMat);
+floor.rotation.x = -Math.PI/2;
+scene.add(floor);
+
+const innerDisc = new THREE.Mesh(
+  new THREE.CircleGeometry(0.55,48),
+  new THREE.MeshBasicMaterial({color:0x00DDFF,transparent:true,opacity:0.32,side:THREE.DoubleSide})
+);
+innerDisc.rotation.x = -Math.PI/2;
+innerDisc.position.y = 0.01;
+scene.add(innerDisc);
+
+const ringGroup = new THREE.Group();
+[0.9,1.3,1.7,2.1].forEach((r,i) => {
+  const m = new THREE.Mesh(
+    new THREE.TorusGeometry(r,0.004,4,80),
+    new THREE.MeshBasicMaterial({color:i%2===0?0x00DDFF:0x4488FF,transparent:true,opacity:.45-i*.07})
+  );
+  m.rotation.x = Math.PI/2; m.position.y = 0.015+i*.008;
+  m.userData.spd = (i%2===0?1:-1)*(0.18+i*.08);
+  m.userData.r = r;
+  ringGroup.add(m);
+});
+scene.add(ringGroup);
+
+const pillar = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.55,0.55,5,32,1,true),
+  new THREE.MeshBasicMaterial({color:0x0099CC,transparent:true,opacity:0.05,side:THREE.DoubleSide,depthWrite:false})
+);
+pillar.position.y = 1.2;
+scene.add(pillar);
+
+const N=280, pGeo=new THREE.BufferGeometry(), pPos=new Float32Array(N*3);
+for(let i=0;i<N;i++){pPos[i*3]=(Math.random()-.5)*5;pPos[i*3+1]=Math.random()*4;pPos[i*3+2]=(Math.random()-.5)*5;}
+pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({color:0x00DDFF,size:.022,transparent:true,opacity:.55,sizeAttenuation:true}));
+scene.add(particles);
+
+/* LIGHTS */
+scene.add(new THREE.AmbientLight(0x4477AA, 1.6));
+const keyL = new THREE.DirectionalLight(0xFFEEDD,2.2); keyL.position.set(2,4,3); keyL.castShadow=true; scene.add(keyL);
+const fillL = new THREE.DirectionalLight(0x00CCFF,1.3); fillL.position.set(-3,2,2); scene.add(fillL);
+const rimL  = new THREE.DirectionalLight(0x00DDFF,3.0); rimL.position.set(0,2.5,-4); scene.add(rimL);
+const upL   = new THREE.PointLight(0x00CCFF,9,4.5,1.4); upL.position.set(0,.05,0); scene.add(upL);
+const topL  = new THREE.DirectionalLight(0xFFEEAA,1.4); topL.position.set(0,5,1); scene.add(topL);
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   AI NATURAL MOTION BRAIN
+   Multi-layer organic noise â€” drives body, head, breathing
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const Motion = {
+  state: 'idle',  /* idle | talking | excited | listening */
+
+  /* Layered sine noise: more natural than single frequency */
+  noise(t, layers=[
+    [1.0, 1.0],[2.3, 0.5],[0.37, 0.25],[5.1, 0.1],[0.17, 0.05]
+  ]){
+    return layers.reduce((s,[f,a])=>s+Math.sin(t*f)*a, 0) /
+           layers.reduce((s,[,a])=>s+a, 0);
+  },
+
+  /* Body sway â€” visible organic drift */
+  bodySwayX(t){ return this.noise(t,[
+    [0.3,1],[0.7,0.4],[1.8,0.15],[0.11,0.1]]) * (this.state==='excited'?.08:.035); },
+  bodySwayZ(t){ return this.noise(t+10,[
+    [0.25,1],[0.6,0.35],[2.1,0.12]]) * (this.state==='excited'?.05:.022); },
+
+  /* Breathing â€” visible chest rise */
+  breatheY(t){ return (Math.sin(t*0.9)*0.6 + Math.sin(t*1.8)*0.2 + Math.sin(t*0.3)*0.2) *
+    (this.state==='idle'?.04:.06); },
+
+  /* Head movement â€” clearly visible */
+  headYaw(t){ return this.noise(t+3,[
+    [0.22,1],[0.55,0.5],[1.3,0.2],[3.5,0.05]]) * (this.state==='talking'?.18:.10); },
+  headPitch(t){ return this.noise(t+7,[
+    [0.18,1],[0.45,0.45],[1.1,0.18]]) * (this.state==='talking'?.12:.07); },
+  headRoll(t){ return this.noise(t+15,[
+    [0.14,1],[0.38,0.4]]) * .045; },
+
+  /* Weight shift â€” visible hip sway */
+  hipSway(t){ return Math.sin(t*0.19)*0.045 + Math.sin(t*0.41)*0.018; },
+
+  /* Arm swing â€” brings arms down from T-pose, natural idle sway */
+  armSwingL(t){ return -0.55 + Math.sin(t*0.31)*0.08 + Math.sin(t*0.7)*0.03; },
+  armSwingR(t){ return  0.55 - Math.sin(t*0.31)*0.08 - Math.sin(t*0.7)*0.03; },
+  armFwdL(t){  return  0.12 + Math.sin(t*0.27)*0.04; },
+  armFwdR(t){  return  0.12 + Math.sin(t*0.27+1)*0.04; },
+
+  /* Spine twist â€” torso counter-rotation to hip sway */
+  spineTwist(t){ return Math.sin(t*0.19)*0.022 + Math.sin(t*0.41)*0.009; },
+
+  /* Jaw open amount 0-1 */
+  jawOpen(t){ return this.state==='talking'
+    ? Math.max(0, Math.sin(t*9)*0.5 + Math.sin(t*13)*0.3 + Math.sin(t*7)*0.2)
+    : Math.max(0, Math.sin(t*0.7)*0.08); },
+
+  /* Eye blink â€” periodic natural blink */
+  eyeBlink(t){
+    const cycle = t % 4.2;
+    if(cycle < 0.08) return cycle/0.08;
+    if(cycle < 0.16) return 1-(cycle-0.08)/0.08;
+    return 0;
+  },
+
+  /* Subtle eye look direction */
+  eyeLookX(t){ return Math.sin(t*0.23)*0.15 + Math.sin(t*0.61)*0.05; },
+  eyeLookY(t){ return Math.sin(t*0.19)*0.08 + Math.sin(t*0.44)*0.03; },
+
+  /* Camera target drift â€” camera gently follows body */
+  camDriftX(t){ return Math.sin(t*0.21)*0.06 + Math.sin(t*0.57)*0.02; },
+  camDriftY(t){ return Math.sin(t*0.17)*0.04 + Math.sin(t*0.44)*0.015; },
+
+  setState(s){ this.state=s; $('motion-hud').textContent = `AI MOTION Â· ${s.toUpperCase()}`; },
+};
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   CHARACTER SYSTEM
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+let currentChar = null, currentMixer = null, currentCharKey = null;
+let charInfoBox = null;  /* bounding box info */
+
+/* Material upgrade */
+function upgradeMat(mat, meshName=''){
+  if(!mat) return mat;
+  const n = ((mat.name||'')+' '+meshName).toLowerCase();
+  if(mat.color && mat.color.getHex()===0xffffff && !mat.map){
+    if(['skin','face','body','head','neck','hand','arm','leg'].some(k=>n.includes(k)))
+      mat.color.setHex(0xF5C5A3);
+  }
+  if(mat.envMapIntensity!==undefined) mat.envMapIntensity=0.5;
+  if(['eye','iris','cornea','pupil'].some(k=>n.includes(k))){
+    if(mat.roughness!==undefined) mat.roughness=0.08;
+    if(mat.metalness!==undefined) mat.metalness=0.18;
+  }
+  if(['hair','eyebrow','eyelash'].some(k=>n.includes(k))){
+    mat.side=THREE.DoubleSide;
+    if(mat.roughness!==undefined) mat.roughness=0.6;
+  }
+  if(mat.isMeshBasicMaterial && !mat.transparent){
+    return new THREE.MeshStandardMaterial({
+      map:mat.map, color:mat.color, alphaMap:mat.alphaMap,
+      transparent:mat.transparent, side:mat.side||THREE.FrontSide,
+      roughness:0.7, metalness:0,
+    });
+  }
+  mat.needsUpdate=true;
+  return mat;
+}
+
+/* Collect ALL bones â€” scene graph + skeleton.bones arrays */
+function getAllBones(obj){
+  const seen=new Set(), all=[];
+  obj.traverse(n=>{
+    if((n.isBone||n.type==='Bone') && !seen.has(n.uuid)){ seen.add(n.uuid); all.push(n); }
+    if(n.isSkinnedMesh && n.skeleton){
+      n.skeleton.bones.forEach(b=>{ if(!seen.has(b.uuid)){ seen.add(b.uuid); all.push(b); } });
+    }
+  });
+  return all;
+}
+
+/* Bone search â€” by name list, searches scene AND skeleton.bones */
+function findBone(obj, names){
+  const clean=s=>(s||'').toLowerCase().replace(/[:\s\.\-_]/g,'');
+  for(const n of getAllBones(obj)){
+    const ln=clean(n.name);
+    if(names.some(k=>ln.includes(clean(k)))) return n;
+  }
+  return null;
+}
+
+/* Position-based arm bone finder â€” works on ANY rig, searches skeleton.bones too */
+function findArmBonesByPos(obj, charHeight){
+  const h = charHeight || 1.7;
+  obj.updateMatrixWorld(true); /* ensure world positions are current */
+  let bestL=null, bestLscore=0, bestR=null, bestRscore=0;
+  getAllBones(obj).forEach(n=>{
+    const wp=new THREE.Vector3();
+    n.getWorldPosition(wp);
+    const ry=wp.y/h;
+    if(ry<0.45 || ry>0.93) return; /* not shoulder zone */
+    const ax=Math.abs(wp.x);
+    if(ax<h*0.06) return; /* too close to centerline */
+    /* Score: prefer higher Y (shoulder vs elbow) and moderate X (upper arm vs hand) */
+    const score = ry * 3 - ax/h;
+    if(wp.x < 0 && score > bestLscore){ bestL=n; bestLscore=score; }
+    if(wp.x > 0 && score > bestRscore){ bestR=n; bestRscore=score; }
+  });
+  return {armL:bestL, armR:bestR};
+}
+
+/* Print all bone names to console for debugging */
+function dumpBones(obj){
+  const bones=getAllBones(obj);
+  const names=bones.map(b=>b.name).filter(Boolean);
+  console.log('[AlterCast bones]', names.length, names.join(', '));
+  /* Show first few in HUD */
+  const armL=armLBone?'ARM_L:'+armLBone.name:'ARM_L:?';
+  const armR=armRBone?'ARM_R:'+armRBone.name:'ARM_R:?';
+  $('motion-hud').textContent=`AI MOTION Â· ${bones.length} BONES Â· ${armL} Â· ${armR}`;
+  return names;
+}
+
+async function loadChar(key){
+  if(!CHARS[key]) return;
+
+  /* Dispose previous */
+  if(currentChar){
+    scene.remove(currentChar);
+    currentChar.traverse(n=>{
+      if(n.geometry) n.geometry.dispose();
+      if(n.material){
+        [].concat(n.material).forEach(m=>{
+          Object.values(m).forEach(v=>{if(v?.isTexture)v.dispose();});
+          m.dispose();
+        });
+      }
+    });
+    currentChar=null; currentMixer=null; charInfoBox=null;
+    headBone=null; hipBone=null; spineBone=null;
+    jawBone=null; eyeLBone=null; eyeRBone=null;
+    armLBone=null; armRBone=null; foreArmLBone=null; foreArmRBone=null;
+    morphMeshes=[];
+  }
+
+  $('err').classList.remove('show');
+  $('loading').classList.remove('hide');
+  $('loading').style.display='flex';
+  prog(5); log(`Memuat ${CHARS[key].label}...`);
+  currentCharKey=key;
+
+  /* Highlight button */
+  document.querySelectorAll('.ch').forEach(b=>b.classList.toggle('on',b.dataset.key===key));
+
+  return new Promise((resolve,reject)=>{
+    const loader = new GLTFLoader();
+    loader.load(CHARS[key].url, gltf=>{
+      log('Memproses material...'); prog(80);
+      const obj = gltf.scene;
+      obj.traverse(n=>{
+        if(!n.isMesh) return;
+        n.castShadow=true; n.receiveShadow=true;
+        n.material = Array.isArray(n.material)
+          ? n.material.map(m=>upgradeMat(m,n.name))
+          : upgradeMat(n.material,n.name);
+      });
+
+      /* Auto-scale to ~1.7 units height */
+      const box=new THREE.Box3().setFromObject(obj);
+      const sz=box.getSize(new THREE.Vector3());
+      const maxDim=Math.max(sz.x,sz.y,sz.z);
+      const scale = maxDim>0 ? 1.7/maxDim : 1;
+      obj.scale.setScalar(scale);
+      const box2=new THREE.Box3().setFromObject(obj);
+      const cen2=box2.getCenter(new THREE.Vector3());
+      obj.position.x -= cen2.x;
+      obj.position.z -= cen2.z;
+      obj.position.y -= box2.min.y;
+      obj.userData.baseY = obj.position.y;
+
+      scene.add(obj);
+      currentChar=obj;
+      charInfoBox = { box:box2, center:cen2, size:sz };
+
+      /* Search bones for AI motion */
+      headBone  = findBone(obj,['head','skull','neck_01','neck1']);
+      hipBone   = findBone(obj,['hips','pelvis','hip','root','bip01']);
+      spineBone = findBone(obj,['spine','chest','torso']);
+      jawBone      = findBone(obj,['jaw','jaw_lower','lowerjaw','chin','mandible']);
+      eyeLBone     = findBone(obj,['eye_l','eyeleft','eye.l','lefteye','l_eye']);
+      eyeRBone     = findBone(obj,['eye_r','eyeright','eye.r','righteye','r_eye']);
+      /* Arm bones â€” comprehensive name list + position-based fallback */
+      armLBone  = findBone(obj,['leftarm','left_arm','arm_l','upperarm_l','larm','shoulderl','shoulder_l','clavicle_l','arm.l','l_arm','l_shoulder','mixamorig:leftarm','j_bip_l_upperarm','upper_arm.l','leftupperarm','lshoulder','lArm']);
+      armRBone  = findBone(obj,['rightarm','right_arm','arm_r','upperarm_r','rarm','shoulderr','shoulder_r','clavicle_r','arm.r','r_arm','r_shoulder','mixamorig:rightarm','j_bip_r_upperarm','upper_arm.r','rightupperarm','rshoulder','rArm']);
+      foreArmLBone = findBone(obj,['leftforearm','forearm_l','lforearm','mixamorig:leftforearm','elbow_l','forearm.l','forearm_l','lforearm','lower_arm.l','j_bip_l_lowerarm']);
+      foreArmRBone = findBone(obj,['rightforearm','forearm_r','rforearm','mixamorig:rightforearm','elbow_r','forearm.r','forearm_r','rforearm','lower_arm.r','j_bip_r_lowerarm']);
+
+      /* Position-based fallback if names didn't match */
+      if(!armLBone || !armRBone){
+        const box3=new THREE.Box3().setFromObject(obj);
+        const h3=box3.getSize(new THREE.Vector3()).y;
+        const pos=findArmBonesByPos(obj, h3);
+        if(!armLBone) armLBone=pos.armL;
+        if(!armRBone) armRBone=pos.armR;
+      }
+      dumpBones(obj); /* log bone names to console */
+
+      /* Collect morph target meshes (jaw, eyes, face expressions) */
+      morphMeshes=[];
+      obj.traverse(n=>{
+        if(n.isMesh && n.morphTargetDictionary && Object.keys(n.morphTargetDictionary).length>0){
+          morphMeshes.push(n);
+        }
+      });
+      isProcedural=false;
+
+      /* Animations */
+      if(gltf.animations?.length){
+        currentMixer=new THREE.AnimationMixer(obj);
+        const clip=THREE.AnimationClip.findByName(gltf.animations,'idle') || gltf.animations[0];
+        const action=currentMixer.clipAction(clip);
+        action.timeScale=0.85;
+        action.play();
+      }
+
+      /* Apply cam */
+      applyCam(currentCamPreset);
+      prog(100); log('Avatar siap!');
+      setTimeout(()=>{$('loading').classList.add('hide');setTimeout(()=>$('loading').style.display='none',700);},200);
+      $('status').textContent = `HOLO Â· ${CHARS[key].label} Â· ${key.replace('c','')}/${CHAR_KEYS.length}`;
+      resolve(obj);
+    }, p=>{
+      const pct = p.total ? Math.round(p.loaded/p.total*72)+5 : 50;
+      prog(pct); log(`${CHARS[key].label}: ${pct}%`);
+    }, err=>{
+      console.warn('Load fail, using procedural fallback:',key, err.message);
+      loadProceduralChar(key);
+      resolve(null);
+    });
+  });
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PROCEDURAL HUMANOID â€” always works, no GLB needed
+   Proves AI motion system even when files not hosted
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+function loadProceduralChar(key){
+  /* Dispose previous */
+  if(currentChar){
+    scene.remove(currentChar);
+    currentChar.traverse(n=>{ if(n.geometry)n.geometry.dispose(); });
+    currentChar=null; currentMixer=null;
+    headBone=null; hipBone=null; spineBone=null;
+    jawBone=null; eyeLBone=null; eyeRBone=null;
+    morphMeshes=[];
+  }
+  isProcedural=true;
+  $('err').classList.remove('show');
+  $('loading').classList.add('hide');
+  setTimeout(()=>$('loading').style.display='none',300);
+
+  const root = new THREE.Group();
+  const skinMat  = new THREE.MeshStandardMaterial({color:0xF5C5A3,roughness:.6,metalness:0});
+  const clothMat = new THREE.MeshStandardMaterial({color:0x1a2540,roughness:.7,metalness:.08});
+  const hairMat  = new THREE.MeshStandardMaterial({color:0x1A0A00,roughness:.8,metalness:0});
+  const eyeWhMat = new THREE.MeshStandardMaterial({color:0xFFFFFF,roughness:.1,metalness:0});
+  const eyeIrisMat=new THREE.MeshStandardMaterial({color:0x1155BB,roughness:.08,metalness:.1});
+  const pupilMat = new THREE.MeshStandardMaterial({color:0x050505,roughness:.1,metalness:.05});
+
+  const mk=(geo,mat,px=0,py=0,pz=0)=>{
+    const m=new THREE.Mesh(geo,mat); m.position.set(px,py,pz);
+    m.castShadow=true; return m;
+  };
+
+  /* TORSO */
+  const torsoGroup=new THREE.Group(); torsoGroup.position.y=1.05;
+  torsoGroup.add(mk(new THREE.BoxGeometry(.32,.52,.18),clothMat,0,0,0));
+  root.add(torsoGroup); spineBone=torsoGroup;
+
+  /* HIP */
+  const hipGroup=new THREE.Group(); hipGroup.position.y=0.78;
+  hipGroup.add(mk(new THREE.BoxGeometry(.30,.22,.16),clothMat));
+  root.add(hipGroup); hipBone=hipGroup;
+
+  /* LEGS */
+  const mkLeg=(sx)=>{
+    const lg=new THREE.Group(); lg.position.set(sx*.12,.55,0);
+    lg.add(mk(new THREE.CylinderGeometry(.065,.075,.42,10),clothMat,0,0,0));
+    lg.add(mk(new THREE.CylinderGeometry(.055,.065,.40,10),clothMat,0,-.42,0));
+    lg.add(mk(new THREE.BoxGeometry(.11,.06,.18),skinMat,0,-.65,.04));
+    root.add(lg);
+  };
+  mkLeg(-1); mkLeg(1);
+
+  /* ARMS */
+  const mkArm=(sx)=>{
+    const ag=new THREE.Group(); ag.position.set(sx*.21,1.20,0);
+    ag.add(mk(new THREE.CylinderGeometry(.045,.055,.32,8),clothMat,0,0,0));
+    ag.add(mk(new THREE.CylinderGeometry(.035,.045,.28,8),skinMat,0,-.31,0));
+    ag.add(mk(new THREE.SphereGeometry(.04,6,6),skinMat,0,-.48,0));
+    root.add(ag);
+  };
+  mkArm(-1); mkArm(1);
+
+  /* NECK */
+  const neckGroup=new THREE.Group(); neckGroup.position.y=1.35;
+  neckGroup.add(mk(new THREE.CylinderGeometry(.055,.065,.14,10),skinMat));
+  root.add(neckGroup);
+
+  /* HEAD GROUP */
+  const headGroup=new THREE.Group(); headGroup.position.y=1.57;
+  const headMesh=mk(new THREE.SphereGeometry(.14,18,14),skinMat,0,.02,0);
+  headGroup.add(headMesh);
+
+  /* HAIR */
+  headGroup.add(mk(new THREE.SphereGeometry(.148,16,12),hairMat,0,.06,0));
+  const hairFront=mk(new THREE.BoxGeometry(.29,.06,.1),hairMat,0,.16,0.08);
+  headGroup.add(hairFront);
+
+  /* EYES */
+  const mkEye=(sx)=>{
+    const eg=new THREE.Group(); eg.position.set(sx*.055,.04,.12);
+    eg.add(mk(new THREE.SphereGeometry(.028,10,8),eyeWhMat));
+    eg.add(mk(new THREE.SphereGeometry(.018,8,7),eyeIrisMat,0,0,.016));
+    eg.add(mk(new THREE.SphereGeometry(.011,8,7),pupilMat,0,0,.026));
+    /* Upper eyelid (lid that closes) */
+    const lid=mk(new THREE.BoxGeometry(.06,.012,.006),new THREE.MeshStandardMaterial({color:0xE8B4A0,roughness:.6}),0,.022,.024);
+    eg.add(lid);
+    eg.userData.lid=lid;
+    return eg;
+  };
+  const eyeLG=mkEye(-1), eyeRG=mkEye(1);
+  headGroup.add(eyeLG); headGroup.add(eyeRG);
+  eyeLBone=eyeLG; eyeRBone=eyeRG;
+  procEyeL=eyeRG.userData.lid; procEyeR=eyeRG.userData.lid;
+
+  /* NOSE */
+  headGroup.add(mk(new THREE.ConeGeometry(.018,.04,6),skinMat,0,-.01,.13));
+
+  /* UPPER LIP */
+  headGroup.add(mk(new THREE.BoxGeometry(.075,.016,.008),skinMat,0,-.07,.13));
+
+  /* JAW GROUP â€” rotates for mouth open/close */
+  const jawGroup=new THREE.Group(); jawGroup.position.set(0,-.065,.06);
+  jawGroup.add(mk(new THREE.BoxGeometry(.09,.03,.12),skinMat,0,-.012,-.03));
+  jawGroup.add(mk(new THREE.BoxGeometry(.062,.016,.008),skinMat,0,-.02,.08)); /* lower lip */
+  headGroup.add(jawGroup); jawBone=jawGroup; procJaw=jawGroup;
+
+  root.add(headGroup); headBone=headGroup;
+
+  /* LABEL */
+  const label=CHARS[key]?.label||'Procedural';
+  const canvas2d=document.createElement('canvas'); canvas2d.width=256; canvas2d.height=64;
+  const ctx2=canvas2d.getContext('2d');
+  ctx2.fillStyle='rgba(245,194,140,0.9)'; ctx2.font='bold 20px Inter,sans-serif';
+  ctx2.textAlign='center'; ctx2.fillText(label,128,40);
+  const sprTex=new THREE.CanvasTexture(canvas2d);
+  const sprMat=new THREE.SpriteMaterial({map:sprTex,transparent:true,opacity:.8});
+  const spr=new THREE.Sprite(sprMat); spr.scale.set(.9,.23,1); spr.position.y=2.0;
+  root.add(spr);
+
+  /* Auto-scale & center same as GLB */
+  const box=new THREE.Box3().setFromObject(root);
+  const sz=box.getSize(new THREE.Vector3());
+  const scl=1.7/Math.max(sz.x,sz.y,sz.z);
+  root.scale.setScalar(scl);
+  const box2=new THREE.Box3().setFromObject(root);
+  root.position.y -= box2.min.y;
+  root.userData.baseY=root.position.y;
+
+  scene.add(root);
+  currentChar=root;
+  applyCam(currentCamPreset);
+  $('status').textContent=`HOLO Â· ${label} Â· AI:PROCEDURAL`;
+  currentCharKey=key;
+  document.querySelectorAll('.ch').forEach(b=>b.classList.toggle('on',b.dataset.key===key));
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   CAMERA PRESETS + AUTO-TRACKING
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+let currentCamPreset='bust', spinSpeed=0;
+let headBone=null, hipBone=null, spineBone=null;
+let jawBone=null, eyeLBone=null, eyeRBone=null;
+let armLBone=null, armRBone=null, foreArmLBone=null, foreArmRBone=null;
+let morphMeshes=[]; /* meshes with morph targets */
+let isProcedural=false; /* true when showing built-in fallback */
+let procJaw=null, procEyeL=null, procEyeR=null; /* procedural part refs */
+
+/* Camera soft-tracking target (lerped) */
+const camTargetLook = new THREE.Vector3(0,0.9,0);
+const camTargetPos  = new THREE.Vector3(0,1.0,3.5);
+
+function applyCam(preset){
+  if(!currentChar) return;
+  const box=new THREE.Box3().setFromObject(currentChar);
+  const cen=box.getCenter(new THREE.Vector3());
+  const sz=box.getSize(new THREE.Vector3()); const h=sz.y;
+  let target,dist,fov;
+  if(preset==='face'){
+    target=new THREE.Vector3(cen.x,cen.y+h*.44,cen.z); dist=h*.65; fov=20;
+  } else if(preset==='full'){
+    target=new THREE.Vector3(cen.x,cen.y,cen.z); dist=h*1.5; fov=30;
+  } else { /* bust */
+    target=new THREE.Vector3(cen.x,cen.y+h*.16,cen.z); dist=h*1.55; fov=30;
+  }
+  ctl.target.copy(target);
+  camTargetLook.copy(target);
+  camera.position.set(0,target.y+h*.04,dist);
+  camTargetPos.copy(camera.position);
+  camera.fov=fov; camera.updateProjectionMatrix();
+  ctl.update();
+  currentCamPreset=preset;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   AUTO-CYCLE
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+let autoCycle=false, autoIdx=0, autoTimer=null, autoBarStart=0;
+const AUTO_INTERVAL=35000; /* 35s per char */
+
+function startAuto(){
+  autoCycle=true;
+  $('auto-btn').textContent='Cycle: ON';
+  $('auto-btn').classList.add('on');
+  scheduleNext(false);
+}
+function stopAuto(){
+  autoCycle=false;
+  $('auto-btn').textContent='Cycle: OFF';
+  $('auto-btn').classList.remove('on');
+  clearTimeout(autoTimer);
+  $('auto-bar').style.width='0%';
+  $('auto-bar').style.transition='none';
+}
+function scheduleNext(advance=true){
+  clearTimeout(autoTimer);
+  if(advance){ autoIdx=(autoIdx+1)%CHAR_KEYS.length; }
+  const key=CHAR_KEYS[autoIdx];
+  loadChar(key).catch(()=>scheduleNext(true));
+  $('auto-bar').style.transition='none'; $('auto-bar').style.width='0%';
+  requestAnimationFrame(()=>{
+    $('auto-bar').style.transition=`width ${AUTO_INTERVAL}ms linear`;
+    $('auto-bar').style.width='100%';
+  });
+  autoBarStart=Date.now();
+  autoTimer=setTimeout(()=>{ if(autoCycle) scheduleNext(true); }, AUTO_INTERVAL);
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   BUILD CHARACTER LIST UI
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const charList = $('char-list');
+CHAR_KEYS.forEach((key,i)=>{
+  const b=document.createElement('div');
+  b.className='ch'; b.dataset.key=key;
+  b.innerHTML=`<span class="ch-num">${String(i+1).padStart(3,'0')}</span><span class="ch-name">${CHARS[key].label}</span>`;
+  b.addEventListener('click',()=>{
+    stopAuto();
+    autoIdx=i;
+    loadChar(key).catch(()=>{});
+  });
+  charList.appendChild(b);
+});
+$('char-count').textContent=`${CHAR_KEYS.length} KARAKTER`;
+
+/* Search filter */
+$('char-search').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase();
+  document.querySelectorAll('.ch').forEach(b=>{
+    b.style.display=b.querySelector('.ch-name').textContent.toLowerCase().includes(q)?'flex':'none';
+  });
+  $('char-count').textContent = q
+    ? `${[...document.querySelectorAll('.ch')].filter(b=>b.style.display!=='none').length} hasil`
+    : `${CHAR_KEYS.length} KARAKTER`;
+});
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   BACKGROUND
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+let currentBg='holo';
+function setBg(bg){
+  currentBg=bg;
+  if(bg==='holo'){
+    scene.background=new THREE.Color('#0A1633');
+    [ringGroup,floor,innerDisc,pillar,particles].forEach(x=>x.visible=true);
+    renderer.setClearAlpha(1);
+  } else if(bg==='dark'){
+    scene.background=new THREE.Color('#000');
+    [ringGroup,floor,innerDisc,pillar].forEach(x=>x.visible=false);
+    particles.visible=true; renderer.setClearAlpha(1);
+  } else if(bg==='clear'){
+    scene.background=null;
+    [ringGroup,floor,innerDisc,pillar,particles].forEach(x=>x.visible=false);
+    renderer.setClearAlpha(0);
+  } else if(bg==='chroma'){
+    scene.background=new THREE.Color('#00B140');
+    [ringGroup,floor,innerDisc,pillar,particles].forEach(x=>x.visible=false);
+    renderer.setClearAlpha(1);
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   RENDER LOOP
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const clock=new THREE.Clock();
+let fps=0,fF=0,fT=performance.now();
+let isTalking=false;
+
+function animate(){
+  requestAnimationFrame(animate);
+  const dt=clock.getDelta();
+  const t=clock.getElapsedTime();
+
+  /* Floor pulse */
+  floorMat.opacity=0.14+Math.sin(t*1.1)*.06;
+
+  /* Rings */
+  ringGroup.children.forEach(r=>{
+    r.rotation.z+=r.userData.spd*dt;
+    r.position.y=0.015+r.userData.r*.004+Math.sin(t+r.userData.r*2.5)*.018;
+  });
+
+  /* Body-level motion BEFORE mixer (ok to override) */
+  if(currentChar){
+    currentChar.rotation.z = Motion.bodySwayX(t);
+    currentChar.rotation.x = Motion.bodySwayZ(t);
+    currentChar.position.y = (currentChar.userData.baseY||0) + Motion.breatheY(t);
+    currentChar.position.x = Motion.hipSway(t);
+  }
+
+  /* !! MIXER MUST RUN BEFORE BONE OVERRIDES !! */
+  if(currentMixer){ currentMixer.update(dt); }
+
+  /* Bone overrides â€” applied AFTER mixer so AI wins over T-pose keyframes */
+  if(currentChar){
+    /* Head bone */
+    if(headBone){
+      headBone.rotation.y = Motion.headYaw(t);
+      headBone.rotation.x = Motion.headPitch(t);
+      headBone.rotation.z = Motion.headRoll(t);
+    }
+    /* Spine */
+    if(spineBone){
+      spineBone.rotation.z = Motion.bodySwayX(t) * 0.5;
+      spineBone.rotation.x = Motion.bodySwayZ(t) * 0.4;
+      spineBone.rotation.y = Motion.spineTwist(t);
+    }
+    /* Hips */
+    if(hipBone){
+      hipBone.rotation.z = Motion.hipSway(t) * 0.6;
+    }
+
+    /* ARM BONES â€” bring down from T-pose, applied AFTER mixer override */
+    if(armLBone){
+      armLBone.rotation.z  = Motion.armSwingL(t);
+      armLBone.rotation.x  = Motion.armFwdL(t);
+      armLBone.rotation.y  = Math.sin(t*0.23)*0.06;
+    }
+    if(armRBone){
+      armRBone.rotation.z  = Motion.armSwingR(t);
+      armRBone.rotation.x  = Motion.armFwdR(t);
+      armRBone.rotation.y  = Math.sin(t*0.23+1)*0.06;
+    }
+    if(foreArmLBone){
+      foreArmLBone.rotation.z = Math.sin(t*0.31)*0.07;
+      foreArmLBone.rotation.y = Math.sin(t*0.44)*0.05;
+    }
+    if(foreArmRBone){
+      foreArmRBone.rotation.z = Math.sin(t*0.31+2)*0.07;
+      foreArmRBone.rotation.y = Math.sin(t*0.44+1)*0.05;
+    }
+
+    /* JAW BONE â€” mouth open/close, after mixer */
+    const jaw = Motion.jawOpen(t);
+    if(jawBone){
+      jawBone.rotation.x = jaw * 0.35;
+    }
+
+    /* EYE BONES â€” look direction */
+    const blk = Motion.eyeBlink(t);
+    const elx = Motion.eyeLookX(t), ely = Motion.eyeLookY(t);
+    if(eyeLBone){ eyeLBone.rotation.y = elx; eyeLBone.rotation.x = ely; }
+    if(eyeRBone){ eyeRBone.rotation.y = elx; eyeRBone.rotation.x = ely; }
+
+    /* PROCEDURAL eyelid close */
+    if(isProcedural){
+      if(procEyeL){ procEyeL.scale.y = 1 + blk*5; procEyeL.position.y = 0.022 - blk*0.016; }
+      if(procEyeR){ procEyeR.scale.y = 1 + blk*5; procEyeR.position.y = 0.022 - blk*0.016; }
+    }
+
+    /* MORPH TARGETS â€” drive jaw/eye blend shapes on GLB characters */
+    morphMeshes.forEach(mesh=>{
+      const d=mesh.morphTargetDictionary;
+      const infl=mesh.morphTargetInfluences;
+      const set=(names,v)=>{ names.forEach(n=>{ if(d[n]!==undefined) infl[d[n]]=Math.max(0,Math.min(1,v)); }); };
+      /* Jaw / mouth */
+      set(['jawOpen','mouthOpen','Mouth_Open','jaw_open','A'],jaw);
+      /* Eye blink */
+      set(['eyeBlinkLeft','blink_L','eyesClosed_L','Eye_Blink_L'],blk);
+      set(['eyeBlinkRight','blink_R','eyesClosed_R','Eye_Blink_R'],blk);
+      /* Eye look */
+      set(['eyeLookUpLeft','eyeLookUpRight'],Math.max(0,-ely));
+      set(['eyeLookDownLeft','eyeLookDownRight'],Math.max(0,ely));
+      set(['eyeLookInLeft','eyeLookOutRight'],Math.max(0,elx));
+      set(['eyeLookOutLeft','eyeLookInRight'],Math.max(0,-elx));
+    });
+
+    /* Camera soft-tracking â€” follow head/body drift gently */
+    if(spinSpeed===0 && !ctl.autoRotate){
+      const driftX = Motion.camDriftX(t) * 0.015;
+      const driftY = Motion.camDriftY(t) * 0.010;
+      ctl.target.x += (camTargetLook.x + driftX - ctl.target.x) * 0.012;
+      ctl.target.y += (camTargetLook.y + driftY - ctl.target.y) * 0.010;
+    }
+  }
+
+  /* Auto-rotate + render */
+  ctl.autoRotateSpeed=spinSpeed;
+  ctl.update();
+  renderer.render(scene,camera);
+
+  fF++;
+  const now=performance.now();
+  if(now-fT>=1000){
+    fps=fF; fF=0; fT=now;
+    if(currentChar){
+      $('status').textContent=`HOLO Â· ${fps}FPS Â· ${CHARS[currentCharKey]?.label||'OK'} Â· AI:${Motion.state.toUpperCase()}`;
+    }
+  }
+}
+animate();
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   UI WIRING
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+window.addEventListener('resize',()=>{
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,window.innerHeight);
+});
+
+document.querySelectorAll('[data-bg]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-bg]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); setBg(b.dataset.bg);
+}));
+
+document.querySelectorAll('[data-cam]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-cam]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); applyCam(b.dataset.cam);
+}));
+
+document.querySelectorAll('[data-spin]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-spin]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  spinSpeed={off:0,slow:0.55,fast:2.4}[b.dataset.spin];
+  ctl.autoRotate=spinSpeed!==0;
+}));
+
+$('auto-btn').addEventListener('click',()=>{ autoCycle?stopAuto():startAuto(); });
+$('err-next').addEventListener('click',()=>{ $('err').classList.remove('show'); scheduleNext(true); });
+
+/* TTS */
+const sc=$('sc'), rdBtn=$('rd'), stBtn=$('st'), bub=$('bub');
+function readScript(txt){
+  if(!txt.trim()) return;
+  window.speechSynthesis.cancel();
+  isTalking=true; Motion.setState('talking');
+  rdBtn.style.display='none'; stBtn.style.display='inline-block';
+  bub.textContent=txt.length>80?txt.slice(0,80)+'...':txt;
+  bub.classList.add('show');
+  const u=new SpeechSynthesisUtterance(txt);
+  u.lang='id-ID'; u.rate=1.05;
+  u.onend=stopTTS;
+  window.speechSynthesis.speak(u);
+}
+function stopTTS(){
+  window.speechSynthesis.cancel();
+  isTalking=false; Motion.setState('idle');
+  rdBtn.style.display='inline-block'; stBtn.style.display='none';
+  bub.classList.remove('show');
+}
+rdBtn.addEventListener('click',()=>readScript(sc.value));
+stBtn.addEventListener('click',stopTTS);
+sc.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();readScript(sc.value);} e.stopPropagation(); });
+
+/* AI button */
+$('ai-btn').addEventListener('click',async()=>{
+  const txt=sc.value.trim(); if(!txt) return;
+  const btn=$('ai-btn'); btn.textContent='...';
+  Motion.setState('listening');
+  try{
+    const r=await window.claude?.complete(`Kamu AI streamer santai. Balas chat berikut dalam 1-2 kalimat singkat dan ekspresif: "${txt}"`);
+    if(r){ sc.value=r; readScript(r); }
+  }catch(e){ Motion.setState('idle'); }
+  btn.textContent='AI';
+});
+
+/* Comments */
+const cmtsEl=$('cmts');
+function addCmt(user,text,color='#F5C28C'){
+  const el=document.createElement('div');
+  el.className='cmt'; el.style.borderLeft=`3px solid ${color}`;
+  el.innerHTML=`<div class="cmt-av" style="background:${color}">${user[0].toUpperCase()}</div><div><div class="cmt-u" style="color:${color}">${user}</div><div class="cmt-t">${text}</div></div>`;
+  cmtsEl.prepend(el);
+  while(cmtsEl.children.length>6) cmtsEl.lastElementChild.remove();
+  setTimeout(()=>el.remove(),9000);
+}
+setTimeout(()=>{
+  [['Nayr','#F5C28C','Avatar-nya keren banget!'],['viewer02','#E08968','Bisa ganti karakter lain?'],['livefan','#00FF88','164 karakter mantap!']]
+    .forEach(([u,c,t],i)=>setTimeout(()=>addCmt(u,t,c),(i+1)*2400));
+},2000);
+
+/* Controls visibility */
+let hideT;
+const ctrlEl=$('ctrl'), cpEl=$('char-panel'), wmEl=$('wm'), mhEl=$('motion-hud');
+function showCtrl(){
+  ctrlEl.classList.add('show'); cpEl.classList.add('show');
+  wmEl.classList.add('hide'); mhEl.classList.remove('hide');
+  clearTimeout(hideT);
+  hideT=setTimeout(()=>{
+    ctrlEl.classList.remove('show'); cpEl.classList.remove('show');
+    wmEl.classList.remove('hide'); mhEl.classList.add('hide');
+  },5000);
+}
+document.addEventListener('mousemove',showCtrl);
+document.addEventListener('keydown',showCtrl);
+document.addEventListener('touchstart',showCtrl);
+setTimeout(showCtrl,800);
+
+/* Back */
+$('bk').addEventListener('click',()=>{
+  window.parent?.postMessage({type:'PERFORMER_BACK'},'*');
+  if(window.parent===window) window.history.back();
+});
+
+/* postMessage API */
+window.addEventListener('message',e=>{
+  const {type,data}=e.data||{};
+  if(type==='READ_SCRIPT')  readScript(data.text);
+  if(type==='STOP_TTS')     stopTTS();
+  if(type==='ADD_COMMENT')  addCmt(data.user,data.text,data.color||'#F5C28C');
+  if(type==='SET_BG')       setBg(data.bg);
+  if(type==='SET_CHAR'){
+    const idx=CHAR_KEYS.findIndex(k=>CHARS[k].file===data.char||CHARS[k].label===data.char);
+    if(idx>=0) loadChar(CHAR_KEYS[idx]).catch(()=>{});
+  }
+  if(type==='NEXT_CHAR') scheduleNext(true);
+  if(type==='AUTO_CYCLE') { data.on?startAuto():stopAuto(); }
+  if(type==='SET_MOTION') Motion.setState(data.state||'idle');
+});
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   INIT â€” load first character
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+loadChar(CHAR_KEYS[0]).then(()=>{
+  autoIdx=0;
+  window.parent?.postMessage({type:'AVATAR_READY',data:{total:CHAR_KEYS.length}},'*');
+}).catch(()=>{ autoIdx=1; scheduleNext(false); });
+
+console.log('%cAlterCast Holographic Engine v6 â€” 164 chars â€” AI Motion Brain','color:#F5C28C;font-weight:bold;font-size:13px');
+</script>
+</body>
+</html>
+
+
