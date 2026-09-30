@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blender 3D Studio | Editor & Skin Inspector</title>
-  <meta name="description" content="Blender-like 3D Web Studio dengan simulasi shader kulit realistis, haptic touch, dan kontrol viewport interaktif.">
-
-  <!-- Google Fonts -->
+  <title>Blender 3D Studio | Interactive WebGL Engine</title>
+  <meta name="description" content="Blender 3D Studio di browser dengan kontrol kamera native, realistic skin shader, tactile elasticity touch physics, inspeksi topologi mesh, dan animation timeline scrubber.">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,16 +32,25 @@
         <li><button id="btn-recenter" class="menu-item-btn">Pusatkan Avatar</button></li>
       </ul>
 
-      <nav class="workspace-tabs">
-        <button class="ws-tab active">Layout</button>
-        <button class="ws-tab">Modeling</button>
-        <button class="ws-tab">Sculpt & Skin</button>
-        <button class="ws-tab">Shading</button>
+      <nav class="workspace-tabs" id="workspace-tabs-nav">
+        <button class="ws-tab active" data-tab="layout">Layout</button>
+        <button class="ws-tab" data-tab="modeling">Modeling</button>
+        <button class="ws-tab" data-tab="sculpt">Sculpt & Skin</button>
+        <button class="ws-tab" data-tab="shading">Shading</button>
       </nav>
     </div>
 
     <div class="topbar-right">
-      <button id="btn-export-glb" class="studio-btn primary" title="Unduh hasil modifikasi model 3D">
+      <button id="btn-render-png" class="studio-btn" title="Ambil snapshot gambar resolusi tinggi">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        <span>Render PNG</span>
+      </button>
+
+      <button id="btn-export-glb" class="studio-btn primary" title="Unduh hasil modifikasi model 3D format GLB">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
@@ -59,16 +68,46 @@
     <div id="viewport-container" class="viewport-container">
       <canvas id="threejs-canvas"></canvas>
 
+      <!-- Drag & Drop Zone Overlay -->
+      <div id="viewport-dropzone" class="viewport-dropzone">
+        <div class="dropzone-box">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <div style="font-weight: 700; font-size: 14px;">Lepaskan File .GLB / .GLTF di Sini</div>
+          <div style="font-size: 11px; color: #aaaaaa;">Model akan dimuat dan dipusatkan secara instan</div>
+        </div>
+      </div>
+
       <!-- HUD Top Left -->
       <div class="viewport-overlay overlay-top-left">
         <div id="hud-model-title" class="hud-model-title">Female Torso Base Mesh</div>
         <div id="hud-vertices">Verts: 0</div>
         <div id="hud-triangles">Tris: 0</div>
+        <div id="hud-bounds">Ukuran: 0.0m x 0.0m x 0.0m</div>
         <div>Grid: 0.5m Blender Scale</div>
       </div>
 
-      <!-- HUD Top Right (Orientation Gizmo) -->
+      <!-- HUD Top Right (Orientation Gizmo & Shading Modes) -->
       <div class="viewport-overlay overlay-top-right">
+        <!-- Viewport Shading Modes -->
+        <div class="shading-modes" id="shading-modes-bar">
+          <button class="shading-btn" data-mode="wireframe" title="Shading: Wireframe">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><line x1="3.6" y1="9" x2="20.4" y2="9"></line><line x1="3.6" y1="15" x2="20.4" y2="15"></line><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+          </button>
+          <button class="shading-btn" data-mode="solid" title="Shading: Solid (Clay)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg>
+          </button>
+          <button class="shading-btn active" data-mode="material" title="Shading: Material Preview">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="12" r="9"></circle></svg>
+          </button>
+          <button class="shading-btn" data-mode="rendered" title="Shading: Rendered (Studio Lights)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+        </div>
+
         <div class="orientation-widget">
           <button id="gizmo-front" class="gizmo-btn y-axis" title="Tampak Depan (Numpad 1)">Depan</button>
           <button id="gizmo-side" class="gizmo-btn x-axis" title="Tampak Samping (Numpad 3)">Samping</button>
@@ -89,23 +128,74 @@
     </div>
 
     <!-- Sidebar Editor Panel -->
-    <aside class="studio-sidebar">
+    <aside class="studio-sidebar" id="studio-sidebar">
 
-      <!-- Model Selection -->
-      <div class="sidebar-section">
+      <!-- SECTION: MODEL SELECTION (Visible in all tabs) -->
+      <div class="sidebar-section tab-section" data-tab-section="layout modeling sculpt shading">
         <div class="sidebar-section-title">
-          <span>Pilih Model 3D</span>
+          <span>PILIH MODEL 3D</span>
+          <span id="active-tab-badge" class="tab-badge">LAYOUT</span>
         </div>
         <select id="studio-model-select" class="model-select-dropdown" aria-label="Pilih Model"></select>
-        <p style="font-size: 11px; color: #888888; line-height: 1.4;">
-          Untuk mencoba file lain dari 188 model di <code>E:\0download blender</code>, gunakan tombol <strong>Buka File</strong> di atas.
+        <p style="font-size: 11px; color: #888888; line-height: 1.4; margin-top: 4px;">
+          Untuk mencoba file lain dari 188 model di <code>E:\0download blender</code>, gunakan tombol <strong>Buka File</strong> di atas atau drag & drop file ke viewport.
         </p>
       </div>
 
-      <!-- Realistic Skin Shader -->
-      <div class="sidebar-section">
+      <!-- SECTION: SCENE & CAMERA (Layout Tab) -->
+      <div class="sidebar-section tab-section" data-tab-section="layout">
         <div class="sidebar-section-title">
-          <span>Shader & Kulit Realistis</span>
+          <span>KAMERA & VIEWPORT</span>
+        </div>
+        <div class="control-group">
+          <div class="property-row">
+            <span class="property-label">Proyeksi Kamera:</span>
+            <button id="btn-toggle-camera-type" class="studio-btn" style="padding: 2px 8px; font-size: 11px;">Perspektif</button>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Lantai Grid Blender:</span>
+            <input type="checkbox" id="toggle-grid" checked style="accent-color: #f57920; cursor: pointer;">
+          </div>
+          <div class="property-row">
+            <span class="property-label">Sumbu Koordinat (Axes):</span>
+            <input type="checkbox" id="toggle-axes" checked style="accent-color: #f57920; cursor: pointer;">
+          </div>
+          <div class="property-row">
+            <span class="property-label">Bayangan (Shadows):</span>
+            <input type="checkbox" id="toggle-shadows" checked style="accent-color: #f57920; cursor: pointer;">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: MESH TOPOLOGY & WIREFRAME (Modeling Tab) -->
+      <div class="sidebar-section tab-section" data-tab-section="modeling">
+        <div class="sidebar-section-title">
+          <span>TOPOLOGI & MODELING</span>
+        </div>
+        <div class="control-group">
+          <div class="property-row">
+            <span class="property-label">Mode Wireframe:</span>
+            <input type="checkbox" id="toggle-modeling-wireframe" style="accent-color: #f57920; cursor: pointer;">
+          </div>
+          <div class="property-row">
+            <span class="property-label">Warna Wireframe:</span>
+            <input type="color" id="wireframe-color-picker" class="color-picker-input" value="#00ffff" aria-label="Warna Wireframe">
+          </div>
+          <div class="property-row">
+            <span class="property-label">Shading Permukaan:</span>
+            <button id="btn-toggle-flat-smooth" class="studio-btn" style="padding: 2px 8px; font-size: 11px;">Smooth Shading</button>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Kotak Pembatas (Bounding Box):</span>
+            <input type="checkbox" id="toggle-bbox-helper" style="accent-color: #f57920; cursor: pointer;">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: REALISTIC SKIN & TACTILE TOUCH (Sculpt & Skin Tab) -->
+      <div class="sidebar-section tab-section" data-tab-section="sculpt layout">
+        <div class="sidebar-section-title">
+          <span>SHADER & KULIT REALISTIS</span>
         </div>
         <div class="control-group">
           <div class="property-row">
@@ -125,14 +215,14 @@
 
           <div class="property-row">
             <span class="property-label">Kehalusan (Roughness):</span>
-            <input type="range" id="skin-roughness" class="property-input-range" min="0.1" max="0.9" step="0.05" value="0.45">
-            <span id="val-roughness" class="property-value-badge">0.45</span>
+            <input type="range" id="skin-roughness" class="property-input-range" min="0.1" max="0.95" step="0.05" value="0.90">
+            <span id="val-roughness" class="property-value-badge">0.90</span>
           </div>
 
           <div class="property-row">
             <span class="property-label">Kelembapan (Clearcoat):</span>
-            <input type="range" id="skin-clearcoat" class="property-input-range" min="0" max="1" step="0.05" value="0.25">
-            <span id="val-clearcoat" class="property-value-badge">0.25</span>
+            <input type="range" id="skin-clearcoat" class="property-input-range" min="0" max="1" step="0.05" value="0.50">
+            <span id="val-clearcoat" class="property-value-badge">0.50</span>
           </div>
 
           <div class="property-row">
@@ -142,28 +232,67 @@
         </div>
       </div>
 
-      <!-- Studio Lighting -->
-      <div class="sidebar-section">
+      <!-- SECTION: TACTILE TOUCH ELASTICITY (Sculpt & Skin Tab) -->
+      <div class="sidebar-section tab-section" data-tab-section="sculpt">
         <div class="sidebar-section-title">
-          <span>Pencahayaan Studio</span>
+          <span>FISIKA SENTUHAN & ELASTISITAS</span>
+        </div>
+        <div class="control-group">
+          <div class="property-row">
+            <span class="property-label">Amplitudo Tekukan (Depression):</span>
+            <input type="range" id="touch-depth-range" class="property-input-range" min="0.02" max="0.15" step="0.01" value="0.05">
+            <span id="val-touch-depth" class="property-value-badge">0.05</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Radius Elastis Kulit:</span>
+            <input type="range" id="touch-radius-range" class="property-input-range" min="0.05" max="0.30" step="0.02" value="0.12">
+            <span id="val-touch-radius" class="property-value-badge">0.12m</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Kecepatan Balik (Springback):</span>
+            <input type="range" id="touch-spring-range" class="property-input-range" min="0.1" max="0.8" step="0.05" value="0.4">
+            <span id="val-touch-spring" class="property-value-badge">0.40</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: STUDIO LIGHTING & ENVIRONMENT (Shading Tab) -->
+      <div class="sidebar-section tab-section" data-tab-section="shading layout">
+        <div class="sidebar-section-title">
+          <span>PENCAHAYAAN STUDIO</span>
         </div>
         <div class="control-group">
           <div class="property-row">
             <span class="property-label">Intensitas Key Light:</span>
             <input type="range" id="light-key-intensity" class="property-input-range" min="0.2" max="4.0" step="0.2" value="1.8">
+            <span id="val-key-light" class="property-value-badge">1.8</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Intensitas Fill Light:</span>
+            <input type="range" id="light-fill-intensity" class="property-input-range" min="0.0" max="2.5" step="0.1" value="0.8">
+            <span id="val-fill-light" class="property-value-badge">0.8</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Intensitas Rim Light:</span>
+            <input type="range" id="light-rim-intensity" class="property-input-range" min="0.0" max="3.0" step="0.1" value="1.2">
+            <span id="val-rim-light" class="property-value-badge">1.2</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Warna Latar Studio:</span>
+            <input type="color" id="bg-color-picker" class="color-picker-input" value="#222222" aria-label="Warna Latar Belakang">
           </div>
         </div>
       </div>
 
-      <!-- Avatar Positioning -->
-      <div class="sidebar-section">
+      <!-- SECTION: AVATAR POSITIONING (All Tabs) -->
+      <div class="sidebar-section tab-section" data-tab-section="layout modeling sculpt shading">
         <div class="sidebar-section-title">
-          <span>Posisi Avatar</span>
+          <span>POSISI AVATAR</span>
         </div>
         <p style="font-size: 11px; color: #888888; margin-bottom: 8px;">
           Avatar secara otomatis diposisikan tepat di tengah sumbu (0,0,0) di atas lantai grid Blender.
         </p>
-        <button id="btn-recenter" class="studio-btn" style="width: 100%; justify-content: center;">
+        <button id="btn-recenter-sidebar" class="studio-btn" style="width: 100%; justify-content: center;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <circle cx="12" cy="12" r="3"></circle>
@@ -175,12 +304,22 @@
     </aside>
   </main>
 
-  <!-- Animation Timeline (Shown if model has rigs) -->
+  <!-- Animation Timeline (Shown if model has rigs/animations) -->
   <footer id="studio-timeline" class="studio-timeline" style="display: none;">
     <div class="timeline-controls">
-      <button id="btn-play-anim" class="studio-btn primary">Play</button>
+      <button id="btn-play-anim" class="studio-btn primary">Pause</button>
+      <select id="anim-clip-select" class="timeline-clip-select" aria-label="Pilih Animasi"></select>
+      <span id="anim-time-display" class="timeline-time">00:00 / 00:00</span>
     </div>
-    <input type="range" id="anim-scrubber" class="timeline-scrubber" min="0" max="100" value="0">
+    
+    <input type="range" id="anim-scrubber" class="timeline-scrubber" min="0" max="100" step="0.1" value="0">
+    
+    <div class="timeline-speed-controls">
+      <button class="speed-btn active" data-speed="1.0">1x</button>
+      <button class="speed-btn" data-speed="0.5">0.5x</button>
+      <button class="speed-btn" data-speed="1.5">1.5x</button>
+      <button class="speed-btn" data-speed="2.0">2x</button>
+    </div>
   </footer>
 
   <script type="module">

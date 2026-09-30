@@ -12,6 +12,9 @@ body.studio-body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
 }
 
 /* Studio Header / Menu Bar */
@@ -54,6 +57,8 @@ body.studio-body {
   align-items: center;
   gap: 2px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-item-btn {
@@ -63,6 +68,8 @@ body.studio-body {
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
+  border: none;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
@@ -74,7 +81,7 @@ body.studio-body {
 .workspace-tabs {
   display: flex;
   align-items: center;
-  background-color: #1e1e1e;
+  background-color: #1a1a1a;
   border-radius: 4px;
   padding: 2px;
   gap: 2px;
@@ -87,6 +94,8 @@ body.studio-body {
   border-radius: 3px;
   font-size: 12px;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
@@ -116,6 +125,7 @@ body.studio-body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
@@ -156,6 +166,42 @@ body.studio-body {
   display: block;
 }
 
+/* Drag & Drop Zone Overlay */
+.viewport-dropzone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(245, 121, 32, 0.15);
+  border: 2px dashed #f57920;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.viewport-dropzone.visible {
+  opacity: 1;
+}
+
+.dropzone-box {
+  background-color: #242424;
+  border: 1px solid #444444;
+  border-radius: 8px;
+  padding: var(--space-4) var(--space-6);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #f57920;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
 /* Viewport HUD Overlays */
 .viewport-overlay {
   position: absolute;
@@ -192,7 +238,7 @@ body.studio-body {
 
 .shading-modes {
   display: flex;
-  background-color: rgba(30, 30, 30, 0.85);
+  background-color: rgba(30, 30, 30, 0.88);
   border: 1px solid #444444;
   border-radius: 6px;
   padding: 3px;
@@ -203,12 +249,14 @@ body.studio-body {
 .shading-btn {
   background: transparent;
   color: #999999;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 4px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
@@ -224,10 +272,10 @@ body.studio-body {
 
 /* Orientation Gizmo Widget */
 .orientation-widget {
-  background: rgba(30, 30, 30, 0.85);
+  background: rgba(30, 30, 30, 0.88);
   border: 1px solid #444444;
   border-radius: 6px;
-  padding: 6px;
+  padding: 4px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
@@ -242,6 +290,8 @@ body.studio-body {
   font-weight: 700;
   padding: 4px 8px;
   border-radius: 3px;
+  border: none;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
@@ -316,6 +366,15 @@ body.studio-body {
   justify-content: space-between;
 }
 
+.tab-badge {
+  font-size: 10px;
+  background: #333333;
+  color: #f57920;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #444444;
+}
+
 .control-group {
   display: flex;
   flex-direction: column;
@@ -354,6 +413,7 @@ body.studio-body {
   height: 24px;
   border-radius: 3px;
   background: transparent;
+  border: 1px solid #444444;
   cursor: pointer;
 }
 
@@ -388,35 +448,64 @@ body.studio-body {
   justify-content: space-between;
   padding: 0 var(--space-4);
   gap: var(--space-4);
+  user-select: none;
 }
 
 .timeline-controls {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
-.timeline-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
+.timeline-clip-select {
   background-color: #333333;
-  color: #cccccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
+  color: #dddddd;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  max-width: 180px;
 }
 
-.timeline-btn:hover {
-  background-color: #f57920;
-  color: #ffffff;
+.timeline-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #aaaaaa;
 }
 
 .timeline-scrubber {
   flex: 1;
   accent-color: #f57920;
   cursor: pointer;
+}
+
+.timeline-speed-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.speed-btn {
+  background: #333333;
+  color: #888888;
+  border: 1px solid #444444;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.speed-btn:hover {
+  color: #ffffff;
+}
+
+.speed-btn.active {
+  background: #f57920;
+  color: #ffffff;
+  border-color: #e06810;
 }
 
 /* Model Selector Dropdown */
